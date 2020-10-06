@@ -4,6 +4,6 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
  <configuration>
  	<typeAliases>
- 		<typeAlias alias="MemberDTO" type="co.kr.academy.member.MemberDTO"/>
+ 		<typeAlias alias="MemberDTO" type="kr.co.academy.member.MemberDTO"/>
  	</typeAliases>
  </configuration>
