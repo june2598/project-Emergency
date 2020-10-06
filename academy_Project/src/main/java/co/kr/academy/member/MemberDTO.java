@@ -11,5 +11,5 @@ public class MemberDTO {
 	//adress 주소
 	//email	이메일
 	//position 부모,수강생=0 / 선생=1 / 관리자=2	=>페이지 작성 쉽게(메뉴구성 등)
-	//birth
+	//birth 생년월일
 }
