@@ -13,11 +13,6 @@
 <body>
 
 <div class="jumbotron text-center">
-        <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-user"></span> 회원가입</a></li>
-        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> 로그인</a></li>
-      </ul>
-      <br>
       <h1>응급 아카데미</h1>
 </div>
 <nav class="navbar navbar-inverse">
@@ -28,20 +23,31 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="#">응급 아카데미</a>
+      <a class="navbar-brand" href="/academy/">응급 아카데미</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
         <li><a href="#">아카데미 소개</a></li>
         <li><a href="#">공지사항</a></li>
         <li><a href="#">교육과정</a></li>
-        <li><a href="#">교육시스템</a></li>
-        <li><a href="#">취업정보센터</a></li>
-        <li><a href="#">자격증정보</a></li>
-        <li><a href="#">커뮤니티</a></li>
         <li><a href="#">고객상담센터</a></li>
       </ul>
+        <ul class="nav navbar-nav navbar-right">
+        <li><a href="join.jsp"><span class="glyphicon glyphicon-user"></span> 회원가입</a></li>
+        <c:if test="${user==null }">
+        <li><a href="login.jsp"><span class="glyphicon glyphicon-log-in"></span> 로그인</a></li>
+		<c:if test="${user!=null }">
+		${user.name }님 환영합니다. <br />
+        <li><a href="board/logout"><span class="glyphicon glyphicon-log-in"></span> 로그아웃</a></li>
+		</c:if>
+		</c:if>
+      </ul>
+      <div class="box-header with-border">
+		
 
+		
+		
+	</div>
     </div>
   </div>
 </nav>
