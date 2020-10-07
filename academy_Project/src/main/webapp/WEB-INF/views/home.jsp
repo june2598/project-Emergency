@@ -7,8 +7,8 @@
 <html>
 <head>
 <title>Home</title></head><body>
-
 <%@include file="include/header.jsp"%>
+<br><br>
 <section class="content">
 	<div class="box">
 		<div class="box-header with-border">
@@ -46,6 +46,7 @@
 		</tr>
 		</table>	
 </section>
+<br><br><br>
 <%@include file="include/footer.jsp"%>
 
 </body>

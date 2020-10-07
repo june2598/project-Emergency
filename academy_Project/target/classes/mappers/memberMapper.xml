@@ -3,8 +3,8 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="kr.co.academy.member">
-	<select id="login" parameterType="MemberDTO">
-		select *
+	<select id="login" parameterType="MemberDTO" resultType="java.lang.String">
+		select id
 		from member
 		where id=#{memId} and pw=#{memPw}
 	</select>
