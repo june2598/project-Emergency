@@ -1,5 +1,7 @@
 package kr.co.academy.member;
 
+import java.util.Map;
+
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Repository;
@@ -11,8 +13,8 @@ public class MemberServiceImpl implements MemberService{
 	private MemberDAO memberDAO;
 	
 	@Override
-	public int login(MemberDTO memberDTO) {
-		return memberDAO.login(memberDTO);
+	public Map login(Map<String, String> map) {
+		return memberDAO.login(map);
 	}
 
 	@Override

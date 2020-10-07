@@ -1,6 +1,7 @@
 ﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+	<c:set var="contextPath" value="${pageContext.request.contextPath }" />
 
 <head>
   <title>header</title>
@@ -33,12 +34,12 @@
         <li><a href="#">고객상담센터</a></li>
       </ul>
         <ul class="nav navbar-nav navbar-right">
-        <li><a href="join.jsp"><span class="glyphicon glyphicon-user"></span> 회원가입</a></li>
+        <li><a href="${contextPath}/member/register"><span class="glyphicon glyphicon-user"></span> 회원가입</a></li>
         <c:if test="${user==null }">
-        <li><a href="login.jsp"><span class="glyphicon glyphicon-log-in"></span> 로그인</a></li>
+        <li><a href="${contextPath}/member/login"><span class="glyphicon glyphicon-log-in"></span> 로그인</a></li>
 		<c:if test="${user!=null }">
 		${user.name }님 환영합니다. <br />
-        <li><a href="board/logout"><span class="glyphicon glyphicon-log-in"></span> 로그아웃</a></li>
+        <li><a href="${contextPath}/member/logout"><span class="glyphicon glyphicon-log-in"></span> 로그아웃</a></li>
 		</c:if>
 		</c:if>
       </ul>

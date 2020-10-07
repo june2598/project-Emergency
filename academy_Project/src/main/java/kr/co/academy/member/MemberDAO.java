@@ -1,8 +1,10 @@
 package kr.co.academy.member;
 
+import java.util.Map;
+
 public interface MemberDAO {
 	// 로그인 구현
-	public int login(MemberDTO memberDTO);
+	public Map login(Map<String, String> map);
 	// 회원가입 구현
 	public int register(MemberDTO memberDTO);
 	// 아이디 찾기

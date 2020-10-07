@@ -1,5 +1,7 @@
 package kr.co.academy.member;
 
+import java.util.Map;
+
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
@@ -14,9 +16,9 @@ public class MemberDAOImpl implements MemberDAO{
 	private static final String nameSpace = "kr.co.academy.member";
 	
 	@Override
-	public int login(MemberDTO memberDTO) {
+	public Map login(Map<String, String> map) {
 
-		return sqlSession.selectOne(nameSpace + ".login", memberDTO);
+		return sqlSession.selectOne(nameSpace + ".login", map);
 	}
 	
 	@Override
