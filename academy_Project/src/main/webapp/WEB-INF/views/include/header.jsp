@@ -10,12 +10,14 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
 </head>
 <body>
+  <div class="container-fluid" style="height: 100px;">
+		 <h1 class="text-center">응급 아카데미</h1>
+  </div>
 
-<div class="jumbotron text-center">
-      <h1>응급 아카데미</h1>
-</div>
+
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -28,7 +30,7 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li><a href="#">아카데미 소개</a></li>
+        <li><a href="${contextPath}/introduce">아카데미 소개</a></li>
         <li><a href="#">공지사항</a></li>
         <li><a href="#">교육과정</a></li>
         <li><a href="#">고객상담센터</a></li>
@@ -44,9 +46,6 @@
 		</c:if>
       </ul>
       <div class="box-header with-border">
-		
-
-		
 		
 	</div>
     </div>

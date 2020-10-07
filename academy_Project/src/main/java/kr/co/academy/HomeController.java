@@ -36,4 +36,10 @@ public class HomeController {
 		return "home";
 	}
 	
+	@RequestMapping(value="/introduce", method = RequestMethod.GET)
+	public String introduce() {
+		logger.info("introduce");
+		return "introduce";
+	}
+		
 }
