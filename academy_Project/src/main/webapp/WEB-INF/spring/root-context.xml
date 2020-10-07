@@ -6,7 +6,7 @@
 	<!-- Root Context: defines shared resources visible to all other web components -->
 		<bean id="dataSourceSpied" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver"></property>
-		<property name="url" value="jdbc:mysql://localhost:3306/academy?serverTimezone=UTC" />
+		<property name="url" value="jdbc:mysql://192.168.42.128:3306/academy?serverTimezone=UTC" />
 		<property name="username" value="root"></property>
 		<property name="password" value="12345" />
 	</bean>
