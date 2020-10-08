@@ -1,12 +1,12 @@
 CREATE TABLE `member` (
-  `id` varchar(45) NOT NULL,
-  `pw` varchar(45) NOT NULL,
-  `name` varchar(20) NOT NULL,
-  `tel` int NOT NULL,
-  `address` varchar(100) NOT NULL,
-  `position` int NOT NULL,
-  `birth` varchar(20) NOT NULL,
-  `email` varchar(45) NOT NULL,
-  `regdate` datetime NOT NULL,
-  PRIMARY KEY (`id`)
+  `memId` varchar(45) NOT NULL,
+  `memPw` varchar(45) NOT NULL,
+  `memName` varchar(20) NOT NULL,
+  `memTel` varchar(20) NOT NULL,
+  `memAddress` varchar(100) NOT NULL,
+  `memPosition` int NOT NULL,
+  `memBirth` varchar(20) NOT NULL,
+  `memEmail` varchar(45) NOT NULL,
+  `memRegdate` datetime NOT NULL,
+  PRIMARY KEY (`memId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

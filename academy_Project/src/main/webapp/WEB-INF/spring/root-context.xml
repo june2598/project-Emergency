@@ -2,12 +2,12 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
-	
+	<!-- server IP address : 192.168.42.128 -->
 	<!-- Root Context: defines shared resources visible to all other web components -->
 		<bean id="dataSourceSpied" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver"></property>
 		<property name="url" value="jdbc:mysql://192.168.42.128:3306/academy?serverTimezone=UTC" />
-		<property name="username" value="root"></property>
+		<property name="username" value="user"></property>
 		<property name="password" value="12345" />
 	</bean>
 

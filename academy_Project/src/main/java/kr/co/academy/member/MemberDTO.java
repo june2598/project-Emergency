@@ -11,15 +11,17 @@ public class MemberDTO {
 	//name 이름
 	private String memName;
 	//tel 전화번호
-	private int memTel;
+	private String memTel;
 	//adress 주소
 	private String memAddress;
 	//email	이메일
-	private int memEmail;
+	private String memEmail;
 	//position 부모,수강생=0 / 선생=1 / 관리자=2	=>페이지 작성 쉽게(메뉴구성 등)
 	private int memPosition;
 	//birth 생년월일
-	private int memBirth;
+	private String memBirth;
+	//regdate 등록일
+	private String memRegdate;
 	
 	
 	public String getMemId() {
@@ -40,10 +42,10 @@ public class MemberDTO {
 	public void setMemName(String memName) {
 		this.memName = memName;
 	}
-	public int getMemTel() {
+	public String getMemTel() {
 		return memTel;
 	}
-	public void setMemTel(int memTel) {
+	public void setMemTel(String memTel) {
 		this.memTel = memTel;
 	}
 	public String getMemAddress() {
@@ -52,10 +54,10 @@ public class MemberDTO {
 	public void setMemAddress(String memAddress) {
 		this.memAddress = memAddress;
 	}
-	public int getMemEmail() {
+	public String getMemEmail() {
 		return memEmail;
 	}
-	public void setMemEmail(int memEmail) {
+	public void setMemEmail(String memEmail) {
 		this.memEmail = memEmail;
 	}
 	public int getMemPosition() {
@@ -64,18 +66,24 @@ public class MemberDTO {
 	public void setMemPosition(int memPosition) {
 		this.memPosition = memPosition;
 	}
-	public int getMemBirth() {
+	public String getMemBirth() {
 		return memBirth;
 	}
-	public void setMemBirth(int memBirth) {
+	public void setMemBirth(String memBirth) {
 		this.memBirth = memBirth;
 	}
-	
+	public String getMemRegdate() {
+		return memRegdate;
+	}
+	public void setMemRegdate(String memRegdate) {
+		this.memRegdate = memRegdate;
+	}
 	@Override
 	public String toString() {
 		return "MemberDTO [memId=" + memId + ", memPw=" + memPw + ", memName=" + memName + ", memTel=" + memTel
 				+ ", memAddress=" + memAddress + ", memEmail=" + memEmail + ", memPosition=" + memPosition
-				+ ", memBirth=" + memBirth + "]";
+				+ ", memBirth=" + memBirth + ", memRegdate=" + memRegdate + "]";
 	}
+	
 	
 }

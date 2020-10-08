@@ -36,13 +36,18 @@
         <li><a href="#">고객상담센터</a></li>
       </ul>
         <ul class="nav navbar-nav navbar-right">
+        <c:if test="${user==null }">
         <li><a href="${contextPath}/member/register"><span class="glyphicon glyphicon-user"></span> 회원가입</a></li>
+        </c:if>
+        <c:if test="${user.memPosition==2 }">
+        <li><a href="${contextPath}/manage/dashBoard"><span class="glyphicon glyphicon-log-in"></span> 관리자페이지</a></li>
+		</c:if>
         <c:if test="${user==null }">
         <li><a href="${contextPath}/member/login"><span class="glyphicon glyphicon-log-in"></span> 로그인</a></li>
-		<c:if test="${user!=null }">
-		${user.name }님 환영합니다. <br />
-        <li><a href="${contextPath}/member/logout"><span class="glyphicon glyphicon-log-in"></span> 로그아웃</a></li>
 		</c:if>
+		<c:if test="${user!=null }">
+        <li><a href="${contextPath}/member/logout"><span class="glyphicon glyphicon-log-in"></span> 로그아웃</a></li>
+		<font style="color: white;">${user.memId }님 환영합니다.</font>
 		</c:if>
       </ul>
       <div class="box-header with-border">
