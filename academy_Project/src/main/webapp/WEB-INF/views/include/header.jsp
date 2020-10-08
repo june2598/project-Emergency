@@ -13,11 +13,17 @@
 
 </head>
 <body>
-  <div class="container-fluid" style="height: 100px;">
-		 <h1 class="text-center">응급 아카데미</h1>
-  </div>
+<div class="container" style="margin-left: 0px; padding-left: 0px;">
+<div class="col-sm-8">
+<img src="${pageContext.request.contextPath }/resources/imgs/logo.jpg" alt="logo" style="width:150px; height: 150px">
+	<img src="${pageContext.request.contextPath }/resources/imgs/logo2.jpg" alt="logo2" style="width:250px; height: 150px">
+</div>
+    <div class="col-sm-2"></div>
+    <div class="col-sm-2"></div>
+</div>
+	
 
-
+<br>
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -32,7 +38,7 @@
       <ul class="nav navbar-nav">
         <li><a href="${contextPath}/introduce">아카데미 소개</a></li>
         <li><a href="#">공지사항</a></li>
-        <li><a href="#">교육과정</a></li>
+        <li><a href="${contextPath}/curriculum">교육과정</a></li>
         <li><a href="#">고객상담센터</a></li>
       </ul>
         <ul class="nav navbar-nav navbar-right">
