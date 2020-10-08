@@ -12,7 +12,7 @@ public class BoardDAOImpl implements BoardDAO{
 	@Inject
 	private SqlSession sqlSession;
 
-	private static final String namespace = "kr.co.academy";
+	private static final String namespace = "kr.co.academy.board";
 
 	@Override
 	public List<BoardDTO> list() {

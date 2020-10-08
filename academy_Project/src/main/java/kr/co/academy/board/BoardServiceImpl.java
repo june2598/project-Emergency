@@ -4,8 +4,12 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-public class BoardServiceImpl implements BoardService{
+import org.springframework.stereotype.Repository;
 
+	@Repository
+public class BoardServiceImpl implements BoardService{
+	
+	
 	@Inject
 	private BoardDAO boardDAO;
 
