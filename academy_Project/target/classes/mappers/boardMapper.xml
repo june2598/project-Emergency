@@ -2,7 +2,53 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  <mapper namespace="boardMapper">
+  <mapper namespace="kr.co.academy.board">
 	
+	<!-- 전체 목록 보기 -->
+	<select id="list" resultType="BoardDTO">
+	select *
+	from board
+	where del = 0
+	order by bno desc;
+	</select>
 
+
+	<!-- 선택조회 (글읽기) -->
+	<select id="readOne" parameterType="java.lang.Integer" resultType="BoardDTO">
+	select *
+	from board
+	where bno = #{bno}
+	</select>
+	
+	<!-- 글 쓰기 -->
+	<insert id="register" parameterType="BoardDTO">
+	insert into board(bno, btitle, bcontent, id,regdate,breadcnt,bdel,bfilename)
+	values(#{bno},#{btitle},#{bcontent},#{id},curdate(),#{breadcnt},#{bdel},#{bfilename})
+	</insert>
+	
+	<!-- 글 수정  -->
+	<update id="update" parameterType="BoardDTO">
+	update board
+	set 
+	btitle = #{btitle} , bcontent=#{bcontent}, bfilename=#{bfilename} ,regdate = curdate()
+	where bno = #{bno}
+	</update>
+	
+	<!-- 글삭제 -->
+	<delete id="delete" parameterType="BoardDTO">
+	update board
+	set
+	bdel = 1
+	where bno = #{bno}
+	</delete>
+	
+	<!-- 조회수 증가 -->
+	<update id="updateReadCnt">
+	update board
+	set
+	breadcnt = breadcnt + 1
+	where bno = #{bno}
+	</update>
+	
+	
   </mapper>

@@ -6,6 +6,8 @@ CREATE TABLE `academy`.`board` (
   `breadcnt` INT NOT NULL,
   `bdel` INT NOT NULL,
   `bselect` INT NOT NULL,
+  `bfilename` VARCHAR(45) NULL,
+  `regdate` TIMESTAMP NOT NULL,
   PRIMARY KEY (`bno`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
