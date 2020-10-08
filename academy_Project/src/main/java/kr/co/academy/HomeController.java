@@ -41,5 +41,11 @@ public class HomeController {
 		logger.info("introduce");
 		return "introduce";
 	}
+	
+	@RequestMapping(value="/curriculum", method = RequestMethod.GET)
+	public String curriculum() {
+		logger.info("curriculum");
+		return "curriculum";
+	}
 		
 }
