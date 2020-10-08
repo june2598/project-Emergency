@@ -32,7 +32,6 @@ public class MemberController {
 	
 	@RequestMapping(value="member/login", method=RequestMethod.POST)
 	public String login(@RequestParam Map<String, String> map, HttpSession session) {
-		logger.info("login end");
 		Map user = memberService.login(map);
 		
 		if(user==null) {
@@ -47,6 +46,7 @@ public class MemberController {
 	
 	@RequestMapping(value="member/register", method=RequestMethod.GET)
 	public String register() {
+		logger.info("register form");
 		return "register";
 	}
 
