@@ -19,10 +19,25 @@
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
+		<beans:property name="order" value="2" />
 	</beans:bean>
 	
 	<context:component-scan base-package="kr.co.academy" />
 	
+		<!-- 타일즈 뷰 설정 -->   
+	<beans:bean class="org.springframework.web.servlet.view.UrlBasedViewResolver">  		
+		<beans:property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView" />  		
+		<beans:property name="order" value="1" /> 	
+	</beans:bean> 	
+	
+	<!-- 타일즈 레이아웃 설정  --> 	
+	<beans:bean class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+		<beans:property name="definitions">
+   			<beans:list>
+    			<beans:value>/WEB-INF/spring/appServlet/tiles.xml</beans:value>
+   			</beans:list>
+  		</beans:property>
+	</beans:bean>
 	
 	
 </beans:beans>
