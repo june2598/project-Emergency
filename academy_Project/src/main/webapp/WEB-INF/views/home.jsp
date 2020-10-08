@@ -9,7 +9,7 @@
 <title>Home</title>
 </head><body>
 <%@include file="include/header.jsp"%>
-
+<!-- 오류해결용 -->
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
     <ol class="carousel-indicators">
