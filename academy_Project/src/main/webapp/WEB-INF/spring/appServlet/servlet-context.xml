@@ -23,6 +23,7 @@
 	</beans:bean>
 	
 	<context:component-scan base-package="kr.co.academy" />
+	<context:component-scan base-package="kr.co.academy.member" />
 	
 		<!-- 타일즈 뷰 설정 -->   
 	<beans:bean class="org.springframework.web.servlet.view.UrlBasedViewResolver">  		

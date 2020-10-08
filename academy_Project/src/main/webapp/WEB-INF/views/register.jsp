@@ -19,7 +19,7 @@
 			<div class="jumbotron" style="padding-top: 20px;">
 				<form role="form" method="post">
 					<h3 style="text-align:center;">회원가입</h3>
-					<div class="form-group">
+					<div class="form-group">	
 						<input type="text" class="form-control" placeholder="아이디" name="memId" maxlength="45">
 					</div>
 					<div class="form-group">
@@ -40,8 +40,6 @@
 					<div class="form-group">
 						<input type="text" class="form-control" placeholder="생년원일 (ex)19900101)" name="memBrith" maxlength="20">
 					</div>
-					<input type="hidden" name="memRegdate" value="0"/>
-					<input type="hidden" name="memPosition" value="0"/>
 					<div>
 						<input type="submit" class="btn btn-primary form-control" value="회원가입">
 					</div>
