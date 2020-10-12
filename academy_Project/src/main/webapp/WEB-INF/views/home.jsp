@@ -23,7 +23,7 @@
     <div class="carousel-inner">
 
       <div class="item active">
-      	<>
+      	<img>
         <img src="${pageContext.request.contextPath }/resources/imgs/home1.jpg" alt="home1" style="width:100%;">
       </div>
 
