@@ -38,33 +38,61 @@
 					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="/academy/">응급 아카데미</a>
+				<a class="navbar-brand" href="/academy/">HOME</a>
 			</div>
 			<div class="collapse navbar-collapse" id="myNavbar">
 				<ul class="nav navbar-nav">
 					<li><a href="${contextPath}/introduce">아카데미 소개</a></li>
-
 					<li><a href="${contextPath}/board/list">공지사항</a></li>
-					<li><a href="#">교육과정</a></li>
+					<li><a href="${contextPath}/curriculum">교육과정</a></li>
 					<li><a href="#">고객상담센터</a></li>
+					<c:if test="${user.memPosition==2 }">
+						<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="${contextPath}/dashBoard">관리자페이지<span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li id="DashBoard">
+									<a class="nav-link" href=<c:url value="managedashBoard"/>>
+										<i class="fas fa-fw fa-table"></i>
+										<span>홈페이지 로고 수정</span>
+									</a>
+								</li>
+					            <li id="Admanage" class="menu nav-item">
+									<a class="nav-link" href=<c:url value="dashBoard"/>>
+										<i class="fas fa-address-card"></i>
+										<span>회원관리</span>
+									</a>
+								</li>
+								<li class="nav-item dropdown">
+									<a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+										<i class="fas fa-fw fa-folder"></i>
+										<span>학생 관리</span>
+									</a>
+									<div class="dropdown-menu" aria-labelledby="pagesDropdown">
+										<h6 class="dropdown-header">학생정보</h6>
+										<a class="dropdown-item" href=<c:url value="charts"/> onclick="pageSubmitFn()">학생현황</a>
+										<a class="dropdown-item" href="#" onclick="pageSubmitFn()">학생정보등록</a>
+										<a class="dropdown-item" href="#" onclick="pageSubmitFn()">학생정보수정</a>
+									</div>
+								</li>
+								<li id="Charts" class="menu nav-item">
+									<a class="nav-link" href="#">
+										<i class="fas fa-fw fa-chart-area"></i>
+										<span>접속 로그</span></a>
+								</li>
+							</ul>
+						</li>								
+					</c:if>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<c:if test="${user==null }">
 						<li><a href="${contextPath}/member/register"><span
 								class="glyphicon glyphicon-user"></span> 회원가입</a></li>
 					</c:if>
-					<c:if test="${user.memPosition==2 }">
-						<li><a href="${contextPath}/dashBoard"><span
-								class="glyphicon glyphicon-log-in"></span> 관리자페이지</a></li>
-					</c:if>
 					<c:if test="${user==null }">
 						<li><a href="${contextPath}/member/login"><span
 								class="glyphicon glyphicon-log-in"></span> 로그인</a></li>
 					</c:if>
 					<c:if test="${user!=null }">
-						<li><a href="${contextPath}/member/logout"><span
-								class="glyphicon glyphicon-log-in"></span> 로그아웃</a></li>
-						<font style="color: white;">${user.memId }님 환영합니다.</font>
+						<li><a href="${contextPath}/member/logout"><span class="glyphicon glyphicon-log-in"></span> 로그아웃 &nbsp;&nbsp;<font style="color: white;">${user.memId }님 환영합니다.</font></a></li>
 					</c:if>
 				</ul>
 				<div class="box-header with-border"></div>
