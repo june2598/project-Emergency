@@ -1,14 +1,19 @@
 package kr.co.academy.member;
 
 
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -45,23 +50,27 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value="member/register", method=RequestMethod.GET)
-	public String register() {
+	public String register(@ModelAttribute MemberDTO memberDTO) {
 		logger.info("register form");
 		return "register";
 	}
 
 	@RequestMapping(value="member/register", method=RequestMethod.POST)
-	public String register(MemberDTO memberDTO) {
-		int r = memberService.register(memberDTO);
+	public String register(@ModelAttribute @Valid MemberDTO memberDTO, BindingResult result) {
 		
-		if(r>0) {
-			logger.info("register end");
-			return "redirect:/";
-		} else {
-			logger.debug("register error");
+		if( result.hasErrors() ) {
+
+			// 에러를 List로 저장
+			List<ObjectError> list = result.getAllErrors();
+			for( ObjectError error : list ) {
+				System.out.println(error);
+			}
 			return "register";
 		}
 		
+		
+		memberService.register(memberDTO);
+		return "redirect:/";		
 	}
 	
 	@RequestMapping(value="member/logout", method=RequestMethod.GET)

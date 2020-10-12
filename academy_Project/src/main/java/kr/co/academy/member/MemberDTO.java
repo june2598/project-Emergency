@@ -1,24 +1,44 @@
 package kr.co.academy.member;
 
+import javax.validation.constraints.Pattern;
+
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotEmpty;
+
 public class MemberDTO {
 	//이름은 원하는 단어로 교체 가능! 필요 시 추가 가능!
 	//다른 사람 파트 변경 필요 시 카톡방 연락!
 	
-	//id 아이디
+	//id 아이디(4~15글자, 숫자, 영문 대소문자)
+	@NotEmpty
+	@Length(min=4, max=15)
+	@Pattern(regexp="(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])")
 	private String memId;
-	//pw 비밀번호
+
+	//pw 비밀번호(6~16글자, 숫자, 영문 대소문자, 특수문자)
+	@NotEmpty
+	@Length(min=6, max=16)
+	@Pattern(regexp="(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&+=])(?=\\S+$)")
 	private String memPw;
+	
 	//name 이름
+	@NotEmpty
 	private String memName;
 	//tel 전화번호
+	@NotEmpty
 	private String memTel;
 	//adress 주소
+	@NotEmpty
 	private String memAddress;
 	//email	이메일
+	@NotEmpty
+	@Email
 	private String memEmail;
 	//position 부모,수강생=0 / 선생=1 / 관리자=2	=>페이지 작성 쉽게(메뉴구성 등)
 	private int memPosition;
 	//birth 생년월일
+	@NotEmpty
 	private String memBirth;
 	//regdate 등록일
 	private String memRegdate;
