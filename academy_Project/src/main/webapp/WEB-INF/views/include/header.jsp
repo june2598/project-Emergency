@@ -19,9 +19,9 @@
 	<div class="container" style="margin-left: 0px; padding-left: 0px;">
 		<div class="col-sm-8">
 			<img
-				src="${pageContext.request.contextPath }/resources/imgs/logo.jpg"
+				src="${contextPath }/resources/imgs/logo.jpg"
 				alt="logo" style="width: 150px; height: 150px"> <img
-				src="${pageContext.request.contextPath }/resources/imgs/logo2.jpg"
+				src="${contextPath }/resources/imgs/logo2.jpg"
 				alt="logo2" style="width: 250px; height: 150px">
 		</div>
 		<div class="col-sm-2"></div>

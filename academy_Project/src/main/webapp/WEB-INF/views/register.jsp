@@ -13,7 +13,7 @@
 <head>
 <title>Login</title>
 <meta name="viewport" content="width=device-width", initial-scale="1">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/bootstrap/css/bootstrap.css">
+<link rel="stylesheet" href="${contextPath}/resources/bootstrap/css/bootstrap.css">
 </head><body>
 <%@include file="include/header.jsp"%>
 	
@@ -24,7 +24,7 @@
 				<form:form 
 		         modelAttribute="memberDTO"
 		         method="POST"
-		         action="${ pageContext.servletContext.contextPath }/member/register">
+		         action="${contextPath}/member/register">
 					<h3 style="text-align:center;">회원가입</h3>
 					<div class="form-group">	
 						<input type="text" class="form-control" placeholder="아이디" name="memId" maxlength="45">
@@ -63,7 +63,7 @@
 		<div class="col-lg-4"></div>	
 	</div>
 	<script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/bootstrap/js/bootstrap.js"></script>
+	<script src="${contextPath}/resources/bootstrap/js/bootstrap.js"></script>
 <%@include file="include/footer.jsp"%>
 
 </body>
