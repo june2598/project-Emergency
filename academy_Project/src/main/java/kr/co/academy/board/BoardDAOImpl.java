@@ -35,7 +35,7 @@ public class BoardDAOImpl implements BoardDAO{
 	@Override
 	public int register(BoardDTO boardDTO) {
 		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.insert(namespace + ".register");
 	}
 
 	@Override
