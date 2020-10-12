@@ -38,7 +38,7 @@
 						<input type="email" class="form-control" placeholder="이메일" name="memEmail" maxlength="20">
 					</div>
 					<div class="form-group">
-						<input type="text" class="form-control" placeholder="생년원일 (ex)19900101)" name="memBrith" maxlength="20">
+						<input type="text" class="form-control" placeholder="생년원일 (ex)19900101)" name="memBirth" maxlength="20">
 					</div>
 					<div>
 						<input type="submit" class="btn btn-primary form-control" value="회원가입">
