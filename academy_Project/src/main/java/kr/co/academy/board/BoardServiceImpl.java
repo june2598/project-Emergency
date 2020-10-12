@@ -22,13 +22,13 @@ public class BoardServiceImpl implements BoardService{
 	@Override
 	public int updateReadCnt(int bno) {
 		// TODO Auto-generated method stub
-		return 0;
+		return boardDAO.updateReadCnt(bno);
 	}
 
 	@Override
-	public BoardDTO readOne(int bno, int memId) {
+	public BoardDTO readOne(int bno) {
 		// TODO Auto-generated method stub
-		return null;
+		return boardDAO.readOne(bno);
 	}
 
 	@Override

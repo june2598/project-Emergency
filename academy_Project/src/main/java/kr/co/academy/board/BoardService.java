@@ -8,7 +8,7 @@ public interface BoardService {
 	public List<BoardDTO> list();
 
 	public int updateReadCnt(int bno);	//조회수 증가
-	public BoardDTO readOne(int bno,int memId);	//글 읽기
+	public BoardDTO readOne(int bno);	//글 읽기
 
 	//글쓰기 
 	public int register(BoardDTO boardDTO);

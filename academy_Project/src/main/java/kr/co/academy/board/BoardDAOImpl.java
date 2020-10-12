@@ -23,19 +23,19 @@ public class BoardDAOImpl implements BoardDAO{
 	@Override
 	public int updateReadCnt(int bno) {
 		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.update(namespace +".updateReadCnt",bno);
 	}
 
 	@Override
-	public BoardDTO readOne(int bno, int memId) {
+	public BoardDTO readOne(int bno) {
 		// TODO Auto-generated method stub
-		return null;
+		return sqlSession.selectOne(namespace +".readOne",bno);
 	}
 
 	@Override
 	public int register(BoardDTO boardDTO) {
 		// TODO Auto-generated method stub
-		return sqlSession.insert(namespace + ".register");
+		return sqlSession.insert(namespace + ".register",boardDTO);
 	}
 
 	@Override
