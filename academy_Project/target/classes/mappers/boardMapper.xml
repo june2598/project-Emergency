@@ -22,8 +22,8 @@
 	
 	<!-- 글 쓰기 -->
 	<insert id="register" parameterType="BoardDTO">
-	insert into board(bno, btitle, bcontent, id,regdate,breadcnt,bdel,bfilename)
-	values(#{bno},#{btitle},#{bcontent},#{id},curdate(),#{breadcnt},#{bdel},#{bfilename})
+	insert into board(bno, btitle, bcontent, id, regdate, breadcnt, bdel, bfilename, bselect)
+	values(#{bno},#{btitle},#{bcontent},#{id},curdate(),0,0,#{bfilename},#{bselect})
 	</insert>
 	
 	<!-- 글 수정  -->
