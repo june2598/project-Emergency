@@ -17,7 +17,7 @@ public class DashBoardController {
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
 	
-	@RequestMapping(value="manage/admin")
+	@RequestMapping(value="/dashBoard")
 	public ModelAndView DashBoardView(ModelAndView mv, HttpServletRequest request) throws Exception {
 		
 		System.out.println("쿼리스트링 Key 값 : "+request.getParameter("pageName"));

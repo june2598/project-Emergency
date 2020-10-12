@@ -17,7 +17,7 @@
 				</div>
 			</div>
 
-
+			<br><br>
 			<ol class="breadcrumb">
 				<h4 class="title">하단 정보수정</h4>
 			</ol>
@@ -96,6 +96,7 @@
 					</div>
 				</div>
 			</div>
+			<br><br><br>
 			<div class="text-center">
 				<button type="submit" class="btn btn-info btn-fill btn-wd">Update
 					Profile</button>
