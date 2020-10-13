@@ -26,5 +26,11 @@ public class MemberDAOImpl implements MemberDAO{
 
 		return sqlSession.insert(nameSpace + ".register", memberDTO);
 	}
+
+	@Override
+	public int idChk(MemberDTO memberDTO) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(nameSpace + ".idChk", memberDTO);
+	}
 	
 }

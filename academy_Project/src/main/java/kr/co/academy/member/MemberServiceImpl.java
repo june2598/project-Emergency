@@ -23,4 +23,10 @@ public class MemberServiceImpl implements MemberService{
 		return memberDAO.register(memberDTO);
 	}
 
+	@Override
+	public int idChk(MemberDTO memberDTO) {
+		// TODO Auto-generated method stub
+		return memberDAO.idChk(memberDTO);
+	}
+
 }

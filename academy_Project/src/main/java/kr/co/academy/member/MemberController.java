@@ -4,6 +4,7 @@ package kr.co.academy.member;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * Handles requests for the application home page.
@@ -80,6 +82,12 @@ public class MemberController {
 		return "redirect:/";
 	}
 	
-	
+	@RequestMapping(value = "member/idChk", method = RequestMethod.GET, produces = "application/text; charset=utf8")
+	@ResponseBody
+	public String idChk(MemberDTO memberDTO) {
+			
+		int result=memberService.idChk(memberDTO);
+		return Integer.toString(result);
+	}	
 	
 }

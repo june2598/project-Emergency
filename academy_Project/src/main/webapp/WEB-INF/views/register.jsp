@@ -11,12 +11,61 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Login</title>
+<title>Register</title>
 <meta name="viewport" content="width=device-width", initial-scale="1">
 <link rel="stylesheet" href="${contextPath}/resources/bootstrap/css/bootstrap.css">
-</head><body>
+
+</head>
+<body>
 <%@include file="include/header.jsp"%>
+	<script>
+	$(document).ready(function(e){		
+		var idx = false; 	// 아이디 중복 체크 했는지 검사할 때 씀
+		
+		// 회원 가입 버튼을 눌렀을 때 동작
+		$('#signUp').click(function(){
+			// [ 아이디 ] 중복 체크를 진행했는지 검사
+			if(idx == false) {
+				$('#id_check_msg').html("아이디 중복 체크를 해주세요.");
+				$('#memId').focus();
+				$('button#signUp').attr("disabled", "true");
+			} 
+			
+			// [ 비밀번호 확인 ] 위에 입력한 값과 일치 하는지 검사
+			if($('#memPw').val() != $('#memPwChk').val()) {
+				$('#pw_check_msg').html("패스워드가 다릅니다.");
+				$('#memPw').focus();
+				$('button#signUp').attr("disabled", "true");
+			}
+			
+		});
+		
+		// [ 아이디 ] 중복 검사 (ajax)
+		$('#memId').blur(function(){
+			$.ajax({
+				url : "${pageContext.request.contextPath}/member/idChk",
+				type : "GET",
+				dataType : "json",
+				data : { "memId" : $('#memId').val() },
+				success : function(data) {
+					if(data == 0 && $.trim($('#memId').val()) != '') {
+						idx = true;
+						$('#id_check_msg').empty();
+						$('#id_check_msg').html("사용 가능한 아이디입니다.");
+					} else {
+						$('#id_check_msg').empty();
+						$('#id_check_msg').html("이미 사용 중인 아이디입니다.");
+					}
+		   		},
+				error : function() {
+					alert("서버 에러");
+				}
+			});
+		});
+		
+	});
 	
+	</script>
 	<div class="container">
 		<div class="col-lg-4"></div>
 		<div class="col-lg-4">
@@ -26,13 +75,18 @@
 		         method="POST"
 		         action="${contextPath}/member/register">
 					<h3 style="text-align:center;">회원가입</h3>
-					<div class="form-group">	
-						<input type="text" class="form-control" placeholder="아이디" name="memId" maxlength="45">
+					<div class="form-group">
+						<input type="text" class="form-control" placeholder="아이디" id="memId" name="memId" oninput="checkId()" maxlength="45">
+						 <div id="id_check_msg"></div>
 						 <form:errors path="memId" />
 					</div>
 					<div class="form-group">
-						<input type="password" class="form-control" placeholder="비밀번호" name="memPw" maxlength="45">
+						<input type="password" class="form-control" placeholder="비밀번호" id="memPw" name="memPw" maxlength="45">
 						 <form:errors path="memPw" />
+					</div>
+					<div class="form-group">
+						<input type="password" class="form-control" placeholder="비밀번호 확인" id="memPwChk" name="memPwChk" maxlength="45">
+						<div id="pw_check_msg"></div>
 					</div>
 					<div class="form-group">
 						<input type="text" class="form-control" placeholder="이름" name="memName" maxlength="20">
@@ -55,7 +109,7 @@
 						<form:errors path="memBirth" />
 					</div>
 					<div>
-						<input type="submit" class="btn btn-primary form-control" value="회원가입">
+						<input type="submit" id="signUp" class="btn btn-primary form-control" value="회원가입">
 					</div>
 				</form:form>
 			</div>

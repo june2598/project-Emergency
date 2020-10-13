@@ -7,6 +7,9 @@ public interface MemberDAO {
 	public Map login(Map<String, String> map);
 	// 회원가입 구현
 	public int register(MemberDTO memberDTO);
+	// 아이디 중복검사
+	public int idChk(MemberDTO memberDTO);
+	
 	// 아이디 찾기
 	
 	// 비밀번호 찾기
