@@ -27,11 +27,11 @@ public class BoardController {
 	
 	//전체 조회
 	@RequestMapping(value="board/boardlist",method=RequestMethod.GET)
-	public ModelAndView list() {
+	public ModelAndView list(@RequestParam("bs")int bselect) {
 		logger.info("===List===");
 		ModelAndView mav = new ModelAndView();
 		
-		List<BoardDTO> list = boardService.list();
+		List<BoardDTO> list = boardService.list(bselect);
 		mav.addObject("boardlist",list);
 		mav.setViewName("boardlist");
 		return mav;

@@ -5,7 +5,7 @@ import java.util.List;
 public interface BoardDAO {
 
 	//전체목록
-	public List<BoardDTO> list();
+	public List<BoardDTO> list(int bselect);
 
 	public int updateReadCnt(int bno);	//조회수 증가
 	public BoardDTO readOne(int bno);	//글 읽기

@@ -15,9 +15,9 @@ public class BoardDAOImpl implements BoardDAO{
 	private static final String namespace = "kr.co.academy.board";
 
 	@Override
-	public List<BoardDTO> list() {
+	public List<BoardDTO> list(int bselect) {
 		// TODO Auto-generated method stub
-		return sqlSession.selectList(namespace +".list");
+		return sqlSession.selectList(namespace +".list",bselect);
 	}
 
 	@Override
@@ -41,13 +41,13 @@ public class BoardDAOImpl implements BoardDAO{
 	@Override
 	public int delete(int bno) {
 		// TODO Auto-generated method stub
-		return sqlSession.delete(namespace +".delete",bno);
+		return 0;
 	}
 
 	@Override
 	public int update(BoardDTO boardDTO) {
 		// TODO Auto-generated method stub
-		return sqlSession.update(namespace+".update",boardDTO);
+		return 0;
 	}
 
 

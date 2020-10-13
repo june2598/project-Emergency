@@ -6,7 +6,7 @@
 <c:set var="contextPath" value="${pageContext.request.contextPath }" />
 <html>
 <head>
-<title>update</title>
+<title>boardupdate</title>
 </head>
 <body>
 	<%@include file="include/header.jsp"%>

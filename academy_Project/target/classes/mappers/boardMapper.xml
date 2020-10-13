@@ -8,7 +8,7 @@
 	<select id="list" resultType="BoardDTO">
 	select *
 	from board
-	where bdel = 0
+	where bdel = 0 and bselect= #{bselect}
 	order by bno desc;
 	</select>
 

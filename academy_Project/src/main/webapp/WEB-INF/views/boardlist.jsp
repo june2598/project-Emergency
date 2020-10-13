@@ -7,7 +7,7 @@
 <c:set var="memPosition" value="${user.memPosition }"/>
 <html>
 <head>
-<title>Home</title></head><body>
+<title>boardlist</title></head><body>
 <%@include file="include/header.jsp"%>
 	<div class="col-sm-2"></div>
 	<div class="col-sm-8">
@@ -20,7 +20,6 @@
 			<td>작성자</td>
 			<td>조회수</td>
 		<tr>
-		
 		<c:forEach var="board" items="${boardlist}">
 		<tr>
 		<td>${board.bno}</td>

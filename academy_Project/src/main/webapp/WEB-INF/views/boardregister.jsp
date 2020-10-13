@@ -6,7 +6,7 @@
 <c:set var="contextPath" value="${pageContext.request.contextPath }" />
 <html>
 <head>
-<title>Home</title></head><body>
+<title>boardregister</title></head><body>
 <%@include file="include/header.jsp"%>
 
 	<div class="col-sm-2"></div>
@@ -26,7 +26,14 @@
 		
 		<div class="form-group">
 			<input type="hidden" name="id" class="form-control" value="${user.memId}" readonly>
+			<c:if test="${user.memPosition==2}">
 			<input type="hidden" name="bselect" class="form-control" value="0">
+			</c:if>
+			<c:if test="${user.memPosition!=2}">
+			<input type="hidden" name="bselect" class="form-control" value="1">
+			</c:if>
+			
+			
 		</div>
 		</div>
 		
