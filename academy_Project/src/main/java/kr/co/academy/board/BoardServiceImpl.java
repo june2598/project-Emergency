@@ -40,13 +40,13 @@ public class BoardServiceImpl implements BoardService{
 	@Override
 	public int delete(int bno) {
 		// TODO Auto-generated method stub
-		return 0;
+		return boardDAO.delete(bno);
 	}
 
 	@Override
 	public int update(BoardDTO boardDTO) {
 		// TODO Auto-generated method stub
-		return 0;
+		return boardDAO.update(boardDTO);
 	}
 
 }

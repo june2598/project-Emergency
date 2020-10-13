@@ -43,7 +43,7 @@
 			<div class="collapse navbar-collapse" id="myNavbar">
 				<ul class="nav navbar-nav">
 					<li><a href="${contextPath}/introduce">아카데미 소개</a></li>
-					<li><a href="${contextPath}/board/list">공지사항</a></li>
+					<li><a href="${contextPath}/board/boardlist">공지사항</a></li>
 					<li><a href="${contextPath}/curriculum">교육과정</a></li>
 					<li><a href="#">고객상담센터</a></li>
 					<c:if test="${user.memPosition==2 }">

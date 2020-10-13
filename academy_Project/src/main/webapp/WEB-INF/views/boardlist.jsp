@@ -24,7 +24,7 @@
 		<c:forEach var="board" items="${boardlist}">
 		<tr>
 		<td>${board.bno}</td>
-		<td><a href="readOne?bno=${board.bno}"> ${board.btitle}</a></td>
+		<td><a href="boardreadOne?bno=${board.bno}"> ${board.btitle}</a></td>
 		<td>${board.regdate}</td>
 		<td>${board.id}</td>
 		<td><span class="badge">${board.breadcnt}</span></td>
@@ -40,7 +40,7 @@
 	<div class="box-header with-border" align="right">
 		<c:if test ="${user.memPosition==2}">
 			<button class="btn btn-primary" type="button" 
-			onclick="location.href='${contextPath}/board/register'" >글쓰기</button>
+			onclick="location.href='${contextPath}/board/boardregister'" >글쓰기</button>
 		</c:if>
 	</div>
 	</div>

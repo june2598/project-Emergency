@@ -41,13 +41,13 @@ public class BoardDAOImpl implements BoardDAO{
 	@Override
 	public int delete(int bno) {
 		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.delete(namespace +".delete",bno);
 	}
 
 	@Override
 	public int update(BoardDTO boardDTO) {
 		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.update(namespace+".update",boardDTO);
 	}
 
 

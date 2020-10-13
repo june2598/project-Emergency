@@ -26,7 +26,7 @@ public class BoardController {
 	BoardService boardService;
 	
 	//전체 조회
-	@RequestMapping(value="board/list",method=RequestMethod.GET)
+	@RequestMapping(value="board/boardlist",method=RequestMethod.GET)
 	public ModelAndView list() {
 		logger.info("===List===");
 		ModelAndView mav = new ModelAndView();
@@ -38,13 +38,13 @@ public class BoardController {
 	}
 	
 	//글 쓰기
-	@RequestMapping(value="board/register",method=RequestMethod.GET)
+	@RequestMapping(value="board/boardregister",method=RequestMethod.GET)
 	public String register() {
 		
 		return "boardregister";
 	}
 	
-	@RequestMapping(value="board/register",method=RequestMethod.POST)
+	@RequestMapping(value="board/boardregister",method=RequestMethod.POST)
 	public String register(BoardDTO boardDTO) {
 		int r = boardService.register(boardDTO);
 		
@@ -52,7 +52,7 @@ public class BoardController {
 	}
 	
 	//글 상세 보기
-	@RequestMapping(value="board/readOne",method=RequestMethod.GET)
+	@RequestMapping(value="board/boardreadOne",method=RequestMethod.GET)
 	public String readOne(@RequestParam("bno")int bno, Model model) {
 		boardService.updateReadCnt(bno);
 		BoardDTO boardDTO = boardService.readOne(bno);
@@ -60,4 +60,31 @@ public class BoardController {
 		
 		return "boardreadone";
 	}
+	//글 삭제
+	@RequestMapping(value="board/boarddelete",method=RequestMethod.GET)
+	public String delete(@RequestParam("bno")int bno) {
+		int r= boardService.delete(bno);
+		
+		if(r > 0) {
+			return "redirect:boardlist";
+	}
+	return "redirect:boardreadone?bno=" + bno;
+	}
+	//글 수정
+	@RequestMapping(value="board/boardupdate",method=RequestMethod.GET)
+	public String update(@RequestParam("bno")int bno, Model model) {
+		BoardDTO board= boardService.readOne(bno);
+		model.addAttribute("board",board);
+		return "boardupdate";
+	}
+	@RequestMapping(value="board/boardupdate",method=RequestMethod.POST)
+	public String update(BoardDTO boardDTO, RedirectAttributes attr) {
+		int r =boardService.update(boardDTO);
+		//글 수정하면 목록으로 
+		if (r>0){
+			return "redirect:boardlist";
+		}
+		return "redirect:boardupdate?bno=" + boardDTO.getBno();
+	}
+	
 }
