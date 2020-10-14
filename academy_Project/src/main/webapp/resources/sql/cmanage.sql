@@ -1,0 +1,12 @@
+CREATE TABLE `academy`.`cmanage` (
+  `cNo` INT NOT NULL AUTO_INCREMENT,
+  `cName` VARCHAR(20) NOT NULL,
+  `cAddress` VARCHAR(45) NOT NULL,
+  `cCeo` VARCHAR(20) NOT NULL,
+  `cNumber` VARCHAR(20) NOT NULL,
+  `cTel` VARCHAR(20) NOT NULL,
+  `cEmail` VARCHAR(20) NOT NULL,
+  `cLogo` VARCHAR(20),
+  PRIMARY KEY (`cNo`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;

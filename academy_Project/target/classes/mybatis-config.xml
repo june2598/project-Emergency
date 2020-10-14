@@ -6,5 +6,6 @@
  	<typeAliases>
  		<typeAlias alias="MemberDTO" type="kr.co.academy.member.MemberDTO"/>
  		<typeAlias alias="BoardDTO" type="kr.co.academy.board.BoardDTO"/>
+ 		<typeAlias alias="CmanageDTO" type="kr.co.academy.cmanage.CmanageDTO"/>
  	</typeAliases>
  </configuration>
