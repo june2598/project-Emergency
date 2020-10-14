@@ -45,10 +45,10 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value="board/boardregister",method=RequestMethod.POST)
-	public String register(BoardDTO boardDTO) {
+	public String register(BoardDTO boardDTO,@RequestParam("bs")String bs) {
 		int r = boardService.register(boardDTO);
 		
-		return "redirect:boardlist";
+		return "redirect:boardlist?bs="+bs;
 	}
 	
 	//글 상세 보기
