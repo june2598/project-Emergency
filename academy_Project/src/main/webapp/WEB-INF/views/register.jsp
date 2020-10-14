@@ -79,8 +79,8 @@
 	
 	</script>
 	<div class="container">
-		<div class="col-lg-4"></div>
-		<div class="col-lg-4">
+		<div class="col-lg-2"></div>
+		<div class="col-lg-8">
 			<div class="jumbotron" style="padding-top: 20px;">
 				<form:form 
 		         modelAttribute="memberDTO"
@@ -88,12 +88,13 @@
 		         action="${contextPath}/member/register">
 					<h3 style="text-align:center;">회원가입</h3>
 					<div class="form-group">
-						<form:input path="memId" type="text" class="form-control" placeholder="아이디" id="memId" name="memId" oninput="checkId()" maxlength="45"/>
+						<label>아이디</label>
+						<form:input path="memId" type="text" class="form-control" placeholder="영문 대소문자와 숫자만 입력해주세요(4~16글자)" id="memId" name="memId" oninput="checkId()" maxlength="45"/>
 						 <div id="id_check_msg"></div>
 						 <form:errors path="memId" />
 					</div>
 					<div class="form-group">
-						<form:input path="memPw" type="password" class="form-control" placeholder="비밀번호" id="memPw" name="memPw" maxlength="45"/>
+						<form:input path="memPw" type="password" class="form-control" placeholder="영문,숫자,특수문자가 한번씩 포함되어야 합니다.(6~16글자)" id="memPw" name="memPw" maxlength="45"/>
 						 <form:errors path="memPw" />
 					</div>
 					<div class="form-group">
@@ -126,7 +127,7 @@
 				</form:form>
 			</div>
 		</div>		
-		<div class="col-lg-4"></div>	
+		<div class="col-lg-2"></div>	
 	</div>
 	<script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<script src="${contextPath}/resources/bootstrap/js/bootstrap.js"></script>
