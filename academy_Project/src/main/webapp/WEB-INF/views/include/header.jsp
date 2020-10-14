@@ -52,9 +52,9 @@
 						<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="${contextPath}/dashBoard">관리자페이지<span class="caret"></span></a>
 							<ul class="dropdown-menu">
 								<li id="DashBoard">
-									<a class="nav-link" href=<c:url value="managedashBoard"/>>
+									<a class="nav-link" href=<c:url value="cmanagedashBoard"/>>
 										<i class="fas fa-fw fa-table"></i>
-										<span>홈페이지 로고 수정</span>
+										<span>홈페이지 관리</span>
 									</a>
 								</li>
 					            <li id="Admanage" class="menu nav-item">
