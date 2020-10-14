@@ -63,12 +63,24 @@
 			});
 		});
 		
+		// [비밀번호] 일치 확인
+		$('#memPwChk').change(function(){
+			if($('#memPw').val() != $('#memPwChk').val()) {
+				$('#memPwChk').focus();
+				$('#pw_check_msg').empty();
+				$('#pw_check_msg').html("비밀번호가 일치하지 않습니다");
+			} else{
+				$('#pw_check_msg').empty();
+				$('#pw_check_msg').html("비밀번호 확인 완료");
+			}
+		});
+		
 	});
 	
 	</script>
 	<div class="container">
-		<div class="col-lg-4"></div>
-		<div class="col-lg-4">
+		<div class="col-lg-2"></div>
+		<div class="col-lg-8">
 			<div class="jumbotron" style="padding-top: 20px;">
 				<form:form 
 		         modelAttribute="memberDTO"
@@ -76,36 +88,37 @@
 		         action="${contextPath}/member/register">
 					<h3 style="text-align:center;">회원가입</h3>
 					<div class="form-group">
-						<input type="text" class="form-control" placeholder="아이디" id="memId" name="memId" oninput="checkId()" maxlength="45">
+						<label>아이디</label>
+						<form:input path="memId" type="text" class="form-control" placeholder="영문 대소문자와 숫자만 입력해주세요(4~16글자)" id="memId" name="memId" oninput="checkId()" maxlength="45"/>
 						 <div id="id_check_msg"></div>
 						 <form:errors path="memId" />
 					</div>
 					<div class="form-group">
-						<input type="password" class="form-control" placeholder="비밀번호" id="memPw" name="memPw" maxlength="45">
+						<form:input path="memPw" type="password" class="form-control" placeholder="영문,숫자,특수문자가 한번씩 포함되어야 합니다.(6~16글자)" id="memPw" name="memPw" maxlength="45"/>
 						 <form:errors path="memPw" />
 					</div>
 					<div class="form-group">
-						<input type="password" class="form-control" placeholder="비밀번호 확인" id="memPwChk" name="memPwChk" maxlength="45">
+						<input type="password" class="form-control" placeholder="비밀번호 확인" id="memPwChk" name="memPwChk" maxlength="45"/>
 						<div id="pw_check_msg"></div>
 					</div>
 					<div class="form-group">
-						<input type="text" class="form-control" placeholder="이름" name="memName" maxlength="20">
+						<form:input path="memName" type="text" class="form-control" placeholder="이름" name="memName" maxlength="20"/>
 						<form:errors path="memName" />
 					</div>
 					<div class="form-group">
-						<input type="text" class="form-control" placeholder="전화번호 (ex)01012345678)" name="memTel" maxlength="11">
+						<form:input path="memTel" type="text" class="form-control" placeholder="전화번호 (ex)01012345678)" name="memTel" maxlength="11"/>
 						<form:errors path="memTel" />
 					</div>
 					<div class="form-group">
-						<input type="text" class="form-control" placeholder="주소" name="memAddress" maxlength="20">
+						<form:input path="memAddress" type="text" class="form-control" placeholder="주소" name="memAddress" maxlength="20"/>
 						<form:errors path="memAddress" />
 					</div>
 					<div class="form-group">
-						<input type="email" class="form-control" placeholder="이메일" name="memEmail" maxlength="20">
+						<form:input path="memEmail" type="email" class="form-control" placeholder="이메일" name="memEmail" maxlength="20"/>
 						<form:errors path="memEmail" />
 					</div>
 					<div class="form-group">
-						<input type="text" class="form-control" placeholder="생년원일 (ex)19900101)" name="memBirth" maxlength="20">
+						<form:input path="memBirth" type="text" class="form-control" placeholder="생년원일 (ex)19900101)" name="memBirth" maxlength="20"/>
 						<form:errors path="memBirth" />
 					</div>
 					<div>
@@ -114,7 +127,7 @@
 				</form:form>
 			</div>
 		</div>		
-		<div class="col-lg-4"></div>	
+		<div class="col-lg-2"></div>	
 	</div>
 	<script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<script src="${contextPath}/resources/bootstrap/js/bootstrap.js"></script>

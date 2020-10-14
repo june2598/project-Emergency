@@ -13,13 +13,13 @@ public class MemberDTO {
 	//id 아이디(4~15글자, 숫자, 영문 대소문자)
 	@NotEmpty
 	@Length(min=4, max=15)
-	@Pattern(regexp="(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])")
+	@Pattern(regexp="^[a-zA-Z0-9]*$")
 	private String memId;
 
 	//pw 비밀번호(6~16글자, 숫자, 영문 대소문자, 특수문자)
 	@NotEmpty
 	@Length(min=6, max=16)
-	@Pattern(regexp="(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&+=])(?=\\S+$)")
+	@Pattern(regexp="^(?=.*[A-Za-z])(?=.*\\d)(?=.*[`~!@#$%^&*()-_=+])[A-Za-z\\d`~!@#$%^&*()-_=+]*$")
 	private String memPw;
 	
 	//name 이름
