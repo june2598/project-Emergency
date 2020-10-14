@@ -89,12 +89,12 @@
 					<h3 style="text-align:center;">회원가입</h3>
 					<div class="form-group">
 						<label>아이디</label>
-						<form:input path="memId" type="text" class="form-control" placeholder="영문 대소문자와 숫자만 입력해주세요(4~16글자)" id="memId" name="memId" oninput="checkId()" maxlength="45"/>
+						<form:input path="memId" type="text" class="form-control" placeholder="영문 대소문자와 숫자만 입력해주세요(4~20자리)" id="memId" name="memId" oninput="checkId()" maxlength="45"/>
 						 <div id="id_check_msg"></div>
 						 <form:errors path="memId" />
 					</div>
 					<div class="form-group">
-						<form:input path="memPw" type="password" class="form-control" placeholder="영문,숫자,특수문자가 한번씩 포함되어야 합니다.(6~16글자)" id="memPw" name="memPw" maxlength="45"/>
+						<form:input path="memPw" type="password" class="form-control" placeholder="영문,숫자,특수문자가 한번씩 포함되어야 합니다.(6~30자리)" id="memPw" name="memPw" maxlength="45"/>
 						 <form:errors path="memPw" />
 					</div>
 					<div class="form-group">

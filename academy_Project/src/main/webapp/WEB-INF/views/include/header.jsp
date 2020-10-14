@@ -18,11 +18,13 @@
 <body>
 	<div class="container" style="margin-left: 0px; padding-left: 0px;">
 		<div class="col-sm-8">
+		<a href="${contextPath }/">
 			<img
 				src="${contextPath }/resources/imgs/logo.jpg"
 				alt="logo" style="width: 150px; height: 150px"> <img
 				src="${contextPath }/resources/imgs/logo2.jpg"
 				alt="logo2" style="width: 250px; height: 150px">
+		</a>
 		</div>
 		<div class="col-sm-2"></div>
 		<div class="col-sm-2"></div>
@@ -38,7 +40,7 @@
 					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="/academy/">HOME</a>
+				<a class="navbar-brand" href="${contextPath }/">HOME</a>
 			</div>
 			<div class="collapse navbar-collapse" id="myNavbar">
 				<ul class="nav navbar-nav">
