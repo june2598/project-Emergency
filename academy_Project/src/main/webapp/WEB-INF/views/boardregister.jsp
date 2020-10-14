@@ -4,11 +4,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="true" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath }" />
+<c:set var="bs" value="${bs}"/>
 <html>
 <head>
 <title>boardregister</title></head><body>
 <%@include file="include/header.jsp"%>
-
 	<div class="col-sm-2"></div>
 	<div class="col-sm-8">
 	<section class="content">
@@ -26,14 +26,14 @@
 		
 		<div class="form-group">
 			<input type="hidden" name="id" class="form-control" value="${user.memId}" readonly>
-			<c:if test="${user.memPosition==2}">
+			<% String bs = request.getParameter("bs");
+			if(bs.equals("0")){
+			%>
 			<input type="hidden" name="bselect" class="form-control" value="0">
-			</c:if>
-			<c:if test="${user.memPosition!=2}">
+			<%} 
+			if (bs.equals("1")){%>
 			<input type="hidden" name="bselect" class="form-control" value="1">
-			</c:if>
-			
-			
+			<%} %>			
 		</div>
 		</div>
 		

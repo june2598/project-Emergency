@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ page session="true" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath }" />
 <c:set var="memPosition" value="${user.memPosition }"/>
@@ -20,9 +21,13 @@
 			<td>작성자</td>
 			<td>조회수</td>
 		<tr>
+		<c:set var="i" value="0"/>
 		<c:forEach var="board" items="${boardlist}">
 		<tr>
-		<td>${board.bno}</td>
+		<c:set var="res" value="${fn:length(boardlist)}"></c:set>
+		<c:set var="rum" value="${res-i}"></c:set>
+		<td><c:out value="${rum}"></c:out> </td>
+		<c:set var="i" value="${i+1}"/>
 		<td><a href="boardreadOne?bno=${board.bno}"> ${board.btitle}</a></td>
 		<td>${board.regdate}</td>
 		<td>${board.id}</td>
@@ -37,10 +42,22 @@
 		</table>
 	</div>
 	<div class="box-header with-border" align="right">
-		<c:if test ="${user.memPosition==2}">
+		
+			<% String bs = request.getParameter("bs");
+			if(bs.equals("0")){
+			%>
+			<c:if test="${user.memPosition==2}">
 			<button class="btn btn-primary" type="button" 
-			onclick="location.href='${contextPath}/board/boardregister'" >글쓰기</button>
-		</c:if>
+			onclick="location.href='${contextPath}/board/boardregister?bs=0'" >글쓰기</button>
+			</c:if>
+			<%} else if (bs.equals("1")){%>
+			<c:if test="${user.memPosition<=1}">
+			<button class="btn btn-primary" type="button"
+			onclick="location.href='${contextPath}/board/boardregister?bs=1'" >글쓰기</button>
+			</c:if>
+			<%} %>			
+			
+			
 	</div>
 	</div>
 	<div class="col-sm-2"></div>
