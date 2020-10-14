@@ -39,7 +39,7 @@
       </div>
     </div>
     <div class="form-group">
-      <label class="control-label col-sm-2" for="cTel">TEL :</label>
+      <label class="control-label col-sm-2" for="cTel">TEL :0000</label>
       <div class="col-sm-10">
         <input type="text" class="form-control" id="cTel" name="cTel" value="${cmanage.cTel}" readonly="readonly">
       </div>
