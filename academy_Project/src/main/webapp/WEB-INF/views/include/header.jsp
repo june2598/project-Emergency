@@ -49,16 +49,16 @@
 					<li><a href="${contextPath}/curriculum">교육과정</a></li>
 					<li><a href="${contextPath}/board/boardlist?bs=1">고객상담센터</a></li>
 					<c:if test="${user.memPosition==2 }">
-						<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="${contextPath}/dashBoard">관리자페이지<span class="caret"></span></a>
+						<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">관리자페이지<span class="caret"></span></a>
 							<ul class="dropdown-menu">
-								<li id="DashBoard">
+								<li id="cmanagedashBoard">
 									<a class="nav-link" href=<c:url value="cmanagedashBoard"/>>
 										<i class="fas fa-fw fa-table"></i>
 										<span>홈페이지 관리</span>
 									</a>
 								</li>
-					            <li id="Admanage" class="menu nav-item">
-									<a class="nav-link" href=<c:url value="dashBoard"/>>
+					            <li id="managelist" class="menu nav-item">
+									<a class="nav-link" href=<c:url value="managelist"/>>
 										<i class="fas fa-address-card"></i>
 										<span>회원관리</span>
 									</a>
