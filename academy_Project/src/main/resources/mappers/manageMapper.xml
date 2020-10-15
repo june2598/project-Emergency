@@ -4,42 +4,41 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="kr.co.academy.manage">
 	
-	<!-- 전체 목록 보기 -->
-	<select id="list" resultType="ManageDTO">
+	<!-- 전체리스트출력  -->
+	<select id="managelist" >
 	select *
-	from manage
+	from smanagelist
 	where cdel = 0 and cselect= #{cselect}
 	order by mid desc;
 	</select>
 
 
 	<!--정보들어가기-->
-	<select id="readlist" parameterType="java.lang.Integer" resultType="ManageDTO">
+	<select id="managereadlist" parameterType="java.lang.Integer" >
 	select *
-	from manage
+	from smanagelist
 	where smid = #{smid}
 	</select>
 	
 	<!--정보등록 -->
-	<insert id="register" parameterType="ManageDTO">
-	insert into manage(smid, ssub, sid, sname, sphone, semail, cselect, cdel)
-	values(#{smid},#{ssub},#{sid},#{sname},#{sphone},#{semail},#{cselect},0)
+	<insert id="manageregister" >
+	insert into smanagelist(smid, ssub, sid, sname, sphone, semail)
+	values(#{smid},#{ssub},#{sid},#{sname},#{sphone},#{semail})
 	</insert>
 	
 	<!--정보수정  -->
-	<update id="update" parameterType="ManageDTO">
-	update manage
+	<update id="manageupdate" >
+	update smanagelist
 	set 
 	ssub = #{ssub} , sid=#{sid}, sname=#{sname} , sphone=#{sphone}, seamil=#{semail}
 	where smid = #{smid}
 	</update>
 	
 	<!--정보삭제 -->
-	<delete id="delete" parameterType="ManageDTO">
-	update manage
-	set
-	cdel = 1
-	where smid = #{smid}
+	<delete id="delete">
+	delete
+	from smanagelist
+	where cdel = 1 and smid = #{smid}
 	</delete>
 
   </mapper>

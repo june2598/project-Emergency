@@ -59,4 +59,6 @@ public class HomeController {
 		logger.info("manageregister");
 		return "managelist";
 	}
+	
+	
 }

@@ -52,34 +52,18 @@
 						<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">관리자페이지<span class="caret"></span></a>
 							<ul class="dropdown-menu">
 								<li id="cmanagedashBoard">
-									<a class="nav-link" href=<c:url value="cmanagedashBoard"/>>
+									<a class="nav-link" href="${contextPath}/cmanagedashBoard">
 										<i class="fas fa-fw fa-table"></i>
 										<span>홈페이지 관리</span>
 									</a>
 								</li>
 					            <li id="managelist" class="menu nav-item">
-									<a class="nav-link" href=<c:url value="managelist"/>>
+									<a class="nav-link" href="${contextPath}/managelist">
 										<i class="fas fa-address-card"></i>
 										<span>회원관리</span>
 									</a>
 								</li>
-								<li class="nav-item dropdown">
-									<a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-										<i class="fas fa-fw fa-folder"></i>
-										<span>학생 관리</span>
-									</a>
-									<div class="dropdown-menu" aria-labelledby="pagesDropdown">
-										<h6 class="dropdown-header">학생정보</h6>
-										<a class="dropdown-item" href=<c:url value="charts"/> onclick="pageSubmitFn()">학생현황</a>
-										<a class="dropdown-item" href="#" onclick="pageSubmitFn()">학생정보등록</a>
-										<a class="dropdown-item" href="#" onclick="pageSubmitFn()">학생정보수정</a>
-									</div>
-								</li>
-								<li id="Charts" class="menu nav-item">
-									<a class="nav-link" href="#">
-										<i class="fas fa-fw fa-chart-area"></i>
-										<span>접속 로그</span></a>
-								</li>
+								
 							</ul>
 						</li>								
 					</c:if>

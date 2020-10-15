@@ -39,19 +39,22 @@ public class ManageController {
    // 등록
    @RequestMapping(value = "manage/manageregister", method = RequestMethod.GET)
    public String register() {
-      return "managelist";
+      return "manageregister";
    }
 
    @RequestMapping(value = "manage/manageregister", method = RequestMethod.POST)
-   public String register(ManageDTO manageDTO) {
-      int r = manageService.register(manageDTO);
-
+   public String register(ManageDTO manageDTO, RedirectAttributes rttr) {
+      
+	   int r = manageService.register(manageDTO);
+	   if(r>0) {
+			rttr.addFlashAttribute("msg","등록성공");
+		}
       return "redirect:managelist";
    }
 
    //리스트상세보기
    @RequestMapping(value = "manage/managereadlist", method = RequestMethod.GET)
-   public String readOne(@RequestParam("mid") int smid, Model model) {
+   public String readOne(@RequestParam("smid") int smid, Model model) {
       ManageDTO manageDTO = manageService.readlist(smid);
       model.addAttribute("managelist", manageDTO);
 
@@ -60,7 +63,7 @@ public class ManageController {
 
    // 수정
    @RequestMapping(value = "manage/manageupdate", method = RequestMethod.GET)
-   public String update(@RequestParam("mid") int smid, Model model, Object manage) {
+   public String update(@RequestParam("smid") int smid, Model model, Object manage) {
       ManageDTO manage1 = manageService.readlist(smid);
       model.addAttribute("mange", manage1);
       return "managelist";
