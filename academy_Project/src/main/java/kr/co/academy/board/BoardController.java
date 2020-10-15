@@ -3,6 +3,8 @@ package kr.co.academy.board;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +27,7 @@ public class BoardController {
 	@Autowired
 	BoardService boardService;
 	
+	
 	//전체 조회
 	@RequestMapping(value="board/boardlist",method=RequestMethod.GET)
 	public ModelAndView list(@RequestParam("bs")int bselect) {
@@ -45,8 +48,12 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value="board/boardregister",method=RequestMethod.POST)
-	public String register(BoardDTO boardDTO,@RequestParam("bs")String bs) {
-		int r = boardService.register(boardDTO);
+	public String register(BoardDTO boardDTO,@RequestParam("bs")String bs,HttpServletRequest request) throws Exception {
+		
+		
+		boardService.register(boardDTO, request);
+		
+		
 		
 		return "redirect:boardlist?bs="+bs;
 	}

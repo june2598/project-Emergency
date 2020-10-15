@@ -2,6 +2,8 @@ package kr.co.academy.board;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 public interface BoardService {
 
 	//전체목록
@@ -11,7 +13,7 @@ public interface BoardService {
 	public BoardDTO readOne(int bno);	//글 읽기
 
 	//글쓰기 
-	public int register(BoardDTO boardDTO);
+	public void register(BoardDTO boardDTO,HttpServletRequest request) throws Exception;
 
 	//글삭제
 	public int delete(int bno);
