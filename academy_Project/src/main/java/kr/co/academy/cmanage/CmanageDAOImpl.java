@@ -30,9 +30,13 @@ public class CmanageDAOImpl implements CmanageDAO{
 	public int update(CmanageDTO cmanageDTO) {
 		// TODO Auto-generated method stub
 		return sqlSession.update(namespace + ".update",cmanageDTO);
-	
+	}
 
-}
+	@Override
+	public int cmdCheck(CmanageDTO cmanageDTO) {
+		
+		return sqlSession.selectOne(namespace + ".cmdCheck");
+	}
 
 
 

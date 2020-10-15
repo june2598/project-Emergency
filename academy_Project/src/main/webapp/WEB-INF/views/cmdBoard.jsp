@@ -59,10 +59,10 @@
     <div class="form-group">        
       <div class="col-sm-offset-2 col-sm-10">
 	      <c:if test ="${user.memPosition==2}">
-		      <c:if test="${user.cNo!=1 }">
-		        <button class="btn btn-primary" onclick="location.href='${contextPath}/cmanage/cmanagedashBoardregister'" >등록하기</button>
+		      <c:if test="${param.cmdres==0 }">
+		        <button class="btn btn-primary" onclick="location.href='${contextPath}/cmanage/cmdBoardregister'" >등록하기</button>
 		      </c:if>
-		      <c:if test="${user.cNo==1 }">
+		      <c:if test="${param.cmdres==1 }">
 		        <button class="btn btn-info btn-fill btn-wd" value="cmanagedashBoardupdate">수정하기</button>
 		      </c:if>
 		  </c:if>

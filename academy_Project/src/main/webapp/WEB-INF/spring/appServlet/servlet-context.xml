@@ -20,11 +20,11 @@
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
 		<beans:property name="order" value="2" />
-		
 	</beans:bean>
 	
 	<context:component-scan base-package="kr.co.academy" />
 	<context:component-scan base-package="kr.co.academy.member" />
+	<context:component-scan base-package="kr.co.academy.cmanage" />
 	
 		<!-- 타일즈 뷰 설정 -->   
 	<beans:bean class="org.springframework.web.servlet.view.UrlBasedViewResolver">  		

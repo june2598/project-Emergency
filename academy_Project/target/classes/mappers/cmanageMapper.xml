@@ -24,5 +24,10 @@
 	cName = #{cName} , cAddress=#{cAddress}, cCeo=#{cCeo}, cNumber = #{cNumber}, cTel = #{cTel}, cEmail = #{cEmail}, cLogo = #{cLogo}
 	where cNo = 1
 	</update>
+	
+	<select id="cmdCheck" resultType="java.lang.Integer">
+		select count(*)
+		from cmanage
+	</select>
 
   </mapper>

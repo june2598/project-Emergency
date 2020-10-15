@@ -29,4 +29,10 @@ public class CmanageServiceImpl implements CmanageService{
 		return cmanageDAO.update(cmanageDTO);
 	}
 
+	@Override
+	public int cmdCheck(CmanageDTO cmanageDTO) {
+		// TODO Auto-generated method stub
+		return cmanageDAO.cmdCheck(cmanageDTO);
+	}
+
 }

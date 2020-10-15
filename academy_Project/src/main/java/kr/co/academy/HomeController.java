@@ -48,15 +48,4 @@ public class HomeController {
 		return "curriculum";
 	}
 	
-	@RequestMapping(value="/cmanagedashBoard", method = RequestMethod.GET)
-	public String managedashBoard() {
-		logger.info("cmanagedashBoardregister");
-		return "cmanagedashBoard";
-	}
-	
-	@RequestMapping(value="/managelist", method = RequestMethod.GET)
-	public String managelist() {
-		logger.info("manageregister");
-		return "managelist";
-	}
 }

@@ -11,6 +11,9 @@ public interface CmanageService {
 
 	//회사정보 수정
 	public int update(CmanageDTO cmanageDTO);
+	
+	//회사 등록정보 유무 확인
+	public int cmdCheck(CmanageDTO cmanageDTO);
 
 
 }
