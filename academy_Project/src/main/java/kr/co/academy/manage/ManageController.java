@@ -26,11 +26,11 @@ public class ManageController {
 
    // 출력
    @RequestMapping(value = "manage/managelist", method = RequestMethod.GET)
-   public ModelAndView list(@RequestParam("cs") int cselect) {
+   public ModelAndView list() {
       logger.info("===List===");
       ModelAndView mav = new ModelAndView();
 
-      List<ManageDTO> list = manageService.list(cselect);
+      List<ManageDTO> list = manageService.list();
       mav.addObject("managelist", list);
       mav.setViewName("managelist");
       return mav;
@@ -39,28 +39,34 @@ public class ManageController {
    // 등록
    @RequestMapping(value = "manage/manageregister", method = RequestMethod.GET)
    public String register() {
-      return "managelist";
+      return "manageregister";
    }
 
    @RequestMapping(value = "manage/manageregister", method = RequestMethod.POST)
-   public String register(ManageDTO manageDTO) {
-      int r = manageService.register(manageDTO);
-
+   public String register(ManageDTO manageDTO,RedirectAttributes rttr) {
+      
+	   logger.info("전송 : " + manageDTO);
+	   
+	   int r = manageService.register(manageDTO);
+	   
+	   if(r>0) {
+			rttr.addFlashAttribute("msg","등록성공");
+		}
       return "redirect:managelist";
    }
 
    //리스트상세보기
    @RequestMapping(value = "manage/managereadlist", method = RequestMethod.GET)
-   public String readOne(@RequestParam("mid") int smid, Model model) {
-      ManageDTO manageDTO = manageService.readlist(smid);
-      model.addAttribute("managelist", manageDTO);
+   public String readlist(@RequestParam("smid") int smid, Model model) {
+	  ManageDTO manageDTO = manageService.readlist(smid);
+      model.addAttribute("manage", manageDTO);
 
-      return "managelist";
+      return "managereadlist";
    }
 
    // 수정
    @RequestMapping(value = "manage/manageupdate", method = RequestMethod.GET)
-   public String update(@RequestParam("mid") int smid, Model model, Object manage) {
+   public String update(@RequestParam("smid") int smid, Model model, Object manage) {
       ManageDTO manage1 = manageService.readlist(smid);
       model.addAttribute("mange", manage1);
       return "managelist";
@@ -81,13 +87,16 @@ public class ManageController {
    // 삭제
    @RequestMapping(value = "manage/managedelete", method = RequestMethod.GET)
    public String delete(@RequestParam("smid") int smid, RedirectAttributes rttr) {
-      int r = manageService.delete(smid);
+	  
+	   logger.info("전송 : " + smid);
+	   
+	  int r = manageService.delete(smid);
 
       if (r > 0) {
          rttr.addFlashAttribute("msg", "삭제에 성공하였습니다.");
          return "redirect:managelist";
       }
-      return "redirect:managereadlist?mid=" + smid;
+      return "redirect:managelist?mid=" + smid;
    }
 }
 

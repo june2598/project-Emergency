@@ -16,9 +16,7 @@ public class ManageDTO {
 	private String sphone;
 	// 이메일
 	private String semail;
-	// 게시판
-	private int cselect;
-	// 삭제 시 0(존재) 1(삭제)
+	
 	private int cdel;
 
 	
@@ -70,15 +68,6 @@ public class ManageDTO {
 	public void setSemail(String semail) {
 		this.semail = semail;
 	}
-
-	public int getCselect() {
-		return cselect;
-	}
-
-	public void setCselect(int cselect) {
-		this.cselect = cselect;
-	}
-
 	public int getCdel() {
 		return cdel;
 	}
@@ -89,8 +78,8 @@ public class ManageDTO {
 
 	@Override
 	public String toString() {
-		return "ManageDTO [smid=" + smid + ", sid=" + sid + ", sname=" + sname + ", sphone=" + sphone + ",semail=" + semail
-				+ ", cselect=" + cselect + ", cdel=" + cdel + "]";
+		return "ManageDTO [smid=" + smid + ", ssub=" + ssub +", sid=" + sid + ", sname=" + sname + ", sphone=" + sphone + ",semail=" + semail
+				+ ",cdel=" + cdel + "]";
 	}
 
 }

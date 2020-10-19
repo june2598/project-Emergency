@@ -13,9 +13,9 @@ public class ManageServiceImpl implements ManageService{
    private ManageDAO manageDAO;
    
    @Override
-   public List<ManageDTO> list(int cselect) {
+   public List<ManageDTO> list() {
       // TODO Auto-generated method stub
-      return manageDAO.list(cselect);
+      return manageDAO.list();
    }
    
    @Override
@@ -36,7 +36,7 @@ public class ManageServiceImpl implements ManageService{
       return manageDAO.update(manageDTO);
    }
 
-   @Override
+   @Override 
    public int delete(int smid) {
       // TODO Auto-generated method stub
       return manageDAO.delete(smid);

@@ -16,9 +16,9 @@ public class ManageDAOImpl implements ManageDAO{
    private static final String namespace = "kr.co.academy.manage";
    
    @Override
-   public List<ManageDTO> list(int cselect) {
+   public List<ManageDTO> list() {
       // TODO Auto-generated method stub
-      return sqlSession.selectList(namespace + ".list", cselect);
+      return sqlSession.selectList(namespace + ".list");
    }
 
    @Override
@@ -36,13 +36,13 @@ public class ManageDAOImpl implements ManageDAO{
    @Override
    public int update(ManageDTO manageDTO) {
       // TODO Auto-generated method stub
-      return 0;
+      return sqlSession.update(namespace + ".update" ,manageDTO);
    }
 
    @Override
    public int delete(int smid) {
       // TODO Auto-generated method stub
-      return 0;
+      return sqlSession.delete(namespace + ".delete" ,smid);
    }
 
 
