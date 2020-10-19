@@ -26,11 +26,11 @@ public class ManageController {
 
    // 출력
    @RequestMapping(value = "manage/managelist", method = RequestMethod.GET)
-   public ModelAndView list(@RequestParam("cs") int cselect) {
+   public ModelAndView list() {
       logger.info("===List===");
       ModelAndView mav = new ModelAndView();
 
-      List<ManageDTO> list = manageService.list(cselect);
+      List<ManageDTO> list = manageService.list();
       mav.addObject("managelist", list);
       mav.setViewName("managelist");
       return mav;
@@ -43,9 +43,10 @@ public class ManageController {
    }
 
    @RequestMapping(value = "manage/manageregister", method = RequestMethod.POST)
-   public String register(ManageDTO manageDTO, RedirectAttributes rttr) {
+   public String register(ManageDTO manageDTO,RedirectAttributes rttr) {
       
 	   int r = manageService.register(manageDTO);
+	   
 	   if(r>0) {
 			rttr.addFlashAttribute("msg","등록성공");
 		}
@@ -54,7 +55,7 @@ public class ManageController {
 
    //리스트상세보기
    @RequestMapping(value = "manage/managereadlist", method = RequestMethod.GET)
-   public String readOne(@RequestParam("smid") int smid, Model model) {
+   public String readlist(@RequestParam("smid") int smid, Model model) {
       ManageDTO manageDTO = manageService.readlist(smid);
       model.addAttribute("managelist", manageDTO);
 

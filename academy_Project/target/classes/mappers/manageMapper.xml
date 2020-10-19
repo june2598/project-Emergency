@@ -5,40 +5,42 @@
   <mapper namespace="kr.co.academy.manage">
 	
 	<!-- 전체리스트출력  -->
-	<select id="managelist" >
+	<select id="list" resultType="ManageDTO">
 	select *
 	from smanagelist
-	where cdel = 0 and cselect= #{cselect}
-	order by mid desc;
+	where cdel = 0 
+	order by smid asc;
+	
 	</select>
 
 
 	<!--정보들어가기-->
-	<select id="managereadlist" parameterType="java.lang.Integer" >
+	<select id="readlist" parameterType="java.lang.Integer" >
 	select *
 	from smanagelist
 	where smid = #{smid}
 	</select>
 	
 	<!--정보등록 -->
-	<insert id="manageregister" >
-	insert into smanagelist(smid, ssub, sid, sname, sphone, semail)
-	values(#{smid},#{ssub},#{sid},#{sname},#{sphone},#{semail})
+	<insert id="register" parameterType="ManageDTO" keyProperty="smid">
+	insert into smanagelist(ssub, sid, sname, sphone, semail, cdel)
+	values(#{ssub},#{sid},#{sname},#{sphone},#{semail},0)
 	</insert>
 	
 	<!--정보수정  -->
-	<update id="manageupdate" >
+	<update id="update" >
 	update smanagelist
-	set 
+	set
 	ssub = #{ssub} , sid=#{sid}, sname=#{sname} , sphone=#{sphone}, seamil=#{semail}
 	where smid = #{smid}
 	</update>
 	
 	<!--정보삭제 -->
 	<delete id="delete">
-	delete
-	from smanagelist
-	where cdel = 1 and smid = #{smid}
+	update
+	set
+	cdel = 1
+	where smid = #{smid}
 	</delete>
 
   </mapper>

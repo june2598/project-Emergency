@@ -5,7 +5,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ page session="true"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath }" />
-<c:set var="memPosition" value="${user.memPosition }" />
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,13 +29,12 @@
 					</tr>
 				</thead>
 				<tbody>
-
 					<c:forEach var="manage" items="${managelist}">
 						<tr>
 							<td>${manage.smid}</td>
 							<td>${manage.ssub}</td>
 							<td>${manage.sid}</td>
-							<td>${manage.sname}</td>
+							<td><a href="managereadlist?smid=${manage.smid}">${manage.sname}</a></td>
 							<td>${manage.sphone}</td>
 							<td>${manage.semail}</td>
 						</tr>
@@ -43,10 +42,8 @@
 				</tbody>
 			</table>
 			<div class="box-header with-border" align="right">
-				<c:if test="${user.memPosition==2}">
 					<button class="btn btn-primary" type="button"
 						onclick="location.href='${contextPath}/manage/manageregister'">학생등록</button>
-				</c:if>
 			</div>
 		</div>
 		<div class="col-sm-2"></div>

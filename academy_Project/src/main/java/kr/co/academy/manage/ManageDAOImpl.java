@@ -16,9 +16,9 @@ public class ManageDAOImpl implements ManageDAO{
    private static final String namespace = "kr.co.academy.manage";
    
    @Override
-   public List<ManageDTO> list(int cselect) {
+   public List<ManageDTO> list() {
       // TODO Auto-generated method stub
-      return sqlSession.selectList(namespace + ".list", cselect);
+      return sqlSession.selectList(namespace + ".list");
    }
 
    @Override

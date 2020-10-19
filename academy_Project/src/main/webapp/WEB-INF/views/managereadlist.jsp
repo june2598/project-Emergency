@@ -14,6 +14,10 @@
 	<section class="content">
 		<form role="form" method="post" enctype="multipart/form-data">
 			<div class="form-group">
+			<label></label> 
+				<input type="text" name='smid' class="form-control" placeholder="">
+			</div>
+			<div class="form-group">
 			<label>교육과정명</label> 
 				<input type="text" name='ssub' class="form-control" placeholder="교육과정명">
 			</div>

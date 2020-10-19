@@ -5,7 +5,7 @@ import java.util.List;
 
 public interface ManageDAO {
    // 전체 출력
-   public List<ManageDTO> list(int cselect);
+   public List<ManageDTO> list();
    // 상세 읽기
    public ManageDTO readlist(int smid);   
    // 학생 등록
