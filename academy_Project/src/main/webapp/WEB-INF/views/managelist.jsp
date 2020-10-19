@@ -20,7 +20,7 @@
 			<table class="table table-striped">
 				<thead>
 					<tr>
-						<th>번호</th>
+						<th>학생번호</th>
 						<th>교육과정</th>
 						<th>아이디</th>
 						<th>이름</th>

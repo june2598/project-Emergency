@@ -54,11 +54,6 @@ public class HomeController {
 		return "cmanagedashBoard";
 	}
 	
-	@RequestMapping(value="/managelist", method = RequestMethod.GET)
-	public String managelist() {
-		logger.info("manageregister");
-		return "managelist";
-	}
-	
+
 	
 }

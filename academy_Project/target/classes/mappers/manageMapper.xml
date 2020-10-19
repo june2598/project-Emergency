@@ -15,7 +15,7 @@
 
 
 	<!--정보들어가기-->
-	<select id="readlist" parameterType="java.lang.Integer" >
+	<select id="readlist" parameterType="java.lang.Integer" resultType="ManageDTO" >
 	select *
 	from smanagelist
 	where smid = #{smid}
@@ -36,7 +36,7 @@
 	</update>
 	
 	<!--정보삭제 -->
-	<delete id="delete">
+	<delete id="delete" parameterType="java.lang.Integer">
 	update
 	set
 	cdel = 1

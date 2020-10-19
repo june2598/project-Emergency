@@ -12,7 +12,7 @@ public interface ManageDAO {
    public int register(ManageDTO manageDTO);
    // 학생 정보 수정
    public int update(ManageDTO manageDTO);
-   // 학생 삭제(개인정보 보안 목적 진짜 삭제)
+   // 학생 삭제(개인정보 보안 목적)
    public int delete(int smid);
    
 }

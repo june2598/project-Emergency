@@ -36,13 +36,13 @@ public class ManageDAOImpl implements ManageDAO{
    @Override
    public int update(ManageDTO manageDTO) {
       // TODO Auto-generated method stub
-      return 0;
+      return sqlSession.update(namespace + ".update" ,manageDTO);
    }
 
    @Override
    public int delete(int smid) {
       // TODO Auto-generated method stub
-      return 0;
+      return sqlSession.delete(namespace + ".delete" ,smid);
    }
 
 

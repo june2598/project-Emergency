@@ -45,6 +45,8 @@ public class ManageController {
    @RequestMapping(value = "manage/manageregister", method = RequestMethod.POST)
    public String register(ManageDTO manageDTO,RedirectAttributes rttr) {
       
+	   logger.info("전송 : " + manageDTO);
+	   
 	   int r = manageService.register(manageDTO);
 	   
 	   if(r>0) {
@@ -56,10 +58,10 @@ public class ManageController {
    //리스트상세보기
    @RequestMapping(value = "manage/managereadlist", method = RequestMethod.GET)
    public String readlist(@RequestParam("smid") int smid, Model model) {
-      ManageDTO manageDTO = manageService.readlist(smid);
-      model.addAttribute("managelist", manageDTO);
+	  ManageDTO manageDTO = manageService.readlist(smid);
+      model.addAttribute("manage", manageDTO);
 
-      return "managelist";
+      return "managereadlist";
    }
 
    // 수정
@@ -85,13 +87,16 @@ public class ManageController {
    // 삭제
    @RequestMapping(value = "manage/managedelete", method = RequestMethod.GET)
    public String delete(@RequestParam("smid") int smid, RedirectAttributes rttr) {
-      int r = manageService.delete(smid);
+	  
+	   logger.info("전송 : " + smid);
+	   
+	  int r = manageService.delete(smid);
 
       if (r > 0) {
          rttr.addFlashAttribute("msg", "삭제에 성공하였습니다.");
          return "redirect:managelist";
       }
-      return "redirect:managereadlist?mid=" + smid;
+      return "redirect:managelist?mid=" + smid;
    }
 }
 

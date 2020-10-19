@@ -36,7 +36,7 @@ public class ManageServiceImpl implements ManageService{
       return manageDAO.update(manageDTO);
    }
 
-   @Override
+   @Override 
    public int delete(int smid) {
       // TODO Auto-generated method stub
       return manageDAO.delete(smid);
