@@ -49,4 +49,16 @@ public class BoardServiceImpl implements BoardService{
 		return boardDAO.update(boardDTO);
 	}
 
+	@Override
+	public int countBno() {
+		// TODO Auto-generated method stub
+		return boardDAO.countBno();
+	}
+
+	@Override
+	public int fileRegister(BoardFileDTO bfDTO) {
+		// TODO Auto-generated method stub
+		return boardDAO.fileRegister(bfDTO);
+	}
+
 }

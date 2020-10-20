@@ -50,6 +50,18 @@ public class BoardDAOImpl implements BoardDAO{
 		return 0;
 	}
 
+	@Override
+	public int countBno() {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(namespace + ".countBno");
+	}
+
+	@Override
+	public int fileRegister(BoardFileDTO bfDTO) {
+		// TODO Auto-generated method stub
+		return sqlSession.insert(namespace + ".fileregister", bfDTO);
+	}
+
 
 
 

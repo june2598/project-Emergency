@@ -18,6 +18,12 @@ public interface BoardService {
 
 	//글 수정
 	public int update(BoardDTO boardDTO);
+	
+	//게시글 카운트
+	public int countBno();
+	
+	//파일 등록
+	public int fileRegister(BoardFileDTO bfDTO);
 
 	//댓글 쓰기를 위한 메소드
 //	public int reply

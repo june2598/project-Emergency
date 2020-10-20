@@ -23,7 +23,7 @@
 	<!-- 글 쓰기 -->
 	<insert id="register" parameterType="BoardDTO">
 	insert into board(bno, btitle, bcontent, id, regdate, breadcnt, bdel, bfilename, bselect)
-	values(#{bno},#{btitle},#{bcontent},#{id},curdate(),0,0,#{bfilename},#{bselect})
+	values(#{bno},#{btitle},#{bcontent},#{id},curdate(),0,0,0,#{bselect})
 	</insert>
 	
 	<!-- 글 수정  -->
@@ -49,6 +49,18 @@
 	breadcnt = breadcnt + 1
 	where bno = #{bno}
 	</update>
+	
+	<!-- 게시글 카운트 -->
+	<select id="countBno" resultType="java.lang.Integer">
+		select count(*)
+		from board
+	</select>
+	
+	<!-- 파일 업로드 -->
+	<insert id="fileregister" parameterType="BFDTO">
+		insert into boardfile(bfselect, bfilefrom, bfilerealpath, bfileviewpath)
+		values(#{bfselect}, #{bfilefrom}, #{bfilerealpath}, #{bfileviewpath})
+	</insert>
 	
 	
   </mapper>

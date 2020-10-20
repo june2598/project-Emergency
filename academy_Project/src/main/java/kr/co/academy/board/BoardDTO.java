@@ -22,6 +22,8 @@ public class BoardDTO {
 	private int breadcnt;
 	//파일이름
 	private String bfilename;
+	
+	
 	public int getBno() {
 		return bno;
 	}

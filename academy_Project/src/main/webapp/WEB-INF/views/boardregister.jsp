@@ -13,7 +13,6 @@
 	<div class="col-sm-8">
 	<section class="content">
 		<form role="form" method="post" enctype="multipart/form-data">
-		<div class="box-body">
 			<div class="form-group">
 			<label>제목</label> 
 				<input type="text" name='btitle' class="form-control" placeholder="제목">
@@ -35,11 +34,8 @@
 			<input type="hidden" name="bselect" class="form-control" value="1">
 			<%} %>			
 		</div>
-		<div class="form-group">
 		 <label>파일:</label>
-         <input type="file" name="bfilename">
-         </div>
-		</div>
+         <input type="file" name="file" multiple="multiple"/> 
          <div class="box-footer" align="right">
 			<button type="submit" class="btn btn-primary">작성</button>
 		</div>
