@@ -49,4 +49,34 @@ public class BoardServiceImpl implements BoardService{
 		return boardDAO.update(boardDTO);
 	}
 
+	@Override
+	public int reply(BoardReply boardReply) {
+		// TODO Auto-generated method stub
+		return boardDAO.reply(boardReply);
+	}
+
+	@Override
+	public List<BoardReply> replyDetail(int bno) {
+		// TODO Auto-generated method stub
+		return boardDAO.replyDetail(bno);
+	}
+
+	@Override
+	public int replyupdate(BoardReply boardreply) {
+		// TODO Auto-generated method stub
+		return boardDAO.replyupdate(boardreply);
+	}
+
+	@Override
+	public BoardReply viewreplyUpdate(int reno) {
+		// TODO Auto-generated method stub
+		return boardDAO.viewreplyUpdate(reno);
+	}
+
+	@Override
+	public int replyDelete(int reno) {
+		// TODO Auto-generated method stub
+		return boardDAO.replyDelete(reno);
+	}
+
 }

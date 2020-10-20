@@ -20,16 +20,16 @@ public interface BoardDAO {
 	public int update(BoardDTO boardDTO);
 
 	//댓글 쓰기를 위한 메소드
-//	public int reply
+	public int reply(BoardReply boardReply);
 
 	//게시물 번호에 해당하는 댓글 번호를 가져오는 메소드
-
+	public List<BoardReply> replyDetail(int bno);
 
 	//댓글수정
-
+	public int replyupdate(BoardReply boardreply);
 	//댓글 수정 보기
-
+	public BoardReply viewreplyUpdate(int reno);
 	//댓글삭제 
-
+	public int replyDelete(int reno);
 	//파일 업로드 
 }
