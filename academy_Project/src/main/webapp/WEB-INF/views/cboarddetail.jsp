@@ -13,7 +13,7 @@
 <%@include file="include/header.jsp"%>
 
 <div class="container">
-  <form class="form-horizontal" action="POST">
+  <form class="form-horizontal">
     <div class="form-group">
       <label class="control-label col-sm-2" for="cName">회사명 :</label>
       <div class="col-sm-10">
@@ -58,7 +58,10 @@
     </div>
     <div class="form-group">        
       <div class="col-sm-offset-2 col-sm-10">
-        <button type="submit" class="btn btn-info btn-fill btn-wd">수정완료</button>
+	      <c:if test ="${user.memPosition==2}">
+	      	<button class="btn btn-info btn-fill btn-wd" type="button"
+			onclick="location.href='${contextPath}/cmanage/cboardupdate?cNo= + ${cmanage.cNo}'">수정하기</button>
+		  </c:if>
       </div>
     </div>
   </form>
@@ -67,4 +70,5 @@
 <%@include file="include/footer.jsp"%>
 
 </body>
+
 </html>

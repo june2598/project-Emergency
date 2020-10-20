@@ -13,52 +13,52 @@
 <%@include file="include/header.jsp"%>
 
 <div class="container">
-  <form class="form-horizontal" method="post">
+  <form class="form-horizontal" method="POST">
     <div class="form-group">
       <label class="control-label col-sm-2" for="cName">회사명 :</label>
       <div class="col-sm-10">
-        <input type="text" class="form-control" id="cName" name="cName" placeholder="회사 이름" readonly="readonly">
+        <input type="text" class="form-control" id="cName" name="cName" value="${cmanage.cName}">
       </div>
     </div>
     <div class="form-group">
       <label class="control-label col-sm-2" for="cAddress">주소 :</label>
       <div class="col-sm-10">
-        <input type="text" class="form-control" id="cAddress" placeholder="회사 주소" name="cAddress">
+        <input type="text" class="form-control" id="cAddress" name="cAddress" value="${cmanage.cAddress}">
       </div>
     </div>
     <div class="form-group">
       <label class="control-label col-sm-2" for="cCeo">대표자 :</label>
       <div class="col-sm-10">
-        <input type="text" class="form-control" id="cCeo" placeholder="대표자" name="cCeo">
+        <input type="text" class="form-control" id="cCeo" name="cCeo" value="${cmanage.cCeo}">
       </div>
     </div>
     <div class="form-group">
       <label class="control-label col-sm-2" for="cNumber">사업자번호 :</label>
       <div class="col-sm-10">
-        <input type="text" class="form-control" id="cNumber" placeholder="사업자번호" name="cNumber">
+        <input type="text" class="form-control" id="cNumber" name="cNumber" value="${cmanage.cNumber}">
       </div>
     </div>
     <div class="form-group">
       <label class="control-label col-sm-2" for="cTel">TEL :</label>
       <div class="col-sm-10">
-        <input type="text" class="form-control" id="cTel" placeholder="전화번호" name="cTel">
+        <input type="text" class="form-control" id="cTel" name="cTel" value="${cmanage.cTel}">
       </div>
     </div>
     <div class="form-group">
       <label class="control-label col-sm-2" for="cEmail">Email :</label>
       <div class="col-sm-10">
-        <input type="Email" class="form-control" id="cEmail" placeholder="Email" name="cEmail">
+        <input type="Email" class="form-control" id="cEmail" name="cEmail" value="${cmanage.cEmail}">
       </div>
     </div>
     <div class="form-group">
       <label class="control-label col-sm-2" for="cLogo">Logo :</label>
       <div class="col-sm-10">          
-        <input type="file" class="form-control" id="cLogo" placeholder="Logo" name="cLogo">
+        <input type="file" class="form-control" id="cLogo" name="cLogo" value="${cmanage.cLogo}">
       </div>
     </div>
     <div class="form-group">        
       <div class="col-sm-offset-2 col-sm-10">
-        <button type="submit" class="btn btn-info btn-fill btn-wd">등록 완료</button>
+        <button type="submit" class="btn btn-info btn-fill btn-wd">수정완료</button>
       </div>
     </div>
   </form>

@@ -4,30 +4,26 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="kr.co.academy.cmanage">
 	
-	<!-- 회사정보 읽기 -->
-	<select id="readOne" parameterType="java.lang.Integer" resultType="CmanageDTO">
-	select *
+	<!-- 회사정보 리스트 -->
+	<select id="list" resultType="CmanageDTO">
+	select cNo, cName
 	from cmanage
 	where cNo = 1
 	</select>
-	
-	<!-- 회사정보 등록 -->
-	<insert id="register" parameterType="CmanageDTO">
-	insert into cmanage(cNo, cName, cAddress, cCeo, cNumber, cTel, cEmail, cLogo)
-	values(#{cNo},#{cName},#{cAddress},#{cCeo},#{cNumber},#{cTel},#{cEmail},#{cLogo})
-	</insert>
+
+	<!-- 회사정보 읽기 -->
+	<select id="cboarddetail" parameterType="java.lang.Integer" resultType="CmanageDTO">
+	select *
+	from cmanage
+	where cNo = #{cNo}
+	</select>
 	
 	<!-- 회사정보 수정  -->
-	<update id="update" parameterType="CmanageDTO">
+	<update id="cboardupdate" parameterType="CmanageDTO">
 	update cmanage
 	set 
 	cName = #{cName} , cAddress=#{cAddress}, cCeo=#{cCeo}, cNumber = #{cNumber}, cTel = #{cTel}, cEmail = #{cEmail}, cLogo = #{cLogo}
 	where cNo = 1
 	</update>
 	
-	<select id="cmdCheck" resultType="java.lang.Integer">
-		select count(*)
-		from cmanage
-	</select>
-
   </mapper>

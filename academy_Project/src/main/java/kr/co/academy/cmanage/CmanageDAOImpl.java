@@ -1,5 +1,7 @@
 package kr.co.academy.cmanage;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
@@ -13,32 +15,24 @@ public class CmanageDAOImpl implements CmanageDAO{
 
 	private static final String namespace = "kr.co.academy.cmanage";
 
-
 	@Override
-	public CmanageDTO readOne(int cNo) {
+	public List<CmanageDTO> list() {
 		// TODO Auto-generated method stub
-		return sqlSession.selectOne(namespace +".readOne",cNo);
+		return sqlSession.selectList(namespace + ".list");
 	}
 
 	@Override
-	public int register(CmanageDTO cmanageDTO) {
+	public CmanageDTO cboarddetail(int cNo) {
 		// TODO Auto-generated method stub
-		return sqlSession.insert(namespace + ".register",cmanageDTO);
+		return sqlSession.selectOne(namespace + ".cboarddetail", cNo);
 	}
 
 	@Override
-	public int update(CmanageDTO cmanageDTO) {
+	public int cboardupdate(CmanageDTO cmanageDTO) {
 		// TODO Auto-generated method stub
-		return sqlSession.update(namespace + ".update",cmanageDTO);
+		return sqlSession.update(namespace + ".cboardupdate", cmanageDTO);
 	}
 
-	@Override
-	public int cmdCheck(CmanageDTO cmanageDTO) {
-		
-		return sqlSession.selectOne(namespace + ".cmdCheck");
-	}
-
-
-
+	
 
 }

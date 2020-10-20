@@ -53,7 +53,7 @@
 							<ul class="dropdown-menu">
 
 								<li id="cmdBoard">
-									<a class="nav-link" href="${contextPath }/cmdBoard">
+									<a class="nav-link" href="${contextPath }/cmanage/cboardlist">
 
 										<i class="fas fa-fw fa-table"></i>
 										<span>홈페이지 관리</span>

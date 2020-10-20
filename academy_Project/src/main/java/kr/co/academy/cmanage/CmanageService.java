@@ -1,19 +1,17 @@
 package kr.co.academy.cmanage;
 
+import java.util.List;
 
 public interface CmanageService {
 
-	//회사정보 읽기
-	public CmanageDTO readOne(int cNo);
+	   // 전체 출력
+	   public List<CmanageDTO> list();
+	   // 상세 읽기
+	   public CmanageDTO cboarddetail(int cNo);   
+	   // 학생 정보 수정
+	   public int cboardupdate(CmanageDTO cmanageDTO);
 
-	//회사정보 등록 
-	public int register(CmanageDTO cmanageDTO);
 
-	//회사정보 수정
-	public int update(CmanageDTO cmanageDTO);
-	
-	//회사 등록정보 유무 확인
-	public int cmdCheck(CmanageDTO cmanageDTO);
 
 
 }

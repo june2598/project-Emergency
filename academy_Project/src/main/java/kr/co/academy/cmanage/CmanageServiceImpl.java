@@ -1,5 +1,7 @@
 package kr.co.academy.cmanage;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Repository;
@@ -12,27 +14,22 @@ public class CmanageServiceImpl implements CmanageService{
 	private CmanageDAO cmanageDAO;
 
 	@Override
-	public CmanageDTO readOne(int cNo) {
+	public List<CmanageDTO> list() {
 		// TODO Auto-generated method stub
-		return cmanageDAO.readOne(cNo);
+		return cmanageDAO.list();
 	}
 
 	@Override
-	public int register(CmanageDTO cmanageDTO) {
+	public CmanageDTO cboarddetail(int cNo) {
 		// TODO Auto-generated method stub
-		return cmanageDAO.register(cmanageDTO);
+		return cmanageDAO.cboarddetail(cNo);
 	}
 
 	@Override
-	public int update(CmanageDTO cmanageDTO) {
+	public int cboardupdate(CmanageDTO cmanageDTO) {
 		// TODO Auto-generated method stub
-		return cmanageDAO.update(cmanageDTO);
+		return cmanageDAO.cboardupdate(cmanageDTO);
 	}
 
-	@Override
-	public int cmdCheck(CmanageDTO cmanageDTO) {
-		// TODO Auto-generated method stub
-		return cmanageDAO.cmdCheck(cmanageDTO);
-	}
-
+	
 }
