@@ -26,15 +26,15 @@ public interface BoardDAO {
 	public int fileRegister(BoardFileDTO bfDTO);
 	
 	//댓글 쓰기를 위한 메소드
-	public int reply(BoardReply boardReply);
+	public int reply(BoardReplyDTO boardReplyDTO);
 
 	//게시물 번호에 해당하는 댓글 번호를 가져오는 메소드
-	public List<BoardReply> replyDetail(int bno);
+	public List<BoardReplyDTO> replyDetail(int bno);
 
 	//댓글수정
-	public int replyupdate(BoardReply boardreply);
+	public int replyupdate(BoardReplyDTO boardreplyDTO);
 	//댓글 수정 보기
-	public BoardReply viewreplyUpdate(int reno);
+	public BoardReplyDTO viewreplyUpdate(int reno);
 	//댓글삭제 
 	public int replyDelete(int reno);
 	//파일 업로드 

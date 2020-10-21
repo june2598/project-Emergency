@@ -179,11 +179,11 @@ public class BoardController {
 		return "reply";
 	}
 	@RequestMapping(value="board/reply",method=RequestMethod.POST)
-	public String reply(BoardReply boardReply) {
-		int r = boardService.reply(boardReply);
+	public String reply(BoardReplyDTO boardReplyDTO) {
+		int r = boardService.reply(boardReplyDTO);
 		
 		if(r>0) {
-			return"redirect:boardreadOne?bno=" +boardReply.getBno();
+			return"redirect:boardreadOne?bno=" +boardReplyDTO.getBno();
 		}
 	return "reply";
 	}

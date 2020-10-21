@@ -62,5 +62,37 @@
 		values(#{bfselect}, #{bfilefrom}, #{bfilerealpath}, #{bfileviewpath})
 	</insert>
 	
+	<!-- 게시글번호에 해당하는 댓글 조회  -->
+	<select id="replyDetail" parameterType="java.util.Integer" resultType="java.util.Map">
+	select *
+	from board_reply
+	where bno= #{bno}
+	oreder by reno desc
+	</select>
+	
+	<!-- 댓글 쓰기 -->
+	<insert id="reply" parameterType="BoardReplyDTO">
+	insert into
+	board_reply(rewriter,rememo,redate,bno)
+	values(#{rewriter},#{rememo},curdate(),#{bno})
+	</insert>
+	
+	<!-- 해당댓글 조회 -->
+	<select id="viewreply" parameterType="BoardReplyDTO" resultType="BoardReplyDTO">
+	select *
+	from board_reply
+	where reno =#{reno}
+	</select>
+	
+	<!-- 댓글 수정 -->
+	<update id="replyupdate" parameterType="BoardReplyDTO">
+	updae board_reply
+	set rewriter = #{rewriter} , rememo=#{rememo} , redate = curdate()
+	where reno = #{reno}
+	</update>
+	
+	<!-- 댓글 삭제 -->
+	<delete id="replydelete" parameterType="java.lang.Integer"></delete>
+	
 	
   </mapper>
