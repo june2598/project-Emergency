@@ -1,6 +1,7 @@
 package kr.co.academy.manage;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -44,6 +45,17 @@ public class ManageDAOImpl implements ManageDAO{
       // TODO Auto-generated method stub
       return sqlSession.delete(namespace + ".delete" ,smid);
    }
+
+   @Override
+   public int getBoardListCnt() {
+	   // TODO Auto-generated method stub
+	   return sqlSession.selectOne(namespace + ".selecOne");
+   }
+   @Override
+   public List<ManageDTO> getBoardList(Pagination pagination) throws Exception {
+	// TODO Auto-generated method stub
+	return sqlSession.selectList(namespace + ".selectList", pagination);
+}
 
 
 }
