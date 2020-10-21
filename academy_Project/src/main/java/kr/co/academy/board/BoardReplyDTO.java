@@ -1,6 +1,6 @@
 package kr.co.academy.board;
 
-public class BoardReply {
+public class BoardReplyDTO {
 	private int reno;
 	private String rememo;
 	private String redate;

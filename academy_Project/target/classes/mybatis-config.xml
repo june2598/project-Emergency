@@ -9,5 +9,6 @@
  		<typeAlias alias="CmanageDTO" type="kr.co.academy.cmanage.CmanageDTO"/>
  		<typeAlias alias="ManageDTO" type="kr.co.academy.manage.ManageDTO"/>
  		<typeAlias alias="BFDTO" type="kr.co.academy.board.BoardFileDTO"/>
+ 		<typeAlias alias="BoardReplyDTO" type="kr.co.academy.board.BoardReplyDTO"/>
  	</typeAliases>
  </configuration>

@@ -61,25 +61,26 @@ public class BoardServiceImpl implements BoardService{
 		// TODO Auto-generated method stub
 		return boardDAO.fileRegister(bfDTO);
 	}
-	public int reply(BoardReply boardReply) {
+
+	public int reply(BoardReplyDTO boardReplyDTO) {
 		// TODO Auto-generated method stub
-		return boardDAO.reply(boardReply);
+		return boardDAO.reply(boardReplyDTO);
 	}
 
 	@Override
-	public List<BoardReply> replyDetail(int bno) {
+	public List<BoardReplyDTO> replyDetail(int bno) {
 		// TODO Auto-generated method stub
 		return boardDAO.replyDetail(bno);
 	}
 
 	@Override
-	public int replyupdate(BoardReply boardreply) {
+	public int replyupdate(BoardReplyDTO boardreplyDTO) {
 		// TODO Auto-generated method stub
-		return boardDAO.replyupdate(boardreply);
+		return boardDAO.replyupdate(boardreplyDTO);
 	}
 
 	@Override
-	public BoardReply viewreplyUpdate(int reno) {
+	public BoardReplyDTO viewreplyUpdate(int reno) {
 		// TODO Auto-generated method stub
 		return boardDAO.viewreplyUpdate(reno);
 	}
