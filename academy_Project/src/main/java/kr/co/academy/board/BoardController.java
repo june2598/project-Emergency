@@ -131,47 +131,6 @@ public class BoardController {
 		return "redirect:boardupdate?bno=" + boardDTO.getBno();
 	}
 	
-	
-
-	@RequestMapping(value="board/test", method=RequestMethod.GET)
-	public String test() {
-		return "uploadTest";
-	}
-	
-	@GetMapping("/uploadAjax")
-	public void uploadAjax() {
-		logger.info("upload ajax");
-	}
-	
-	@PostMapping("/uploadAjaxAction")
-	public void uploadAjaxPost(MultipartFile[] uploadFile) {
-		logger.info("update ajax Post.............");
-		
-		String uploadFolder="D:\\upload";
-		
-		for(MultipartFile multipartFile : uploadFile) {
-			logger.debug("--------------------------------------------");
-			logger.debug("upload file name : " + multipartFile.getOriginalFilename() );
-			logger.debug("upload file size : " + multipartFile.getSize());
-			
-			String uploadFileName = multipartFile.getOriginalFilename();
-			
-			// IE has file path
-			uploadFileName = uploadFileName.substring(uploadFileName.lastIndexOf("\\") + 1);
-			logger.debug("only file name: " + uploadFileName);
-			
-			File saveFile = new File(uploadFolder, uploadFileName);
-			
-			try {
-				multipartFile.transferTo(saveFile);
-			}catch (Exception e) {
-				logger.error(e.getMessage());
-			}
-			
-		}
-		
-	}
-
 
 	//댓글 쓰기
 	@RequestMapping(value="board/reply",method=RequestMethod.GET)
