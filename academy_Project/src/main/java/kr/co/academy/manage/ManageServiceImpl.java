@@ -2,6 +2,7 @@ package kr.co.academy.manage;
 
 import java.util.List;
 
+
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Repository;
@@ -41,6 +42,18 @@ public class ManageServiceImpl implements ManageService{
       // TODO Auto-generated method stub
       return manageDAO.delete(smid);
    }
+
+   @Override
+   public int getBoardListCnt() throws Exception {
+	   // TODO Auto-generated method stub
+	   return manageDAO.getBoardListCnt();
+   }
+   @Override
+   public List<ManageDTO> getBoardList(Pagination pagination) throws Exception {
+	// TODO Auto-generated method stub
+	   return manageDAO.getBoardList(pagination);
+   }
+
 
 }
 

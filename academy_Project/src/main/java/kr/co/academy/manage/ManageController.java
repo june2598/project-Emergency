@@ -1,6 +1,8 @@
 package kr.co.academy.manage;
 
+import java.util.ArrayList;
 import java.util.List;
+
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -66,29 +68,30 @@ public class ManageController {
 
    // 수정
    @RequestMapping(value = "manage/manageupdate", method = RequestMethod.GET)
-   public String update(@RequestParam("smid") int smid, Model model, Object manage) {
-      ManageDTO manage1 = manageService.readlist(smid);
-      model.addAttribute("mange", manage1);
-      return "managelist";
+   public String update(@RequestParam("smid") int smid, Model model) {
+      ManageDTO manageDTO = manageService.readlist(smid);
+      model.addAttribute("mange", manageDTO);
+      return "manageupdate";
    }
 
    @RequestMapping(value = "manage/manageupdate", method = RequestMethod.POST)
    public String update(ManageDTO manageDTO, RedirectAttributes attr) {
       int r = manageService.update(manageDTO);
+      logger.info("수정 : " + manageDTO);
       // 수정에 성공하면 목록보기로 이동
       if (r > 0) {
          attr.addFlashAttribute("msg", "수정에 성공 하였습니다.");
          return "redirect:managelist";
       }
       // 수정에 실패하면 수정보기 화면으로 이동
-      return "redirect:update?smid=" + manageDTO.getSmid();
+      return "redirect:manageupdate?smid=" + manageDTO.getSmid();
    }
 
    // 삭제
    @RequestMapping(value = "manage/managedelete", method = RequestMethod.GET)
    public String delete(@RequestParam("smid") int smid, RedirectAttributes rttr) {
 	  
-	   logger.info("전송 : " + smid);
+	   logger.info("삭제 : " + smid);
 	   
 	  int r = manageService.delete(smid);
 
@@ -98,6 +101,22 @@ public class ManageController {
       }
       return "redirect:managelist?mid=" + smid;
    }
-}
+   //페이징처리
+   @RequestMapping(value = "mange/maagegetBoardList", method = RequestMethod.GET)
+   public String getBoardList(Model model, 
+		   @RequestParam(required = false, defaultValue = "1") int page,
+		   @RequestParam(required = false, defaultValue = "1")int range
+		   ) throws Exception {
+	   // 전체 게시글 개수
+	   int listCnt = manageService.getBoardListCnt();
+	   //Pagination 객체 생성
+	   	Pagination pagination = new Pagination();
+	   	pagination.pageInfo(page, range, listCnt);
+	   	
+	   	model.addAttribute("pageination",pagination);
+	   	model.addAttribute("managelist",manageService.getBoardList(pagination));
+	   	return "manageindex";
+   }
+}	
 
 

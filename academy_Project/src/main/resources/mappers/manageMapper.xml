@@ -2,45 +2,69 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  <mapper namespace="kr.co.academy.manage">
-	
-	<!-- 전체리스트출력  -->
+<mapper namespace="kr.co.academy.manage">
+
+	<!-- 전체리스트출력 -->
 	<select id="list" resultType="ManageDTO">
-	select *
-	from smanagelist
-	where cdel = 0 
-	order by smid asc;
-	
+		select *
+		from smanagelist
+		where cdel
+		= 0
+		order by smid asc;
+
 	</select>
 
 
-	<!--정보들어가기-->
-	<select id="readlist" parameterType="java.lang.Integer" resultType="ManageDTO" >
-	select *
-	from smanagelist
-	where smid = #{smid}
+	<!--정보들어가기 -->
+	<select id="readlist" parameterType="java.lang.Integer"
+		resultType="ManageDTO">
+		select *
+		from smanagelist
+		where smid = #{smid}
+
 	</select>
-	
+
 	<!--정보등록 -->
-	<insert id="register" parameterType="ManageDTO" keyProperty="smid">
-	insert into smanagelist(ssub, sid, sname, sphone, semail, cdel)
-	values(#{ssub},#{sid},#{sname},#{sphone},#{semail},0)
+	<insert id="register" parameterType="ManageDTO">
+		insert into
+		smanagelist(ssub, sid, sname, sphone, semail, cdel)
+		values(#{ssub},#{sid},#{sname},#{sphone},#{semail},0)
 	</insert>
-	
-	<!--정보수정  -->
-	<update id="update" >
-	update smanagelist
-	set
-	ssub = #{ssub} , sid=#{sid}, sname=#{sname} , sphone=#{sphone}, seamil=#{semail}
-	where smid = #{smid}
+
+	<!--정보수정 -->
+	<update id="update" parameterType="ManageDTO">
+		update smanagelist
+		set
+		ssub =
+		#{ssub} , sid= #{sid}, sname= #{sname} , sphone= #{sphone}, semail=
+		#{semail}
+		where smid = #{smid}
 	</update>
-	
+
 	<!--정보삭제 -->
 	<delete id="delete" parameterType="java.lang.Integer">
-	update
-	set
-	cdel = 1
-	where smid = #{smid}
+		delete from smanagelist
+		where
+		smid = #{smid}
 	</delete>
 
-  </mapper>
+	<!-- 검색 -->
+	<select id="getBoardList" resultType="ManageDTO">
+
+		select
+		smid, ssub, sid, sname, sphone, semail, cdel
+		FROM
+		smanagelist
+		LIMIT #{startList}, #{listSize}
+	</select>
+	
+	<select id="getBoardListCnt" resultType="int">
+		select
+		count(*) as listCnt
+		FROM
+		smanagelist
+	</select>
+
+
+
+</mapper>

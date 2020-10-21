@@ -13,7 +13,6 @@
 	<div class="col-sm-2"></div>
 	<div class="col-sm-8">
 		<section class="content">
-		<form role="form" method="post">
 			<div class="box">
 				<div class="container-header">
 					<h3 class="container-title">학생상세정보</h3>
@@ -23,37 +22,39 @@
 					<div class="form-group">
 						<label>교육과정명</label> <input type="text" name='ssub'
 							class="form-control" placeholder="교육과정명" value="${manage.ssub}"
-							required="required">
+							readonly="readonly">
 					</div>
 					<div class="form-group">
 						<label>아이디</label> <input type="text" name='sid'
 							class="form-control" placeholder="아이디" value="${manage.sid}"
-							required="required">
+							readonly="readonly">
 					</div>
 					<div class="form-group">
 						<label>이름</label> <input type="text" name='sname'
 							class="form-control" placeholder="이름" value="${manage.sname}"
-							required="required">
+							readonly="readonly">
 					</div>
 					<div class="form-group">
 						<label>전화번호</label> <input type="text" name='sphone'
-							class="form-control" value="${manage.sphone}" placeholder="전화번호">
+							class="form-control" value="${manage.sphone}" placeholder="전화번호"
+							readonly="readonly">
 					</div>
 					<div class="form-group">
 						<label>이메일</label> <input type="text" name='semail'
-							class="form-control" value="${manage.semail}" placeholder="email">
+							class="form-control" value="${manage.semail}" placeholder="email"
+							readonly="readonly">
 					</div>
 				</div>
 
 			</div>
 			<div class="box-footer" align="right" >
-				<button type="submit" class="btn btn-primary">등록</button>
 				<button class="btn btn-primary" type="button"
-						onclick="location.href='${contextPath}/manage/manageupdate?smid=${manage.smid}'">정보수정</button>
+						onclick="location.href='${contextPath}/manage/manageupdate?smid=${manage.smid}'">수정</button>
 				<button class="btn btn-danger" type="button"
-						onclick="location.href='managedelete?smid= + ${manage.smid}'">정보삭제</button>
+						onclick="location.href='${contextPath}/manage/managedelete?smid= + ${manage.smid}'">삭제</button>
+				<button type="button" class="btn btn-secondary"
+						onclick="location.href='${contextPath}/manage/managelist' ">목록</button>
 			</div>
-			</form>
 		</section>
 	</div>
 	<div class="col-sm-2"></div>
