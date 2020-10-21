@@ -38,10 +38,10 @@
 			<button class="btn btn-primary" type="button" 
 			onclick="location.href='${contextPath}/'">메인으로</button>
 			<button class="btn btn-primary" type="button"
-			onclick="location.href='${contextPath}/board/boardlist'">글목록</button>
+			onclick="location.href='${contextPath}/board/boardlist?bs=${board.bselect}'">글목록</button>
 			<c:if test="${user.memId==board.id}">
 			<button class="btn btn-warning" type="button"
-			onclick="location.href='boarddelete?bno= + ${board.bno}'">글삭제</button>
+			onclick="location.href='boarddelete?bno=${board.bno}&&bs=${board.bselect}'">글삭제</button>
 			<button class="btn btn-danger" type="button"
 			onclick="location.href='${contextPath}/board/boardupdate?bno= + ${board.bno}'">수정</button>
 			</c:if>

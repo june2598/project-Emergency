@@ -106,11 +106,11 @@ public class BoardController {
 	}
 	//글 삭제
 	@RequestMapping(value="board/boarddelete",method=RequestMethod.GET)
-	public String delete(@RequestParam("bno")int bno) {
+	public String delete(@RequestParam("bno")int bno,@RequestParam("bs")int bselect) {
 		int r= boardService.delete(bno);
 		
 		if(r > 0) {
-			return "redirect:boardlist";
+			return "redirect:boardlist?bs=" + bselect;
 	}
 	return "redirect:boardreadone?bno=" + bno;
 	}
@@ -122,16 +122,17 @@ public class BoardController {
 		return "boardupdate";
 	}
 	@RequestMapping(value="board/boardupdate",method=RequestMethod.POST)
-	public String update(BoardDTO boardDTO, RedirectAttributes attr) {
+	public String update(BoardDTO boardDTO, RedirectAttributes attr,@RequestParam("bs")int bselect) {
 		int r =boardService.update(boardDTO);
 		//글 수정하면 목록으로 
 		if (r>0){
-			return "redirect:boardlist";
+			return "redirect:boardlist?bs=" + bselect;
 		}
 		return "redirect:boardupdate?bno=" + boardDTO.getBno();
 	}
 	
 	
+
 	@RequestMapping(value="board/test", method=RequestMethod.GET)
 	public String test() {
 		return "uploadTest";
@@ -170,4 +171,24 @@ public class BoardController {
 		}
 		
 	}
+
+
+	//댓글 쓰기
+	@RequestMapping(value="board/reply",method=RequestMethod.GET)
+	public String reply(){
+		return "reply";
+	}
+	@RequestMapping(value="board/reply",method=RequestMethod.POST)
+	public String reply(BoardReply boardReply) {
+		int r = boardService.reply(boardReply);
+		
+		if(r>0) {
+			return"redirect:boardreadOne?bno=" +boardReply.getBno();
+		}
+	return "reply";
+	}
+	
+	
+	
 }
+

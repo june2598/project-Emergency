@@ -41,13 +41,43 @@ public class BoardDAOImpl implements BoardDAO{
 	@Override
 	public int delete(int bno) {
 		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.delete(namespace+ ".delete",bno);
 	}
 
 	@Override
 	public int update(BoardDTO boardDTO) {
 		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.update(namespace+ ".update",boardDTO);
+	}
+
+	@Override
+	public int reply(BoardReply boardReply) {
+		// TODO Auto-generated method stub
+		return sqlSession.insert(namespace+".reply",boardReply);
+	}
+
+	@Override
+	public List<BoardReply> replyDetail(int bno) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList(namespace+".replydetail",bno);
+	}
+
+	@Override
+	public int replyupdate(BoardReply boardReply) {
+		// TODO Auto-generated method stub
+		return sqlSession.update(namespace+".replyupdate",boardReply);
+	}
+
+	@Override
+	public BoardReply viewreplyUpdate(int reno) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(namespace+".viewreplyUpdate",reno);
+	}
+
+	@Override
+	public int replyDelete(int reno) {
+		// TODO Auto-generated method stub
+		return sqlSession.delete(namespace+".replyDelete",reno);
 	}
 
 	@Override
