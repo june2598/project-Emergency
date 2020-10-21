@@ -8,6 +8,7 @@
 <head>
 <title>상세정보</title>
 </head>
+
 <body>
 	<%@include file="include/header.jsp"%>
 	<div class="col-sm-2"></div>

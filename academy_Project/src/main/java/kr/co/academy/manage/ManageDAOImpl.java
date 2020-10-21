@@ -47,15 +47,18 @@ public class ManageDAOImpl implements ManageDAO{
    }
 
    @Override
-   public int getBoardListCnt() {
-	   // TODO Auto-generated method stub
-	   return sqlSession.selectOne(namespace + ".selecOne");
-   }
-   @Override
-   public List<ManageDTO> getBoardList(Pagination pagination) throws Exception {
+   public int getBoardListCnt(Search search) throws Exception {
 	// TODO Auto-generated method stub
-	return sqlSession.selectList(namespace + ".selectList", pagination);
+	   return sqlSession.selectOne(namespace + ".getBoardListCnt",search);
 }
+
+   @Override
+   public List<ManageDTO> selectTest(Search search) throws Exception {
+	  // TODO Auto-generated method stub
+	   return sqlSession.selectList(namespace + ".selecTest",search);
+}
+   
+ 
 
 
 }

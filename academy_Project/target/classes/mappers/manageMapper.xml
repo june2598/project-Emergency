@@ -49,20 +49,49 @@
 	</delete>
 
 	<!-- 검색 -->
-	<select id="getBoardList" resultType="ManageDTO">
 
-		select
-		smid, ssub, sid, sname, sphone, semail, cdel
-		FROM
+	<select id="selectTest" resultType="ManageDTO">
+		select *
+		from
 		smanagelist
+		<trim prefix="WHERE" prefixOverrides="AND|OR">
+			<if
+				test="searchType=='testTitle' and keyword != null and keyword != '' ">
+				AND testTitle like CONCAT('%', #{keyword}, '%')
+			</if>
+			<if
+				test="searchType=='testContent' and keyword != null and keyword != '' ">
+				AND testContent like CONCAT('%', #{keyword}, '%')
+			</if>
+			<if
+				test="searchType=='testName' and keyword != null and keyword != '' ">
+				AND testName like CONCAT('%', #{keyword}, '%')
+			</if>
+		</trim>
+		ORDER BY
+		smid DESC
 		LIMIT #{startList}, #{listSize}
 	</select>
-	
+
 	<select id="getBoardListCnt" resultType="int">
 		select
 		count(*) as listCnt
-		FROM
+		from
 		smanagelist
+		<trim prefix="WHERE" prefixOverrides="AND|OR">
+			<if test="keyword != null and keyword != '' ">
+				<if test="searchType=='testTitle'">
+					AND testTitle like CONCAT('%', #{keyword}, '%')
+				</if>
+				<if test="searchType=='testContent'">
+					AND testContent like CONCAT('%', #{keyword}, '%')
+				</if>
+				<if test="searchType=='testName'">
+					AND testName like CONCAT('%', #{keyword}, '%')
+				</if>
+			</if>
+		</trim>
+
 	</select>
 
 

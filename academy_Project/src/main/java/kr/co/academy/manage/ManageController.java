@@ -8,7 +8,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -102,20 +104,27 @@ public class ManageController {
       return "redirect:managelist?mid=" + smid;
    }
    //페이징처리
-   @RequestMapping(value = "mange/maagegetBoardList", method = RequestMethod.GET)
-   public String getBoardList(Model model, 
-		   @RequestParam(required = false, defaultValue = "1") int page,
-		   @RequestParam(required = false, defaultValue = "1")int range
+   @RequestMapping(value = "manage/managelist")
+   public String managelistDO(Model model
+		   ,@RequestParam(required = false, defaultValue = "1") int page
+		   ,@RequestParam(required = false, defaultValue = "1")int range
+		   ,@RequestParam(required = false, defaultValue = "testTitle") String searchType,@RequestParam(required = false) String keyword,
+		   @ModelAttribute("search") Search search
 		   ) throws Exception {
-	   // 전체 게시글 개수
-	   int listCnt = manageService.getBoardListCnt();
-	   //Pagination 객체 생성
-	   	Pagination pagination = new Pagination();
-	   	pagination.pageInfo(page, range, listCnt);
+	   	//검색
+	 	model.addAttribute("search", search);
+	 	search.setSearchType(searchType);
+	 	search.setKeyword(keyword);
+	 	// 전체 게시글 개수
+	 	int listCnt = manageService.getBoardListCnt(search);
+	   	//검색
+	   	search.pageInfo(page, range, listCnt);
+	   	//페이징
+	 	model.addAttribute("pagination", search);
+	 	//게시글 화면 출력
+	 	model.addAttribute("list", manageService.selectTest(search));;
 	   	
-	   	model.addAttribute("pageination",pagination);
-	   	model.addAttribute("managelist",manageService.getBoardList(pagination));
-	   	return "manageindex";
+	 	return "managelist";
    }
 }	
 

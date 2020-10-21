@@ -44,15 +44,18 @@ public class ManageServiceImpl implements ManageService{
    }
 
    @Override
-   public int getBoardListCnt() throws Exception {
+   public int getBoardListCnt(Search search)throws Exception {
 	   // TODO Auto-generated method stub
-	   return manageDAO.getBoardListCnt();
-   }
+	   return manageDAO.getBoardListCnt(search);
+}
+
    @Override
-   public List<ManageDTO> getBoardList(Pagination pagination) throws Exception {
-	// TODO Auto-generated method stub
-	   return manageDAO.getBoardList(pagination);
-   }
+   public List<ManageDTO> selectTest(Search search) throws Exception {
+	   // TODO Auto-generated method stub
+	   return manageDAO.selectTest(search);
+}
+
+ 
 
 
 }

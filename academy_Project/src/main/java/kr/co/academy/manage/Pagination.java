@@ -4,9 +4,9 @@ public class Pagination {
 	// 초기값 목록개수 10으로 셋팅
 	private int listSize = 10;
 	// 초기값 페이지범위를 10으로 셋팅
-	private int rangeSize = 10;
+	private int rangeSize = 5;
 	// 현재 페이지
-	private int page;
+	private int page ;
 	// 현제 페이지 범위
 	private int range;
 	// 총 게시물의 개수
@@ -145,7 +145,7 @@ public class Pagination {
 		// 전체 페이지수 
 		// 전달 받은 전체 게시물 개수(listCnt)와 기본값으로 설정한 한 페이지당 목록 개수(listSize)를 이용해 전체 페이지 개수(pageCnt)
 	
-		this.pageCnt = (int) Math.ceil(listCnt / listSize);
+		this.pageCnt = (int) Math.ceil((double)listCnt/listSize);
 
 		// 시작 페이지
 		// 각 페이지 범위의 시작 번호 구함
@@ -165,7 +165,7 @@ public class Pagination {
 
 		// 다음 버튼 상태
 
-		this.next = endPage > pageCnt ? false : true;
+		this.next = pageCnt > endPage ? true : false;
 
 		if (this.endPage > this.pageCnt) {
 
