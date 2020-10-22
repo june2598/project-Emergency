@@ -63,7 +63,7 @@
 	</insert>
 	
 	<!-- 게시글번호에 해당하는 댓글 조회  -->
-	<select id="replyDetail" parameterType="java.util.Integer" resultType="java.util.Map">
+	<select id="replyDetail" parameterType="java.lang.Integer" resultType="java.util.Map">
 	select *
 	from board_reply
 	where bno= #{bno}
