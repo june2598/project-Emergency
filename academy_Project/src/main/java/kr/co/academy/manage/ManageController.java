@@ -1,6 +1,6 @@
 package kr.co.academy.manage;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
 
@@ -12,7 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
+
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 /**
@@ -25,17 +25,22 @@ public class ManageController {
 
    @Autowired
    ManageService manageService;
-
-   // 출력
+   
+   //페이징처리
    @RequestMapping(value = "manage/managelist", method = RequestMethod.GET)
-   public ModelAndView list() {
-      logger.info("===List===");
-      ModelAndView mav = new ModelAndView();
-
-      List<ManageDTO> list = manageService.list();
-      mav.addObject("managelist", list);
-      mav.setViewName("managelist");
-      return mav;
+   public String getBoardList(Model model, 
+		   @RequestParam(required = false, defaultValue = "1") int page,
+		   @RequestParam(required = false, defaultValue = "1")int range
+		   ) {
+	   // 전체 게시글 개수
+	   int listCnt = manageService.getBoardListCnt();
+	   //Pagination 객체 생성
+	   	Pagination pagination = new Pagination();
+	   	pagination.pageInfo(page, range, listCnt);
+	   	
+	   	model.addAttribute("pageination",pagination);
+	   	model.addAttribute("managelist2",manageService.getBoardList(pagination));
+	   	return "managelist";
    }
 
    // 등록
@@ -70,7 +75,7 @@ public class ManageController {
    @RequestMapping(value = "manage/manageupdate", method = RequestMethod.GET)
    public String update(@RequestParam("smid") int smid, Model model) {
       ManageDTO manageDTO = manageService.readlist(smid);
-      model.addAttribute("mange", manageDTO);
+      model.addAttribute("manage", manageDTO);
       return "manageupdate";
    }
 
@@ -101,22 +106,7 @@ public class ManageController {
       }
       return "redirect:managelist?mid=" + smid;
    }
-   //페이징처리
-   @RequestMapping(value = "mange/maagegetBoardList", method = RequestMethod.GET)
-   public String getBoardList(Model model, 
-		   @RequestParam(required = false, defaultValue = "1") int page,
-		   @RequestParam(required = false, defaultValue = "1")int range
-		   ) throws Exception {
-	   // 전체 게시글 개수
-	   int listCnt = manageService.getBoardListCnt();
-	   //Pagination 객체 생성
-	   	Pagination pagination = new Pagination();
-	   	pagination.pageInfo(page, range, listCnt);
-	   	
-	   	model.addAttribute("pageination",pagination);
-	   	model.addAttribute("managelist",manageService.getBoardList(pagination));
-	   	return "manageindex";
-   }
+ 
 }	
 
 

@@ -33,11 +33,11 @@
 						</div>
 						<div class="form-group">
 							<label>전화번호</label> <input type="text" name='sphone'
-								class="form-control" placeholder="전화번호">
+								class="form-control" placeholder="전화번호" required="required">
 						</div>
 						<div class="form-group">
 							<label>이메일</label> <input type="text" name='semail'
-								class="form-control" placeholder="email">
+								class="form-control" placeholder="email" required="required">
 						</div>
 						</div>
 					</div>

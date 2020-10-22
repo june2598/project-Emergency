@@ -12,6 +12,62 @@
 <meta charset="UTF-8">
 <title>회원 관리</title>
 <%@include file="include/header.jsp"%>
+<c:url var="getBoardList" value="/manage/getBoardList">
+	<c:param name="page" value="${pagination.page}"/>
+	<c:param name="range" value="${pagination.range}"/>
+</c:url>
+<script>
+					//이전 버튼 이벤트
+
+					function fn_prev(page, range, rangeSize) {
+
+						var page = ((range - 2) * rangeSize) + 1;
+
+						var range = range - 1;
+
+						var url = "${getBoardList}";
+
+						url = url + "?page=" + page;
+
+						url = url + "&range=" + range;
+
+						location.href = url;
+
+					}
+
+					//페이지 번호 클릭
+
+					function fn_pagination(page, range, rangeSize, searchType,
+							keyword) {
+
+						var url = "${getBoardList}";
+
+						url = url + "?page=" + page;
+
+						url = url + "&range=" + range;
+
+						location.href = url;
+
+					}
+
+					//다음 버튼 이벤트
+
+					function fn_next(page, range, rangeSize) {
+
+						var page = parseInt((range * rangeSize)) + 1;
+
+						var range = parseInt(range) + 1;
+
+						var url = "${getBoardList}";
+
+						url = url + "?page=" + page;
+
+						url = url + "&range=" + range;
+
+						location.href = url;
+
+					}
+				</script>
 <body>
 	<div class="panel panel-default">
 		<div class="panel-heading">학생회원리스트</div>
@@ -34,7 +90,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach var="manage" items="${managelist}">
+					<c:forEach var="manage" items="${managelist2}">
 						<tr>
 							<td>${manage.smid}</td>
 							<td>${manage.ssub}</td>
@@ -46,60 +102,9 @@
 					</c:forEach>
 				</tbody>
 			</table>
-			<script>
-					//이전 버튼 이벤트
 
-					function fn_prev(page, range, rangeSize) {
-
-						var page = ((range - 2) * rangeSize) + 1;
-
-						var range = range - 1;
-
-						var url = "${pageContext.request.contextPath}/manage/getBoardList";
-
-						url = url + "?page=" + page;
-
-						url = url + "&range=" + range;
-
-						location.href = url;
-
-					}
-
-					//페이지 번호 클릭
-
-					function fn_pagination(page, range, rangeSize, searchType,
-							keyword) {
-
-						var url = "${pageContext.request.contextPath}/manage/getBoardList";
-
-						url = url + "?page=" + page;
-
-						url = url + "&range=" + range;
-
-						location.href = url;
-
-					}
-
-					//다음 버튼 이벤트
-
-					function fn_next(page, range, rangeSize) {
-
-						var page = parseInt((range * rangeSize)) + 1;
-
-						var range = parseInt(range) + 1;
-
-						var url = "${pageContext.request.contextPath}/manage/getBoardList";
-
-						url = url + "?page=" + page;
-
-						url = url + "&range=" + range;
-
-						location.href = url;
-
-					}
-				</script>
-			<!-- pagination{s} -->
-			<div id="paginationBox">
+			<!-- 페이징 처리 -->
+			<div id="paginationBox"  align="center">
 				<ul class="pagination">
 					<c:if test="${pagination.prev}">
 						<li class="page-item"><a class="page-link" href="#"
@@ -119,18 +124,19 @@
 					</c:if>
 				</ul>
 			</div>
-			<!-- pagination{e} -->
+			<!-- 페이징 처리 -->
+			<!-- 검색  -->
 
 			<div class="box-header with-border" align="right">
 				<table>
 					<tr>
 						<td width="100%" align="left">&nbsp;&nbsp; <select
-							name="items" class="txt">
+							name="searchType" id="searchType" class="txt">
 								<option value="subject">제목에서</option>
 								<option value="content">본문에서</option>
 								<option value="name">글쓴이에서</option>
-						</select> <input name="text" type="text" /> <input type="submit"
-							id="btnAdd" class="btn btn-primary " value="검색 " />
+						</select> <input  name="keyword" id="keyword" type="text" /> 
+						<button class="btn btn-sm btn-primary" name="btnSearch" id="btnSearch">검색</button>
 						</td>
 
 					</tr>

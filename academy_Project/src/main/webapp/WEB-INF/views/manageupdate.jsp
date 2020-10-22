@@ -22,23 +22,23 @@
 					<div class="container">
 						<div class="form-group">
 							<label>교육과정명</label> <input type="text" name='ssub'
-								class="form-control" value="${manage.ssub}">
+								class="form-control" value="${manage.ssub}" >
 						</div>
 						<div class="form-group">
 							<label>아이디</label> <input type="text" name='sid'
-								class="form-control" value="${manage.sid}">
+								class="form-control" value="${manage.sid}" >
 						</div>
 						<div class="form-group">
 							<label>이름</label> <input type="text" name='sname'
-								class="form-control" value="${manage.sname}">
+								class="form-control" value="${manage.sname}" >
 						</div>
 						<div class="form-group">
 							<label>전화번호</label> <input type="text" name='sphone'
-								class="form-control" value="${manage.sphone}">
+								class="form-control" value="${manage.sphone}" >
 						</div>
 						<div class="form-group">
 							<label>이메일</label> <input type="text" name='semail'
-								class="form-control" value="${manage.semail}">
+								class="form-control" value="${manage.semail}" >
 						</div>
 					</div>
 				</div>

@@ -5,15 +5,14 @@
 <mapper namespace="kr.co.academy.manage">
 
 	<!-- 전체리스트출력 -->
-	<select id="list" resultType="ManageDTO">
+	<select id="getBoardList" resultType="ManageDTO">
+
 		select *
-		from smanagelist
-		where cdel
-		= 0
-		order by smid asc;
-
+		FROM
+		smanagelist
+		LIMIT #{startList},#{listSize}
+		
 	</select>
-
 
 	<!--정보들어가기 -->
 	<select id="readlist" parameterType="java.lang.Integer"
@@ -48,19 +47,11 @@
 		smid = #{smid}
 	</delete>
 
-	<!-- 검색 -->
-	<select id="getBoardList" resultType="ManageDTO">
-
+	<!-- 총 게시물 개수 출력 -->
+	<select id="getBoardListCnt" resultType="java.lang.Integer">
 		select
-		smid, ssub, sid, sname, sphone, semail, cdel
-		FROM
-		smanagelist
-		LIMIT #{startList}, #{listSize}
-	</select>
-	
-	<select id="getBoardListCnt" resultType="int">
-		select
-		count(*) as listCnt
+		count(*) as
+		listCnt
 		FROM
 		smanagelist
 	</select>
