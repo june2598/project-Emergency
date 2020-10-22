@@ -1,14 +1,12 @@
 package kr.co.academy.manage;
 
 
-import java.util.List;
-
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -27,18 +25,24 @@ public class ManageController {
    ManageService manageService;
    
    //페이징처리
-   @RequestMapping(value = "manage/managelist", method = RequestMethod.GET)
-   public String getBoardList(Model model, 
-		   @RequestParam(required = false, defaultValue = "1") int page,
-		   @RequestParam(required = false, defaultValue = "1")int range
-		   ) {
-	   // 전체 게시글 개수
-	   int listCnt = manageService.getBoardListCnt();
-	   //Pagination 객체 생성
-	   	Pagination pagination = new Pagination();
-	   	pagination.pageInfo(page, range, listCnt);
-	   	
-	   	model.addAttribute("pageination",pagination);
+   @RequestMapping(value = "manage/getBoardList", method = RequestMethod.GET)
+   public String getBoardList(Model model
+		   ,@RequestParam(required = false, defaultValue = "1") int page
+		   ,@RequestParam(required = false, defaultValue = "1")int range
+		   )  throws Exception {
+	    //검색
+	   
+	    // 전체 게시글 개수
+		int listCnt = manageService.getBoardListCnt();
+		//검색
+		
+	    //Pagination 객체생성
+		Pagination pagination = new Pagination();
+		pagination.pageInfo(page, range, listCnt);
+
+	   	//페이징
+	   	model.addAttribute("pagination", pagination);
+	   	//화면출력
 	   	model.addAttribute("managelist2",manageService.getBoardList(pagination));
 	   	return "managelist";
    }
@@ -59,7 +63,7 @@ public class ManageController {
 	   if(r>0) {
 			rttr.addFlashAttribute("msg","등록성공");
 		}
-      return "redirect:managelist";
+      return "redirect:getBoardList";
    }
 
    //리스트상세보기
@@ -86,7 +90,7 @@ public class ManageController {
       // 수정에 성공하면 목록보기로 이동
       if (r > 0) {
          attr.addFlashAttribute("msg", "수정에 성공 하였습니다.");
-         return "redirect:managelist";
+         return "redirect:getBoardList";
       }
       // 수정에 실패하면 수정보기 화면으로 이동
       return "redirect:manageupdate?smid=" + manageDTO.getSmid();
@@ -102,9 +106,9 @@ public class ManageController {
 
       if (r > 0) {
          rttr.addFlashAttribute("msg", "삭제에 성공하였습니다.");
-         return "redirect:managelist";
+         return "redirect:getBoardList";
       }
-      return "redirect:managelist?mid=" + smid;
+      return "redirect:getBoardList?mid=" + smid;
    }
  
 }	

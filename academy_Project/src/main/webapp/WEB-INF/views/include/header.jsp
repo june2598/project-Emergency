@@ -61,7 +61,7 @@
 								</li>
 					            <li id="managelist" class="menu nav-item">
 
-									<a class="nav-link" href="${contextPath}/manage/managelist">
+									<a class="nav-link" href="${contextPath}/manage/getBoardList">
 
 										<i class="fas fa-address-card"></i>
 										<span>회원관리</span>

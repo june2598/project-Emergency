@@ -2,9 +2,9 @@ package kr.co.academy.manage;
 
 public class Pagination {
 	// 초기값 목록개수 10으로 셋팅
-	private int listSize = 20;
+	private int listSize = 10;
 	// 초기값 페이지범위를 10으로 셋팅
-	private int rangeSize = 5;
+	private int rangeSize = 10;
 	// 현재 페이지
 	private int page;
 	// 현제 페이지 범위

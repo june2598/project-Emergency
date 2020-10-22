@@ -11,7 +11,6 @@
 		FROM
 		smanagelist
 		LIMIT #{startList},#{listSize}
-		
 	</select>
 
 	<!--정보들어가기 -->
@@ -48,14 +47,14 @@
 	</delete>
 
 	<!-- 총 게시물 개수 출력 -->
-	<select id="getBoardListCnt" resultType="java.lang.Integer">
+	<select id="getBoardListCnt" resultType="int">
 		select
 		count(*) as
 		listCnt
 		FROM
 		smanagelist
 	</select>
-
+	<!-- 검색 -->
 
 
 </mapper>

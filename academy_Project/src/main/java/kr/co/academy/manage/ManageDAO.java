@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface ManageDAO {
 
-	public List<ManageDTO> getBoardList(Pagination pagination);
+	public List<ManageDTO> getBoardList(Pagination pagination) throws Exception;
 
 	// 상세 읽기
 	public ManageDTO readlist(int smid);
@@ -20,6 +20,6 @@ public interface ManageDAO {
 
 	// 검색
 	// 총 게시글 개수 확인
-	public int getBoardListCnt();
+	public int getBoardListCnt() throws Exception;
 
 }

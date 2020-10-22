@@ -53,7 +53,7 @@
 				<button class="btn btn-danger" type="button"
 						onclick="location.href='${contextPath}/manage/managedelete?smid= + ${manage.smid}'">삭제</button>
 				<button type="button" class="btn btn-secondary"
-						onclick="location.href='${contextPath}/manage/managelist' ">목록</button>
+						onclick="location.href='${contextPath}/manage/getBoardList' ">목록</button>
 			</div>
 		</section>
 	</div>

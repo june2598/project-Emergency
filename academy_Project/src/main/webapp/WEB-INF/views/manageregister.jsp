@@ -45,7 +45,7 @@
 					<div class="box-footer" align="center">
 						<button type="submit" class="btn btn-primary">등록</button>
 						<button type="button" class="btn btn-secondary"
-							onclick="location.href='${contextPath}/manage/managelist' ">목록</button>
+							onclick="location.href='${contextPath}/manage/getBoardList' ">목록</button>
 					</div>
 			</form>
 
