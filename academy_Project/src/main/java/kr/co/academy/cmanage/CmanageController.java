@@ -25,22 +25,32 @@ public class CmanageController {
 	@Autowired
 	CmanageService cmanageService;
 	
-	@RequestMapping(value="cmanage/cboardlist", method=RequestMethod.GET)
-	public ModelAndView list() {
-		logger.info("==== List ====");
-		ModelAndView mav = new ModelAndView();
-		
-		List<CmanageDTO> list = cmanageService.list();
-		mav.addObject("cboardlist", list);
-		mav.setViewName("cboardlist");
-		
-		return mav;
-	}
+//	@RequestMapping(value="cmanage/cboardlist", method=RequestMethod.GET)
+//	public ModelAndView list() {
+//		logger.info("==== List ====");
+//		ModelAndView mav = new ModelAndView();
+//		
+//		List<CmanageDTO> list = cmanageService.list();
+//		mav.addObject("cboardlist", list);
+//		mav.setViewName("cboardlist");
+//		
+//		return mav;
+//	}
+	
+	
+//	@RequestMapping(value="cmanage/cboarddetail", method=RequestMethod.GET)
+//	public String cboarddetail(@RequestParam("cNo") int cNo, Model model) {
+//		
+//		CmanageDTO cmanageDTO = cmanageService.cboarddetail(cNo);
+//		model.addAttribute("cmanage", cmanageDTO);
+//		
+//		return "cboarddetail";
+//	}
 	
 	@RequestMapping(value="cmanage/cboarddetail", method=RequestMethod.GET)
-	public String cboarddetail(@RequestParam("cNo") int cNo, Model model) {
+	public String cboarddetail(Model model) {
 		
-		CmanageDTO cmanageDTO = cmanageService.cboarddetail(cNo);
+		CmanageDTO cmanageDTO = cmanageService.cboarddetail();
 		model.addAttribute("cmanage", cmanageDTO);
 		
 		return "cboarddetail";
@@ -49,7 +59,7 @@ public class CmanageController {
 	@RequestMapping(value="cmanage/cboardupdate", method=RequestMethod.GET)
 	public String cboardupdate(@RequestParam("cNo") int cNo, Model model) {
 		
-		CmanageDTO cmanageDTO = cmanageService.cboarddetail(cNo);
+		CmanageDTO cmanageDTO = cmanageService.cboarddetail();
 		model.addAttribute("cmanage", cmanageDTO);
 		
 		return "cboardupdate";

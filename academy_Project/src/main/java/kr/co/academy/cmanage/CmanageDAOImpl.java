@@ -20,11 +20,17 @@ public class CmanageDAOImpl implements CmanageDAO{
 		// TODO Auto-generated method stub
 		return sqlSession.selectList(namespace + ".list");
 	}
+	
+//	@Override
+//	public CmanageDTO cboarddetail(int cNo) {
+//		// TODO Auto-generated method stub
+//		return sqlSession.selectOne(namespace + ".cboarddetail", cNo);
+//	}
 
 	@Override
-	public CmanageDTO cboarddetail(int cNo) {
+	public CmanageDTO cboarddetail() {
 		// TODO Auto-generated method stub
-		return sqlSession.selectOne(namespace + ".cboarddetail", cNo);
+		return sqlSession.selectOne(namespace + ".cboarddetail");
 	}
 
 	@Override
@@ -33,6 +39,6 @@ public class CmanageDAOImpl implements CmanageDAO{
 		return sqlSession.update(namespace + ".cboardupdate", cmanageDTO);
 	}
 
-	
+
 
 }

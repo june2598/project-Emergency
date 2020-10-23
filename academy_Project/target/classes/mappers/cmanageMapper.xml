@@ -8,16 +8,14 @@
 	<select id="list" resultType="CmanageDTO">
 	select cNo, cName
 	from cmanage
-	where cNo = 1
 	</select>
 
 	<!-- 회사정보 읽기 -->
-	<select id="cboarddetail" parameterType="java.lang.Integer" resultType="CmanageDTO">
+	<select id="cboarddetail" resultType="CmanageDTO">
 	select *
 	from cmanage
-	where cNo = #{cNo}
 	</select>
-	
+
 	<!-- 회사정보 수정  -->
 	<update id="cboardupdate" parameterType="CmanageDTO">
 	update cmanage

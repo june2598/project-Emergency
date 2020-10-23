@@ -7,8 +7,10 @@ public interface CmanageDAO {
 	   // 전체 출력
 	   public List<CmanageDTO> list();
 	   // 상세 읽기
-	   public CmanageDTO cboarddetail(int cNo);   
-	   // 학생 정보 수정
+//	   public CmanageDTO cboarddetail(int cNo);   
+	   // 상세 읽기
+	   public CmanageDTO cboarddetail();   
+	   // 정보 수정
 	   public int cboardupdate(CmanageDTO cmanageDTO);
 
 
