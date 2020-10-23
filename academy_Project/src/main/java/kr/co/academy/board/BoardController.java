@@ -3,7 +3,9 @@ package kr.co.academy.board;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
@@ -132,19 +135,59 @@ public class BoardController {
 	}
 	
 
-	//댓글 쓰기
-	@RequestMapping(value="board/reply",method=RequestMethod.GET)
-	public String reply(){
-		return "reply";
-	}
+	//댓글쓰기
+	@ResponseBody
 	@RequestMapping(value="board/reply",method=RequestMethod.POST)
-	public String reply(BoardReplyDTO boardReplyDTO) {
-		int r = boardService.reply(boardReplyDTO);
+	public int reply(BoardReplyDTO boardReplyDTO) {
+		return boardService.reply(boardReplyDTO);
+	}
+
+	
+	//댓글수정
+	@ResponseBody
+	@RequestMapping(value="board/replyupdate",method=RequestMethod.POST)
+	public Map<String,Object> replyupdate(BoardReplyDTO boardReplyDTO){
+		Map<String,Object> result = new HashMap<String,Object>();
 		
-		if(r>0) {
-			return"redirect:boardreadOne?bno=" +boardReplyDTO.getBno();
+		try {
+			boardService.replyupdate(boardReplyDTO);
+			result.put("status","ok");
 		}
-	return "reply";
+		catch (Exception e) {
+			e.printStackTrace();
+			result.put("status", "fail");
+			
+		}
+		return result;
+	}
+	
+	
+	//댓글 구현
+	@ResponseBody
+	@RequestMapping(value="board/replylist",method=RequestMethod.POST)
+	public List<BoardReplyDTO> replylist(@RequestParam("bno")int bno){
+		logger.info("sdsdsds"+bno);
+		List<BoardReplyDTO> lis = boardService.replyDetail(bno);
+		logger.info("sdsdsds"+lis);
+		return lis;
+	}
+	
+	//댓글삭제
+	@ResponseBody
+	@RequestMapping(value="board/replyDelete",method=RequestMethod.POST)
+	
+	public Map<String,Object> replyDelete(@RequestParam("reno")int reno){
+		Map<String, Object> result = new HashMap<String,Object>();
+		
+		try {
+			boardService.replyDelete(reno);
+			result.put("status", "ok");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			result.put("stauts", "fail");
+		}
+		return result;
 	}
 	
 	

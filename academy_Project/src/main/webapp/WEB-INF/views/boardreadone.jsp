@@ -6,8 +6,96 @@
 <c:set var="contextPath" value="${pageContext.request.contextPath }" />
 <html>
 <head>
-<title>Home</title></head><body>
+<title>상세보기</title>
+</head>
+<body>
+
 <%@include file="include/header.jsp"%>
+<script>
+
+$(document).ready(function(){
+	console.log("ready");
+	//댓글목록 불러오기
+	replylist();
+	
+	//댓글추가
+	$(document).on('click','#btnReplySave',function(){
+		var rememo=$("#rememo").val();
+		var rewriter=$("#rewriter").val();
+		
+		var url = "${pageContext.request.contextPath}/board/reply"; //아작스 수정
+		var paramData ={
+			"rewriter" : '${user.memId}',
+			"rememo" : rememo,
+			"bno":'${board.bno}'
+		};
+		
+		$.ajax({
+			type :"POST",
+			url : url,
+			data : paramData,
+			dataType : 'json',
+			success : function(result){
+				console.log(result);
+				replylist();
+				$("#rememo").val()="";
+				$("#rewriter").val()="";
+				
+			},
+			error : function(data){
+				alert("댓글추가에러");
+			}
+		});
+	})
+	
+}) // 댓글 추가 끝
+
+	//댓글 목록 아작스
+	function replylist(){
+	
+	var url = "${pageContext.request.contextPath}/board/replylist";
+	var paramData = {"bno" : "${board.bno}"};
+	$.ajax({
+		url : url,
+		data : paramData,
+		dataType :'json',
+		type :'POST',
+		success: function(result){
+			var htmls ="";
+			if(result.length<1){
+				htmls=htmls +"<h3>등록된 댓글이 없습니다.</h3>";
+			}
+			else{
+	               $(result).each(function(){
+	                  htmls += '<div class="media text-muted pt-3" id="reno' + this.reno + '">';
+	                     htmls += '<span class="d-block">';
+	                        htmls += this.reno + ' - ';
+	                        htmls += '<strong class="text-gray-dark">' + this.rewriter + '</strong>';
+	                        htmls += '<span style="padding-left: 7px; font-size: 9pt">';
+	                        htmls += '<a href="javascript:void(0)" onclick="fn_editReply(' + this.reno + ', \'' + this.rewriter + '\', \'' + this.rememo + '\' )" style="padding-right:5px">수정</a>';
+	                        htmls += '<a href="javascript:void(0)" onclick="fn_deleteReply(' + this.reno + ')" >삭제</a>';
+	                        htmls += '</span>';
+	                        htmls += '</span><br>';
+	                        htmls += this.rememo;
+	                        htmls += '</p>';
+	                        htmls += '</div>';    
+	             
+	               }); //each end
+	          
+			}
+			
+			$("#replyList").html(htmls);
+		}	,
+		error : function(data){
+			alert("데이터 에러"+data);
+		}
+	});
+	
+	//replylist() end
+}
+	
+	
+</script>
 <div class="col-sm-2"></div>
 <div class="col-sm-8">
 <section class="content">
@@ -47,12 +135,33 @@
 			</c:if>
 		</div>
 	</section>
-	</div>
-	<div class="col-sm-2"></div>
-	<script>
 	
+	<div class="box-body">
+	<table>
+		<tr>
+		
+		<td rowspan="2" width="70%"><textarea name="rememo" id="rememo" placeholder="댓글을 입력하세요"></textarea></td>
+		</tr>
+		<tr>
+			<td><button type="button" id="btnReplySave">저장</button></td>
+		</tr>
+	</table>
+	
+	<div id="replyList">
+	</div>
+	
+	</div>
+	
+	</div>
+	
+	<script>
 	</script>
 	
+	
+	<hr><P></P><p></p>
+	
+	
+	<div class="col-sm-2"></div>
 <%@include file="include/footer.jsp"%>
 
 </body>
