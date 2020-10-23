@@ -147,10 +147,10 @@
 					<tr>
 						<td width="100%" align="left">&nbsp;&nbsp; <select
 							name="searchType" id="searchType" class="txt">
-								<option value="title">교육과정</option>
-								<option value="content">이름</option>
-								<option value="reg_id">아이디</option>
-						</select> <input name="keyword" id="keyword" type="text" />
+								<option value="ssub">교육과정</option>
+								<option value="sname">이름</option>
+								<option value="sid">아이디</option>
+						</select> <input class="txt" name="keyword" id="keyword" type="text" value="${pagination.keyword}"/>
 							<button class="btn btn-sm btn-primary" name="btnSearch"
 								id="btnSearch">검색</button>
 						</td>

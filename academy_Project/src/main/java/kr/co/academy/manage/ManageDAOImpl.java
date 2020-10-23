@@ -17,9 +17,9 @@ public class ManageDAOImpl implements ManageDAO{
    private static final String namespace = "kr.co.academy.manage";
    
    @Override
-   public List<ManageDTO> getBoardList(Pagination pagination)  throws Exception{
+   public List<ManageDTO> getBoardList(Search search)  throws Exception{
 	// TODO Auto-generated method stub
-	return sqlSession.selectList(namespace + ".getBoardList", pagination);
+	return sqlSession.selectList(namespace + ".getBoardList", search);
    }
 
    @Override
@@ -47,9 +47,9 @@ public class ManageDAOImpl implements ManageDAO{
    }
 
    @Override
-   public int getBoardListCnt()  throws Exception{
+   public int getBoardListCnt(Search search)  throws Exception{
 	   // TODO Auto-generated method stub
-	   return sqlSession.selectOne(namespace + ".getBoardListCnt");
+	   return sqlSession.selectOne(namespace + ".getBoardListCnt",search);
    }
  
 
