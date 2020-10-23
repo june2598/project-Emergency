@@ -50,12 +50,6 @@
         <input type="Email" class="form-control" id="cEmail" name="cEmail" value="${cmanage.cEmail}" readonly="readonly">
       </div>
     </div>
-    <div class="form-group">
-      <label class="control-label col-sm-2" for="cLogo">Logo :</label>
-      <div class="col-sm-10">          
-        <input type="file" class="form-control" id="cLogo" name="cLogo" value="${cmanage.cLogo}" readonly="readonly">
-      </div>
-    </div>
     <div class="form-group">        
       <div class="col-sm-offset-2 col-sm-10">
 	      <c:if test ="${user.memPosition==2}">

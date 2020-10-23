@@ -20,9 +20,9 @@ public class CmanageServiceImpl implements CmanageService{
 	}
 
 	@Override
-	public CmanageDTO cboarddetail(int cNo) {
+	public CmanageDTO cboarddetail() {
 		// TODO Auto-generated method stub
-		return cmanageDAO.cboarddetail(cNo);
+		return cmanageDAO.cboarddetail();
 	}
 
 	@Override

@@ -22,9 +22,9 @@ public class CmanageDAOImpl implements CmanageDAO{
 	}
 
 	@Override
-	public CmanageDTO cboarddetail(int cNo) {
+	public CmanageDTO cboarddetail() {
 		// TODO Auto-generated method stub
-		return sqlSession.selectOne(namespace + ".cboarddetail", cNo);
+		return sqlSession.selectOne(namespace + ".cboarddetail");
 	}
 
 	@Override

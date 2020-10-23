@@ -50,12 +50,6 @@
         <input type="Email" class="form-control" id="cEmail" name="cEmail" value="${cmanage.cEmail}">
       </div>
     </div>
-    <div class="form-group">
-      <label class="control-label col-sm-2" for="cLogo">Logo :</label>
-      <div class="col-sm-10">          
-        <input type="file" class="form-control" id="cLogo" name="cLogo" value="${cmanage.cLogo}">
-      </div>
-    </div>
     <div class="form-group">        
       <div class="col-sm-offset-2 col-sm-10">
         <button type="submit" class="btn btn-info btn-fill btn-wd">수정완료</button>
