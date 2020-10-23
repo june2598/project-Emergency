@@ -5,7 +5,7 @@ import java.util.List;
 
 public interface ManageService {
 
-	public List<ManageDTO> getBoardList(Pagination pagination) throws Exception;
+	public List<ManageDTO> getBoardList(Search search) throws Exception;
    // 상세 읽기
    public ManageDTO readlist(int smid);   
    // 학생 등록
@@ -15,6 +15,6 @@ public interface ManageService {
    // 학생 삭제(개인정보 보안 목적 진짜 삭제)
    public int delete(int smid);
    //총 게시글 개수 확인
-   public int getBoardListCnt() throws Exception;
+   public int getBoardListCnt(Search search) throws Exception;
   
 }

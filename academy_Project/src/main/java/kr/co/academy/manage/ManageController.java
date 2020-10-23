@@ -27,23 +27,26 @@ public class ManageController {
    //페이징처리
    @RequestMapping(value = "manage/getBoardList", method = RequestMethod.GET)
    public String getBoardList(Model model
-		   ,@RequestParam(required = false, defaultValue = "1") int page
-		   ,@RequestParam(required = false, defaultValue = "1")int range
+		   ,@RequestParam(defaultValue = "1") int page
+		   ,@RequestParam(defaultValue = "1")int range
+		   ,@RequestParam(defaultValue = "ssub") String searchType
+		   ,@RequestParam(required = false) String keyword
+		   ,@ModelAttribute("search") Search search
 		   )  throws Exception {
 	    //검색
-	   
-	    // 전체 게시글 개수
-		int listCnt = manageService.getBoardListCnt();
-		//검색
-		
-	    //Pagination 객체생성
-		Pagination pagination = new Pagination();
-		pagination.pageInfo(page, range, listCnt);
+	   	model.addAttribute("search", search);
+		search.setSearchType(searchType);
+		search.setKeyword(keyword);
 
+	    // 전체 게시글 개수
+		int listCnt = manageService.getBoardListCnt(search);
+		//검색
+		search.pageInfo(page, range, listCnt);
+		
 	   	//페이징
-	   	model.addAttribute("pagination", pagination);
+	   	model.addAttribute("pagination", search);
 	   	//화면출력
-	   	model.addAttribute("managelist2",manageService.getBoardList(pagination));
+	   	model.addAttribute("managelist2",manageService.getBoardList(search));
 	   	return "managelist";
    }
 

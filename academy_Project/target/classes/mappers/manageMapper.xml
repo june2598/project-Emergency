@@ -10,6 +10,18 @@
 		select *
 		FROM
 		smanagelist
+		<trim prefix="WHERE" prefixOverrides="AND|OR">
+
+			<if test="searchType=='ssub' and keyword != null and keyword != '' ">
+				AND SSUB like CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test="searchType=='sname' and keyword != null and keyword != '' ">
+				AND SNAME like CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test="searchType=='sid' and keyword != null and keyword != '' ">
+				AND SID like CONCAT('%', #{keyword}, '%')
+			</if>	
+		</trim>
 		LIMIT #{startList},#{listSize}
 	</select>
 
@@ -53,6 +65,18 @@
 		listCnt
 		FROM
 		smanagelist
+		<trim prefix="WHERE" prefixOverrides="AND|OR">
+
+			<if test="searchType=='ssub' and keyword != null and keyword != '' ">
+				AND SSUB like CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test="searchType=='sname' and keyword != null and keyword != '' ">
+				AND SNAME like CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test="searchType=='sid' and keyword != null and keyword != '' ">
+				AND SID like CONCAT('%', #{keyword}, '%')
+			</if>	
+		</trim>
 	</select>
 	<!-- 검색 -->
 
