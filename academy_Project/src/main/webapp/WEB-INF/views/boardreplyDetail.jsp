@@ -22,7 +22,7 @@
 <td><textarea name="rememo" rows="5" cols="40"
 		readonly="readonly" class="form-control1">
 ${boardreply.rememo}</textarea></td>
-<td><a href="replyupdate?reno=${board_reply.reno}">댓글수정</a></td>
+<td><a href="boardreplyUpdate?reno=${board_reply.reno}">댓글수정</a></td>
 
 </tr>
 </c:forEach>

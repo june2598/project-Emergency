@@ -166,10 +166,7 @@ public class BoardController {
 	@ResponseBody
 	@RequestMapping(value="board/replylist",method=RequestMethod.POST)
 	public List<BoardReplyDTO> replylist(@RequestParam("bno")int bno){
-		logger.info("sdsdsds"+bno);
-		List<BoardReplyDTO> lis = boardService.replyDetail(bno);
-		logger.info("sdsdsds"+lis);
-		return lis;
+		return boardService.replyDetail(bno);
 	}
 	
 	//댓글삭제

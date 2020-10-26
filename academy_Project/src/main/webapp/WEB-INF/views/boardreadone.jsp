@@ -38,8 +38,7 @@ $(document).ready(function(){
 			success : function(result){
 				console.log(result);
 				replylist();
-				$("#rememo").val()="";
-				$("#rewriter").val()="";
+				$("#rememo").val("");
 				
 			},
 			error : function(data){
@@ -67,13 +66,21 @@ $(document).ready(function(){
 			}
 			else{
 	               $(result).each(function(){
+	            	  htmls += '<c:set var="rewriter" value="'+this.rewriter+'"/>';
 	                  htmls += '<div class="media text-muted pt-3" id="reno' + this.reno + '">';
 	                     htmls += '<span class="d-block">';
 	                        htmls += this.reno + ' - ';
 	                        htmls += '<strong class="text-gray-dark">' + this.rewriter + '</strong>';
 	                        htmls += '<span style="padding-left: 7px; font-size: 9pt">';
-	                        htmls += '<a href="javascript:void(0)" onclick="fn_editReply(' + this.reno + ', \'' + this.rewriter + '\', \'' + this.rememo + '\' )" style="padding-right:5px">수정</a>';
+	                      	htmls += '<c:if test="${user.memId == rewriter}">';
+	                        htmls += '<a href="javascript:void(0)" onclick="fn_editReply
+	                        (' + this.reno + ', \'' + this.rewriter + '\', \'' + this.rememo + '\' )" style="padding-right:5px">수정</a>';
+	                      
 	                        htmls += '<a href="javascript:void(0)" onclick="fn_deleteReply(' + this.reno + ')" >삭제</a>';
+	                        htmls += '</c:if>';
+	                        htmls += '<c:if test="${user.memId == board.id}">';
+	                        htmls += '<a href="javascript:void(0)" onclick="fn_deleteReply(' + this.reno + ')" >삭제</a>';
+	                        htmls += '</c:if>';
 	                        htmls += '</span>';
 	                        htmls += '</span><br>';
 	                        htmls += this.rememo;
@@ -91,9 +98,81 @@ $(document).ready(function(){
 		}
 	});
 	
-	//replylist() end
-}
+	}//댓글 불러오기 끝
 	
+	function fn_editReply(reno,rewriter,rememo){
+		var htmls="";
+		htmls = htmls + '<div class="" id="reno'+reno+'">';
+		
+		htmls += '<span class="d-block">';
+		htmls += reno + ' - ';
+		htmls += '<strong class="text-gray-dark">' + rewriter + '</strong>';
+		htmls += '<span style="padding-left: 7px; font-size: 9pt">';
+		htmls += '<a href="javascript:void(0)" onclick="fn_updateReply(' +reno + ', \'' + rewriter + '\' )"
+		style="padding-right:5px">저장</a>';
+		
+		htmls += '<a href="javascript:void(0)" onclick="replyList()">취소</a>';
+		htmls += '</span>';
+		htmls += '</span><br>';
+		htmls +='<textarea name="editmemo" id="editmemo" class="form-control" rows="3">'
+		htmls += rememo;
+		htmls +='</textarea>'
+		htmls += '</p>';
+		htmls += '</div>';    
+		
+		$('#reno'+reno).replaceWith(htmls);
+		$('#reno'+reno+'#editmemo').focus();
+		
+		
+	}
+	
+	
+	//리플 업데이트 
+	function fn_updateReply(reno,rewriter){
+		var editmemo = $("#editmemo").val();
+		var url = "${pageContext.request.contextPath}/board/replyupdate";
+		var paramData = {
+				"reno" : reno,
+				"rewriter" : rewriter,
+				"rememo" : editmemo
+		};// 수정할 데이터
+		
+		$.ajax({
+			type : "POST",
+			url : url,
+			data : paramData,
+			dataType : 'json',
+			success : function(result){
+				console.log(result);
+				replylist();
+			},
+			error : function(data){
+				alert("업데이트 에러");
+			}
+		});
+	} //업데이트 끝
+	
+	function fn_deleteReply(reno){
+		var url="${pageContext.request.contextPath}/board/replyDelete";
+		var paramData = {
+				"reno" : reno
+		};
+		
+		$.ajax({
+			type : "POST",
+			url : url,
+			data : paramData,
+			dataType : 'json',
+			success : function(result){
+				console.log(result);
+				replylist();
+				
+			},
+			error : function(data){
+				alert("삭제 에러");
+			}
+		});
+	} //댓글 삭제 끝
 	
 </script>
 <div class="col-sm-2"></div>
@@ -137,16 +216,18 @@ $(document).ready(function(){
 	</section>
 	
 	<div class="box-body">
+	<c:if test="${user != null}">
 	<table>
 		<tr>
-		
-		<td rowspan="2" width="70%"><textarea name="rememo" id="rememo" placeholder="댓글을 입력하세요"></textarea></td>
+		<td rowspan="2" width="70%"><input class="form-control" name="rememo" id="rememo" placeholder="댓글을 입력하세요"></td>
+		<td><input type="hidden" name="rewriter" class="form-control" value="${user.memId}" readonly></td>
 		</tr>
+		
 		<tr>
 			<td><button type="button" id="btnReplySave">저장</button></td>
 		</tr>
 	</table>
-	
+	</c:if>
 	<div id="replyList">
 	</div>
 	

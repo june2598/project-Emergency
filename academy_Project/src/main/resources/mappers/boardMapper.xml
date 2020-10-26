@@ -92,7 +92,7 @@
 	</update>
 	
 	<!-- 댓글 삭제 -->
-	<delete id="replydelete" parameterType="java.lang.Integer">
+	<delete id="replyDelete" parameterType="java.lang.Integer">
 	delete from board_reply
 	where reno=#{reno}
 	</delete>
