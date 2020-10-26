@@ -63,11 +63,11 @@
 	</insert>
 	
 	<!-- 게시글번호에 해당하는 댓글 조회  -->
-	<select id="replyDetail" parameterType="java.lang.Integer" resultType="java.util.Map">
+	<select id="replyDetail" parameterType="java.lang.Integer" resultType="BoardReplyDTO">
 	select *
 	from board_reply
 	where bno= #{bno}
-	oreder by reno desc
+	order by reno desc
 	</select>
 	
 	<!-- 댓글 쓰기 -->
@@ -86,13 +86,16 @@
 	
 	<!-- 댓글 수정 -->
 	<update id="replyupdate" parameterType="BoardReplyDTO">
-	updae board_reply
+	update board_reply
 	set rewriter = #{rewriter} , rememo=#{rememo} , redate = curdate()
 	where reno = #{reno}
 	</update>
 	
 	<!-- 댓글 삭제 -->
-	<delete id="replydelete" parameterType="java.lang.Integer"></delete>
+	<delete id="replyDelete" parameterType="java.lang.Integer">
+	delete from board_reply
+	where reno=#{reno}
+	</delete>
 	
 	
   </mapper>

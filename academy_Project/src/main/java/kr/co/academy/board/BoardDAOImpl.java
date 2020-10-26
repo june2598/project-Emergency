@@ -59,7 +59,7 @@ public class BoardDAOImpl implements BoardDAO{
 	@Override
 	public List<BoardReplyDTO> replyDetail(int bno) {
 		// TODO Auto-generated method stub
-		return sqlSession.selectList(namespace+".replydetail",bno);
+		return sqlSession.selectList(namespace+".replyDetail",bno);
 	}
 
 	@Override

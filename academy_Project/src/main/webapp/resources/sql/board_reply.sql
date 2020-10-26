@@ -1,4 +1,4 @@
-CREATE TABLE `board_reply` (
+CREATE TABLE `academy`.`board_reply` (
   `reno` int NOT NULL AUTO_INCREMENT,
   `rewriter` varchar(45) NOT NULL,
   `rememo` varchar(45) NOT NULL,
