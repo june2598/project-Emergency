@@ -47,19 +47,42 @@
 				</div>
 
 			</div>
-			<div class="box-footer" align="right" >
+			<div class="box-footer" align="right">
 				<button class="btn btn-primary" type="button"
-						onclick="location.href='${contextPath}/manage/manageupdate?smid=${manage.smid}'">수정</button>
-				<button class="btn btn-danger" type="button"
-						onclick="location.href='${contextPath}/manage/managedelete?smid= + ${manage.smid}'">삭제</button>
+					onclick="location.href='${contextPath}/manage/manageupdate?smid=${manage.smid}'">수정</button>
+				<button class="btn btn-danger" type="button" data-toggle="modal"
+					data-target="#deleteModal">삭제</button>
 				<button type="button" class="btn btn-secondary"
-						onclick="location.href='${contextPath}/manage/getBoardList' ">목록</button>
+					onclick="location.href='${contextPath}/manage/getBoardList' ">목록</button>
+
+			</div>
+			<!-- 모달 -->
+			<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog"
+				aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLabel">학생정보 삭제</h5>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">학생정보를 정말 삭제하시겠습니까?</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-primary"
+							onclick="location.href='${contextPath}/manage/managedelete?smid= + ${manage.smid}'">삭제하기</button>
+							<button type="button" class="btn btn-secondary"
+								data-dismiss="modal">취소하기</button>
+						</div>
+					</div>
+				</div>
 			</div>
 		</section>
 	</div>
 	<div class="col-sm-2"></div>
 	<script>
-	
+		
 	</script>
 
 	<%@include file="include/footer.jsp"%>

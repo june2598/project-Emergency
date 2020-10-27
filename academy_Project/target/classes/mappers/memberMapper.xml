@@ -8,6 +8,8 @@
 		from member
 		where memId=#{memId} and memPw=#{memPw}
 	</select>
+	
+	
 	<insert id="register" parameterType="MemberDTO">
 		insert into member(memId, memPw, memName, memTel, memAddress, memPosition, memBirth, memEmail, memRegdate)
 		values(#{memId}, #{memPw}, #{memName}, #{memTel}, #{memAddress}, 0, #{memBirth}, #{memEmail}, now())

@@ -74,7 +74,7 @@
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<c:if test="${user==null }">
-						<li><a href="${contextPath}/member/register"><span
+						<li><a href="${contextPath}/member/modelregister"><span
 								class="glyphicon glyphicon-user"></span> 회원가입</a></li>
 					</c:if>
 					<c:if test="${user==null }">
