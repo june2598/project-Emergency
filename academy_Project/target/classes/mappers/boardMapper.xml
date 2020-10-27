@@ -5,11 +5,12 @@
   <mapper namespace="kr.co.academy.board">
 	
 	<!-- 전체 목록 보기 -->
-	<select id="list" resultType="BoardDTO">
+	<select id="list" parameterType="Boardpaging" resultType="BoardDTO">
 	select *
 	from board
 	where bdel = 0 and bselect= #{bselect}
-	order by bno desc;
+	order by bno desc
+	limit #{startList},#{listSize}
 	</select>
 
 
@@ -97,5 +98,11 @@
 	where reno=#{reno}
 	</delete>
 	
+	<!-- 총 게시물 개수 출력 -->
+	<select id="getBoardListCnt" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+		select count(*) 
+		FROM board
+		where bselect=#{bselect}
+	</select>
 	
   </mapper>

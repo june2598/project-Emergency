@@ -5,7 +5,7 @@ import java.util.List;
 public interface BoardService {
 
 	//전체목록
-	public List<BoardDTO> list(int bselect);
+	public List<BoardDTO> list(Boardpaging boardpaging);
 
 	public int updateReadCnt(int bno);	//조회수 증가
 	public BoardDTO readOne(int bno);	//글 읽기
@@ -37,5 +37,6 @@ public interface BoardService {
 	public BoardReplyDTO viewreplyUpdate(int reno);
 	//댓글삭제 
 	public int replyDelete(int reno);
-	//파일 업로드 
+	// 총 게시글 개수 확인
+	public int getBoardListCnt(int bselect);
 }

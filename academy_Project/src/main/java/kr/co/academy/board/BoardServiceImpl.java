@@ -14,9 +14,9 @@ public class BoardServiceImpl implements BoardService{
 	private BoardDAO boardDAO;
 
 	@Override
-	public List<BoardDTO> list(int bselect) {
+	public List<BoardDTO> list(Boardpaging boardpaging) {
 		// TODO Auto-generated method stub
-		return boardDAO.list(bselect);
+		return boardDAO.list(boardpaging);
 	}
 
 	@Override
@@ -91,5 +91,12 @@ public class BoardServiceImpl implements BoardService{
 		return boardDAO.replyDelete(reno);
 
 	}
+	
+	@Override
+	   public int getBoardListCnt(int bselect){
+		   // TODO Auto-generated method stub
+		   return boardDAO.getBoardListCnt(bselect);
+	   }
+
 
 }

@@ -36,14 +36,21 @@ public class BoardController {
 	
 	//전체 조회
 	@RequestMapping(value="board/boardlist",method=RequestMethod.GET)
-	public ModelAndView list(@RequestParam("bs")int bselect) {
+	public String list(@RequestParam("bs")int bselect,
+				Model model
+			   ,@RequestParam(defaultValue = "1") int page
+			   ,@RequestParam(defaultValue = "1")int range) {
 		logger.info("===List===");
-		ModelAndView mav = new ModelAndView();
+		int listCnt = boardService.getBoardListCnt(bselect);
 		
-		List<BoardDTO> list = boardService.list(bselect);
-		mav.addObject("boardlist",list);
-		mav.setViewName("boardlist");
-		return mav;
+		Boardpaging boardpaging = new Boardpaging();
+		boardpaging.pageInfo(page, range, listCnt);
+		boardpaging.setBselect(bselect);
+		
+		List<BoardDTO> list = boardService.list(boardpaging);
+		model.addAttribute("boardlist",list);
+		model.addAttribute("pagination", boardpaging);
+		return "boardlist";
 	}
 	
 	//글 쓰기

@@ -1,145 +1,189 @@
 package kr.co.academy.board;
 
 public class Boardpaging {
-	// 한 페이지당 게시글 수 
-    private int pageSize = 10;
-    
-    // 한 블럭(range)당 페이지 수 
-    private int rangeSize = 10;
-    
-    // 현재 페이지 
-    private int curPage = 1;
-    
-    // 현재 블럭(range) 
-    private int curRange = 1;
-    
-    // 총 게시글 수 
-    private int listCnt;
-    
-    // 총 페이지 수 
-    private int pageCnt;
-    
-    // 총 블럭(range) 수 
-    private int rangeCnt;
-    
-    // 시작 페이지 
-    private int startPage = 1;
-   
-    // 끝 페이지 
-    private int endPage = 1;
-    
-    // 시작 index 
-    private int startIndex = 0;
-    
-    // 이전 페이지 
-    private int prevPage;
-    
-    // 다음 페이지 
-    private int nextPage;
-    
-    
+	// 초기값 목록개수 10으로 셋팅
+		private int listSize = 10;
+		// 초기값 페이지범위를 10으로 셋팅
+		private int rangeSize = 10;
+		// 현재 페이지
+		private int page;
+		// 현제 페이지 범위
+		private int range;
+		// 총 게시물의 개수
+		private int listCnt;
+		// 총 페이지의 범위의 개수
+		private int pageCnt;
+		// 각 페이지 범위 시작 번호
+		private int startPage;
+		private int startList;
 
-	public int getPageSize() {
-		return pageSize;
-	}
+		// 각 페이지 범위 끝 번호
+		private int endPage;
+		// 이전 페이지
+		private boolean prev;
+		// 다음 페이지
+		private boolean next;
+		
+		private int bselect;
 
-	public void setPageSize(int pageSize) {
-		this.pageSize = pageSize;
-	}
+		
+		
+		public int getBselect() {
+			return bselect;
+		}
 
-	public int getRangeSize() {
-		return rangeSize;
-	}
+		public void setBselect(int bselect) {
+			this.bselect = bselect;
+		}
 
-	public void setRangeSize(int rangeSize) {
-		this.rangeSize = rangeSize;
-	}
+		public int getRangeSize() {
 
-	public int getCurPage() {
-		return curPage;
-	}
+			return rangeSize;
 
-	public void setCurPage(int curPage) {
-		this.curPage = curPage;
-	}
+		}
 
-	public int getCurRange() {
-		return curRange;
-	}
+		public int getPage() {
 
-	public void setCurRange(int curRange) {
-		this.curRange = curRange;
-	}
+			return page;
 
-	public int getListCnt() {
-		return listCnt;
-	}
+		}
 
-	public void setListCnt(int listCnt) {
-		this.listCnt = listCnt;
-	}
+		public void setPage(int page) {
 
-	public int getPageCnt() {
-		return pageCnt;
-	}
+			this.page = page;
 
-	public void setPageCnt(int pageCnt) {
-		this.pageCnt = pageCnt;
-	}
+		}
 
-	public int getRangeCnt() {
-		return rangeCnt;
-	}
+		public int getRange() {
 
-	public void setRangeCnt(int rangeCnt) {
-		this.rangeCnt = rangeCnt;
-	}
+			return range;
 
-	public int getStartPage() {
-		return startPage;
-	}
+		}
 
-	public void setStartPage(int startPage) {
-		this.startPage = startPage;
-	}
+		public void setRange(int range) {
 
-	public int getEndPage() {
-		return endPage;
-	}
+			this.range = range;
 
-	public void setEndPage(int endPage) {
-		this.endPage = endPage;
-	}
+		}
 
-	public int getStartIndex() {
-		return startIndex;
-	}
+		public int getStartPage() {
 
-	public void setStartIndex(int startIndex) {
-		this.startIndex = startIndex;
-	}
+			return startPage;
 
-	public int getPrevPage() {
-		return prevPage;
-	}
+		}
 
-	public void setPrevPage(int prevPage) {
-		this.prevPage = prevPage;
-	}
+		public void setStartPage(int startPage) {
 
-	public int getNextPage() {
-		return nextPage;
-	}
+			this.startPage = startPage;
 
-	public void setNextPage(int nextPage) {
-		this.nextPage = nextPage;
-	}
+		}
 
-	@Override
-	public String toString() {
-		return "Boardpaging [pageSize=" + pageSize + ", rangeSize=" + rangeSize + ", curPage=" + curPage + ", curRange="
-				+ curRange + ", listCnt=" + listCnt + ", pageCnt=" + pageCnt + ", rangeCnt=" + rangeCnt + ", startPage="
-				+ startPage + ", endPage=" + endPage + ", startIndex=" + startIndex + ", prevPage=" + prevPage
-				+ ", nextPage=" + nextPage + "]";
-	}
+		public int getEndPage() {
+
+			return endPage;
+
+		}
+
+		public void setEndPage(int endPage) {
+
+			this.endPage = endPage;
+
+		}
+
+		public boolean isPrev() {
+
+			return prev;
+
+		}
+
+		public void setPrev(boolean prev) {
+
+			this.prev = prev;
+
+		}
+
+		public boolean isNext() {
+
+			return next;
+
+		}
+
+		public void setNext(boolean next) {
+
+			this.next = next;
+
+		}
+
+		public int getListSize() {
+
+			return listSize;
+
+		}
+
+		public void setListSize(int listSize) {
+
+			this.listSize = listSize;
+
+		}
+
+		public int getListCnt() {
+
+			return listCnt;
+
+		}
+
+		public void setListCnt(int listCnt) {
+
+			this.listCnt = listCnt;
+
+		}
+
+		public int getStartList() {
+
+			return startList;
+
+		}
+		//페이지 정보
+		public void pageInfo(int page, int range, int listCnt) {
+
+			this.page = page;
+
+			this.range = range;
+
+			this.listCnt = listCnt;
+
+			// 전체 페이지수 
+			// 전달 받은 전체 게시물 개수(listCnt)와 기본값으로 설정한 한 페이지당 목록 개수(listSize)를 이용해 전체 페이지 개수(pageCnt)
+		
+			this.pageCnt = (int) Math.ceil((double)listCnt / listSize);
+
+			// 시작 페이지
+			// 각 페이지 범위의 시작 번호 구함
+			this.startPage = (range - 1) * rangeSize + 1;
+
+			// 끝 페이지
+		
+			this.endPage = range * rangeSize;
+
+			// 게시판 시작번호
+
+			this.startList = (page - 1) * listSize;
+
+			// 이전 버튼 상태
+
+			this.prev = range == 1 ? false : true;
+
+			// 다음 버튼 상태
+
+			this.next = endPage > pageCnt ? false : true;
+
+			if (this.endPage > this.pageCnt) {
+
+				this.endPage = this.pageCnt;
+
+				this.next = false;
+
+			}
+
+		}
 }
