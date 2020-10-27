@@ -47,6 +47,29 @@ public class HomeController {
 		logger.info("curriculum");
 		return "curriculum";
 	}
-	
-
+	@RequestMapping(value="/prolist", method = RequestMethod.GET)
+	public String prolist() {
+		logger.info("prolist");
+		return "prolist";
+	}
+	@RequestMapping(value="/prolist2", method = RequestMethod.GET)
+	public String prolist2() {
+		logger.info("prolist2");
+		return "prolist2";
+	}
+	@RequestMapping(value="/prolist3", method = RequestMethod.GET)
+	public String prolist3() {
+		logger.info("prolist3");
+		return "prolist3";
+	}
+	@RequestMapping(value="/prolist4", method = RequestMethod.GET)
+	public String prolist4() {
+		logger.info("prolist4");
+		return "prolist4";
+	}
+	@RequestMapping(value="/mapinfo", method = RequestMethod.GET)
+	public String mapinfo() {
+		logger.info("mapinfo");
+		return "mapinfo";
+	}
 }

@@ -18,13 +18,12 @@
 <body>
 	<div class="container" style="margin-left: 0px; padding-left: 0px;">
 		<div class="col-sm-8">
-		<a href="${contextPath }/">
-			<img
-				src="${contextPath }/resources/imgs/logo.jpg"
-				alt="logo" style="width: 150px; height: 150px"> <img
-				src="${contextPath }/resources/imgs/logo2.jpg"
-				alt="logo2" style="width: 250px; height: 150px">
-		</a>
+			<a href="${contextPath }/"> <img
+				src="${contextPath }/resources/imgs/logo.jpg" alt="logo"
+				style="width: 150px; height: 150px"> <img
+				src="${contextPath }/resources/imgs/logo2.jpg" alt="logo2"
+				style="width: 250px; height: 150px">
+			</a>
 		</div>
 		<div class="col-sm-2"></div>
 		<div class="col-sm-2"></div>
@@ -48,28 +47,23 @@
 					<li><a href="${contextPath}/board/boardlist?bs=0">공지사항</a></li>
 					<li><a href="${contextPath}/curriculum">교육과정</a></li>
 					<li><a href="${contextPath}/board/boardlist?bs=1">고객상담센터</a></li>
+					<li><a href="${contextPath}/mapinfo">찾아오시는길</a></li>
 					<c:if test="${user.memPosition==2 }">
-						<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">관리자페이지<span class="caret"></span></a>
+						<li class="dropdown"><a class="dropdown-toggle"
+							data-toggle="dropdown" href="#">관리자페이지<span class="caret"></span></a>
 							<ul class="dropdown-menu">
 
-								<li id="cmdBoard">
-									<a class="nav-link" href="${contextPath }/cmanage/cboarddetail">
+								<li id="cmdBoard"><a class="nav-link"
+									href="${contextPath }/cmanage/cboarddetail"> <i
+										class="fas fa-fw fa-table"></i> <span>홈페이지 관리</span>
+								</a></li>
+								<li id="managelist" class="menu nav-item"><a
+									class="nav-link" href="${contextPath}/manage/getBoardList">
 
-										<i class="fas fa-fw fa-table"></i>
-										<span>홈페이지 관리</span>
-									</a>
-								</li>
-					            <li id="managelist" class="menu nav-item">
+										<i class="fas fa-address-card"></i> <span>회원관리</span>
+								</a></li>
 
-									<a class="nav-link" href="${contextPath}/manage/getBoardList">
-
-										<i class="fas fa-address-card"></i>
-										<span>회원관리</span>
-									</a>
-								</li>
-								
-							</ul>
-						</li>								
+							</ul></li>
 					</c:if>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
@@ -82,7 +76,9 @@
 								class="glyphicon glyphicon-log-in"></span> 로그인</a></li>
 					</c:if>
 					<c:if test="${user!=null }">
-						<li><a href="${contextPath}/member/logout"><span class="glyphicon glyphicon-log-in"></span> 로그아웃 &nbsp;&nbsp;<font style="color: white;">${user.memId }님 환영합니다.</font></a></li>
+						<li><a href="${contextPath}/member/logout"><span
+								class="glyphicon glyphicon-log-in"></span> 로그아웃 &nbsp;&nbsp;<font
+								style="color: white;">${user.memId }님 환영합니다.</font></a></li>
 					</c:if>
 				</ul>
 				<div class="box-header with-border"></div>
