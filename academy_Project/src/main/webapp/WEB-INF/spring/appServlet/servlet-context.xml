@@ -59,5 +59,7 @@
 		<beans:property name="maxInMemorySize" value="100000000"></beans:property>	
 	</beans:bean>
 	
+	<!-- NaverLoginBO Class에 대한 Bean설정 추가 -->
+	<beans:bean id="naverLoginBO" class="kr.co.academy.member.NaverLoginBO" />
 	
 </beans:beans>
