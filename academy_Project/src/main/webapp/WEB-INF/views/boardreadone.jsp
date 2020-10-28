@@ -73,9 +73,7 @@ $(document).ready(function(){
 	                        htmls += '<strong class="text-gray-dark">' + this.rewriter + '</strong>';
 	                        htmls += '<span style="padding-left: 7px; font-size: 9pt">';
 	                      	htmls += '<c:if test="${user.memId == rewriter}">';
-	                        htmls += '<a href="javascript:void(0)" onclick="fn_editReply
-	                        (' + this.reno + ', \'' + this.rewriter + '\', \'' + this.rememo + '\' )" style="padding-right:5px">수정</a>';
-	                      
+	                        htmls += '<a href="javascript:void(0)" onclick="fn_editReply(' + this.reno + ', \'' + this.rewriter + '\', \'' + this.rememo + '\' )" style="padding-right:5px">수정</a>';
 	                        htmls += '<a href="javascript:void(0)" onclick="fn_deleteReply(' + this.reno + ')" >삭제</a>';
 	                        htmls += '</c:if>';
 	                        htmls += '<c:if test="${user.memId == board.id}">';

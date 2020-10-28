@@ -9,17 +9,20 @@
 <html>
 <head>
 <title>boardlist</title></head><body>
+<c:url var="boardlist1" value="/board/boardlist"></c:url>
 <%@include file="include/header.jsp"%>
 <script>
 	//이전 버튼 이벤트
-	function fn_prev(page, range, rangeSize,searchType, keyword) {
+	function fn_prev(page, range, rangeSize, searchType, keyword) {
 		var page = ((range - 2) * rangeSize) + 1;
 		var range = range - 1;
 	//var url = "${pageContext.request.contextPath}/manage/getBoardList";
-		var url = "${getBoardList}";  
+		var url = "${boardlist1}";  
 		
 		url = url + "?page=" + page;
 		url = url + "&range=" + range;
+		url = url + "&searchType=" + $('#searchType').val();
+		url = url + "&keyword=" + keyword;
 		
 		location.href = url;
 	}
@@ -27,9 +30,12 @@
 	function fn_pagination(page, range, rangeSize, searchType, keyword) {
 	
 	//var url = "${pageContext.request.contextPath}/manage/getBoardList";
-		var url = "${getBoardList}";  
+		var url = "${boardlist1}";  
 		url = url + "?page=" + page;
 		url = url + "&range=" + range;
+		url = url + "&searchType=" + $('#searchType').val();
+		url = url + "&keyword=" + keyword;
+		
 		location.href = url;
 	}
 	//다음 버튼 이벤트
@@ -38,13 +44,33 @@
 		var range = parseInt(range) + 1;
 		
 	//var url = "${pageContext.request.contextPath}/manage/getBoardList";
-		var url = "${getBoardList}";  
+		var url = "${boardlist1}";  
 		
 		url = url + "?page=" + page;
 		url = url + "&range=" + range;
+		url = url + "&searchType=" + $('#searchType').val();
+		url = url + "&keyword=" + keyword;
+		
 		
 		location.href = url;
 	}
+	
+	$(document).on('click', '#btnSearch', function(e) {
+
+		e.preventDefault();
+		
+		//var url = "${pageContext.request.contextPath}/manage/getBoardList";
+		var url = "${boardlist1}";  
+		url = url + "?bs=" + ${pagination.bselect};
+		url = url + "&searchType=" + $('#searchType').val();
+		url = url + "&keyword=" + $('#keyword').val();
+		
+		
+		location.href = encodeURI( url);
+		console.log(url);
+
+	});
+		
 </script>
 	<div class="col-sm-2"></div>
 	<div class="col-sm-8">
@@ -80,23 +106,24 @@
 			<ul class="pagination">
 				<c:if test="${pagination.prev}">
 					<li class="page-item"><a class="page-link" href="#"
-						onClick="fn_prev('${pagination.page}', '${pagination.range}', '${pagination.rangeSize}')">이전</a></li>
+						onClick="fn_prev('${pagination.page}', '${pagination.range}', '${pagination.rangeSize}','${Bsearch.searchType}', '${Bsearch.keyword}')">이전</a></li>
 				</c:if>
 				<c:forEach begin="${pagination.startPage}"
 					end="${pagination.endPage}" var="idx">
 					<li
 						class="page-item <c:out value="${pagination.page == idx ? 'active' : ''}"/> ">
 						<a class="page-link" href="#"
-						onClick="fn_pagination('${idx}', '${pagination.range}', '${pagination.rangeSize}'">
+						onClick="fn_pagination('${idx}', '${pagination.range}', '${pagination.rangeSize}', '${Bsearch.searchType}', '${Bsearch.keyword}'">
 							${idx} </a></li>
 				</c:forEach>
 				<c:if test="${pagination.next}">
 					<li class="page-item"><a class="page-link" href="#"
-						onClick="fn_next('${pagination.range}', '${pagination.range}', '${pagination.rangeSize}')">다음</a></li>
+						onClick="fn_next('${pagination.range}', '${pagination.range}', '${pagination.rangeSize}', '${Bsearch.searchType}', '${Bsearch.keyword}')">다음</a></li>
 				</c:if>
 			</ul>
 		</div>
 		<!-- 페이징 처리 -->
+		<!-- 글쓰기 -->
 	<div class="box-header with-border" align="right">
 			<% String bs = request.getParameter("bs");
 			if(bs.equals("0")){
@@ -112,6 +139,23 @@
 			</c:if>
 			<%} %>			
 	</div>
+	<!-- 글쓰기 끝 -->
+		<div class="box-header with-border" align="right">
+				<table>
+					<tr>
+						<td width="100%" align="left">&nbsp;&nbsp;
+						 <select name="searchType" id="searchType" class="txt">
+								<option value="btitle">제목</option>
+								<option value="id">작성자</option>
+								<option value="bcontent">내용</option>
+						</select> <input class="txt" name="keyword" id="keyword" type="text" value="${pagination.keyword}"/>
+							<button class="btn btn-sm btn-primary" name="btnSearch"
+								id="btnSearch">검색</button>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<!-- 끝 -->
 	</div>
 	<div class="col-sm-2"></div>
 <%@include file="include/footer.jsp"%>

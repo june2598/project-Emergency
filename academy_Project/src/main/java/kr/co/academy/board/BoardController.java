@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -22,6 +23,8 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import kr.co.academy.manage.Search;
 
 /**
  * Handles requests for the application home page.
@@ -39,17 +42,36 @@ public class BoardController {
 	public String list(@RequestParam("bs")int bselect,
 				Model model
 			   ,@RequestParam(defaultValue = "1") int page
-			   ,@RequestParam(defaultValue = "1")int range) {
+			   ,@RequestParam(defaultValue = "1")int range
+				,@RequestParam(defaultValue = "btitle") String searchType
+				,@RequestParam(required = false) String keyword
+				,@ModelAttribute("Bsearch") BSearch Bsearch
+				)	throws Exception {
+		
+		logger.info("==Bsearch==");
+		//검색
+				model.addAttribute("Bsearch",Bsearch);
+				Bsearch.setSearchType(searchType);
+				Bsearch.setKeyword(keyword);
+				
+				
+				
+				
 		logger.info("===List===");
+		//전체 게시글 개수
 		int listCnt = boardService.getBoardListCnt(bselect);
 		
-		Boardpaging boardpaging = new Boardpaging();
-		boardpaging.pageInfo(page, range, listCnt);
-		boardpaging.setBselect(bselect);
+		//검색
+		Bsearch.pageInfo(page, range, listCnt);
+		//
+		Bsearch.setBselect(bselect);
 		
-		List<BoardDTO> list = boardService.list(boardpaging);
+		List<BoardDTO> list = boardService.list(Bsearch);
 		model.addAttribute("boardlist",list);
-		model.addAttribute("pagination", boardpaging);
+		model.addAttribute("pagination", Bsearch);
+		
+		
+		
 		return "boardlist";
 	}
 	
