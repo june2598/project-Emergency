@@ -17,6 +17,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
  * Handles requests for the application home page.
  */
 @Controller
+@RequestMapping("/manage/*")
 public class ManageController {
 
    private static final Logger logger = LoggerFactory.getLogger(ManageController.class);
@@ -25,7 +26,7 @@ public class ManageController {
    ManageService manageService;
    
    //페이징처리
-   @RequestMapping(value = "manage/getBoardList", method = RequestMethod.GET)
+   @RequestMapping(value = "getBoardList", method = RequestMethod.GET)
    public String getBoardList(Model model
 		   ,@RequestParam(defaultValue = "1") int page
 		   ,@RequestParam(defaultValue = "1")int range
@@ -51,12 +52,12 @@ public class ManageController {
    }
 
    // 등록
-   @RequestMapping(value = "manage/manageregister", method = RequestMethod.GET)
+   @RequestMapping(value = "/manageregister", method = RequestMethod.GET)
    public String register() {
       return "manageregister";
    }
 
-   @RequestMapping(value = "manage/manageregister", method = RequestMethod.POST)
+   @RequestMapping(value = "/manageregister", method = RequestMethod.POST)
    public String register(ManageDTO manageDTO,RedirectAttributes rttr) {
       
 	   logger.info("전송 : " + manageDTO);
@@ -70,7 +71,7 @@ public class ManageController {
    }
 
    //리스트상세보기
-   @RequestMapping(value = "manage/managereadlist", method = RequestMethod.GET)
+   @RequestMapping(value = "/managereadlist", method = RequestMethod.GET)
    public String readlist(@RequestParam("smid") int smid, Model model) {
 	  ManageDTO manageDTO = manageService.readlist(smid);
       model.addAttribute("manage", manageDTO);
@@ -79,14 +80,14 @@ public class ManageController {
    }
 
    // 수정
-   @RequestMapping(value = "manage/manageupdate", method = RequestMethod.GET)
+   @RequestMapping(value = "/manageupdate", method = RequestMethod.GET)
    public String update(@RequestParam("smid") int smid, Model model) {
       ManageDTO manageDTO = manageService.readlist(smid);
       model.addAttribute("manage", manageDTO);
       return "manageupdate";
    }
 
-   @RequestMapping(value = "manage/manageupdate", method = RequestMethod.POST)
+   @RequestMapping(value = "/manageupdate", method = RequestMethod.POST)
    public String update(ManageDTO manageDTO, RedirectAttributes attr) {
       int r = manageService.update(manageDTO);
       logger.info("수정 : " + manageDTO);
@@ -100,7 +101,7 @@ public class ManageController {
    }
 
    // 삭제
-   @RequestMapping(value = "manage/managedelete", method = RequestMethod.GET)
+   @RequestMapping(value = "/managedelete", method = RequestMethod.GET)
    public String delete(@RequestParam("smid") int smid, RedirectAttributes rttr) {
 	  
 	   logger.info("삭제 : " + smid);

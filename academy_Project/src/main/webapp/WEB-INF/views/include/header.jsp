@@ -65,10 +65,11 @@
 
 							</ul></li>
 					</c:if>
+					<li><a href="${contextPath}/sample/member">시큐리티 멤버</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<c:if test="${user==null }">
-						<li><a href="${contextPath}/member/modelregister"><span
+						<li><a href="${contextPath}/member/register"><span
 								class="glyphicon glyphicon-user"></span> 회원가입</a></li>
 					</c:if>
 					<c:if test="${user==null }">

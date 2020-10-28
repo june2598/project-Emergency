@@ -30,6 +30,7 @@
 						<input type="password" class="form-control" placeholder="비밀번호"
 							name="memPw" maxlength="20">
 					</div>
+					<input type="hidden" name="${ _csrf.parameterName}" value="${_csrf.token}">
 					<input type="submit" class="btn btn-primary form-control"
 						value="로그인">
 				</form>

@@ -6,8 +6,10 @@ import java.util.Locale;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -71,5 +73,12 @@ public class HomeController {
 	public String mapinfo() {
 		logger.info("mapinfo");
 		return "mapinfo";
+	}
+	
+	//스프링 인가 없는 사용자 접근 에러페이지	
+	@GetMapping("/accessError")
+	public void accessDenied(Authentication auth, Model model) {
+		
+		model.addAttribute("msg", "Access Denied");
 	}
 }

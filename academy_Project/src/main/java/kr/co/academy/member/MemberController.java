@@ -27,6 +27,7 @@ import com.github.scribejava.core.model.OAuth2AccessToken;
  * Handles requests for the application home page.
  */
 @Controller
+@RequestMapping("/member/*")
 public class MemberController {
 
 	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
@@ -44,13 +45,13 @@ public class MemberController {
 	}
 	
 	  
-	   @RequestMapping(value="member/login", method=RequestMethod.GET)
+	   @RequestMapping(value="/login", method=RequestMethod.GET)
 	   public String login() {
 	      logger.info("login form");
 	      return "login";
 	   }
 	   
-	   @RequestMapping(value="member/login", method=RequestMethod.POST)
+	   @RequestMapping(value="/login", method=RequestMethod.POST)
 	   public String login(@RequestParam Map<String, String> map, HttpSession session) {
 	      Map user = memberService.login(map);
 	      
@@ -64,13 +65,13 @@ public class MemberController {
 	      }
 	   }
 
-	@RequestMapping(value = "member/modelregister", method = RequestMethod.GET)
+	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public String register(@ModelAttribute MemberDTO memberDTO) {
 		logger.info("register form");
-		return "modelregister";
+		return "register";
 	}
 
-	@RequestMapping(value = "member/register", method = RequestMethod.POST)
+	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public String register(@ModelAttribute @Valid MemberDTO memberDTO, BindingResult result) {
 
 		if (result.hasErrors()) {
@@ -84,17 +85,20 @@ public class MemberController {
 		}
 
 		memberService.register(memberDTO);
+		memberService.authregi(memberDTO);
+		memberService.usersregi(memberDTO);
+		
 		return "redirect:/";
 	}
 
-	@RequestMapping(value = "member/logout", method = RequestMethod.GET)
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout(HttpSession session) {
 		session.removeAttribute("user");
 
 		return "redirect:/";
 	}
 
-	@RequestMapping(value = "member/idChk", method = RequestMethod.GET, produces = "application/text; charset=utf8")
+	@RequestMapping(value = "/idChk", method = RequestMethod.GET, produces = "application/text; charset=utf8")
 	@ResponseBody
 	public String idChk(MemberDTO memberDTO) {
  
