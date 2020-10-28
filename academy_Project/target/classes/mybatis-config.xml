@@ -12,6 +12,6 @@
  		<typeAlias alias="Search" type="kr.co.academy.manage.Search"/>
  		<typeAlias alias="BFDTO" type="kr.co.academy.board.BoardFileDTO"/>
  		<typeAlias alias="BoardReplyDTO" type="kr.co.academy.board.BoardReplyDTO"/>
- 		<typeAlias alias="Boardpaging" type="kr.co.academy.board.Boardpaging"/>
+ 		<typeAlias alias="BSearch" type="kr.co.academy.board.BSearch"/>
  	</typeAliases>
  </configuration>

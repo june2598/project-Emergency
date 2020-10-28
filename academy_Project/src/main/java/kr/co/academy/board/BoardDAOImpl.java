@@ -15,9 +15,9 @@ public class BoardDAOImpl implements BoardDAO{
 	private static final String namespace = "kr.co.academy.board";
 
 	@Override
-	public List<BoardDTO> list(Boardpaging boardpaging) {
+	public List<BoardDTO> list(BSearch Bsearch) {
 		// TODO Auto-generated method stub
-		return sqlSession.selectList(namespace +".list",boardpaging);
+		return sqlSession.selectList(namespace +".list",Bsearch);
 	}
 
 	@Override

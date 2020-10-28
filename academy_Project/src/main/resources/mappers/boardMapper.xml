@@ -5,11 +5,23 @@
   <mapper namespace="kr.co.academy.board">
 	
 	<!-- 전체 목록 보기 -->
-	<select id="list" parameterType="Boardpaging" resultType="BoardDTO">
+	<select id="list" parameterType="BSearch" resultType="BoardDTO">
 	select *
 	from board
 	where bdel = 0 and bselect= #{bselect}
-	order by bno desc
+	<trim prefix="WHERE" prefixOverrides="AND|OR">
+
+			<if test="searchType=='btitle' and keyword != null and keyword != '' ">
+				AND BTITLE like CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test="searchType=='id' and keyword != null and keyword != '' ">
+				AND ID like CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test="searchType=='bcontent' and keyword != null and keyword != '' ">
+				AND BCONTENT like CONCAT('%', #{keyword}, '%')
+			</if>	
+		</trim>
+		order by bno desc
 	limit #{startList},#{listSize}
 	</select>
 
@@ -104,5 +116,7 @@
 		FROM board
 		where bselect=#{bselect}
 	</select>
+	
+	
 	
   </mapper>

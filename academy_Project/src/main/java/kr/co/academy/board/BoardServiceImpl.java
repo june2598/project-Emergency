@@ -14,9 +14,9 @@ public class BoardServiceImpl implements BoardService{
 	private BoardDAO boardDAO;
 
 	@Override
-	public List<BoardDTO> list(Boardpaging boardpaging) {
+	public List<BoardDTO> list(BSearch Bsearch) {
 		// TODO Auto-generated method stub
-		return boardDAO.list(boardpaging);
+		return boardDAO.list(Bsearch);
 	}
 
 	@Override
