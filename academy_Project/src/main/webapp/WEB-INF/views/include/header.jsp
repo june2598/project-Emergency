@@ -65,7 +65,6 @@
 
 							</ul></li>
 					</c:if>
-					<li><a href="${contextPath}/sample/member">시큐리티 멤버</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<c:if test="${user==null }">
