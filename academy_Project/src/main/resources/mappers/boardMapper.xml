@@ -111,10 +111,23 @@
 	</delete>
 	
 	<!-- 총 게시물 개수 출력 -->
-	<select id="getBoardListCnt" parameterType="java.lang.Integer" resultType="java.lang.Integer">
-		select count(*) 
+	<select id="getBoardListCnt" parameterType="BSearch" resultType="java.lang.Integer">
+		select 
+		count(*) as listCnt
 		FROM board
 		where bselect=#{bselect}
+		<trim prefix="WHERE" prefixOverrides="AND|OR">
+
+			<if test="searchType=='btitle' and keyword != null and keyword != '' ">
+				AND BTITLE like CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test="searchType=='id' and keyword != null and keyword != '' ">
+				AND ID like CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test="searchType=='bcontent' and keyword != null and keyword != '' ">
+				AND BCONTENT like CONCAT('%', #{keyword}, '%')
+			</if>	
+		</trim>
 	</select>
 	
 	

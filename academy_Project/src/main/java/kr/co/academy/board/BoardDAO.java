@@ -5,7 +5,7 @@ import java.util.List;
 public interface BoardDAO {
 
 	//전체목록
-	public List<BoardDTO> list(BSearch Bsearch);
+	public List<BoardDTO> list(BSearch Bsearch) throws Exception;
 
 	public int updateReadCnt(int bno);	//조회수 증가
 	public BoardDTO readOne(int bno);	//글 읽기
@@ -38,6 +38,6 @@ public interface BoardDAO {
 	//댓글삭제 
 	public int replyDelete(int reno);
 	// 총 게시글 개수 확인
-	public int getBoardListCnt(int bselect);
+	public int getBoardListCnt(BSearch bsearch) throws Exception;
 
 }

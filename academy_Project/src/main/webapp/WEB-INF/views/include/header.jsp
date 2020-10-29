@@ -44,9 +44,9 @@
 			<div class="collapse navbar-collapse" id="myNavbar">
 				<ul class="nav navbar-nav">
 					<li><a href="${contextPath}/introduce">아카데미 소개</a></li>
-					<li><a href="${contextPath}/board/boardlist?bs=0">공지사항</a></li>
+					<li><a href="${contextPath}/board/list?bs=0">공지사항</a></li>
 					<li><a href="${contextPath}/curriculum">교육과정</a></li>
-					<li><a href="${contextPath}/board/boardlist?bs=1">고객상담센터</a></li>
+					<li><a href="${contextPath}/board/list?bs=1">고객상담센터</a></li>
 					<li><a href="${contextPath}/mapinfo">찾아오시는길</a></li>
 					<c:if test="${user.memPosition==2 }">
 						<li class="dropdown"><a class="dropdown-toggle"

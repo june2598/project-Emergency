@@ -134,7 +134,7 @@
 					</c:forEach>
 					<c:if test="${pagination.next}">
 						<li class="page-item"><a class="page-link" href="#"
-							onClick="fn_next('${pagination.range}', '${pagination.range}', '${pagination.rangeSize}',
+							onClick="fn_next('${pagination.page}', '${pagination.range}', '${pagination.rangeSize}',
 							'${search.searchType}', '${search.keyword}')">다음</a></li>
 					</c:if>
 				</ul>

@@ -15,7 +15,7 @@ public class BoardDAOImpl implements BoardDAO{
 	private static final String namespace = "kr.co.academy.board";
 
 	@Override
-	public List<BoardDTO> list(BSearch Bsearch) {
+	public List<BoardDTO> list(BSearch Bsearch) throws Exception{
 		// TODO Auto-generated method stub
 		return sqlSession.selectList(namespace +".list",Bsearch);
 	}
@@ -93,9 +93,9 @@ public class BoardDAOImpl implements BoardDAO{
 	}
 	
 	@Override
-   public int getBoardListCnt(int bselect){
+   public int getBoardListCnt(BSearch bsearch) throws Exception{
 	   // TODO Auto-generated method stub
-	   return sqlSession.selectOne(namespace + ".getBoardListCnt",bselect);
+	   return sqlSession.selectOne(namespace + ".getBoardListCnt",bsearch);
    }
 
 

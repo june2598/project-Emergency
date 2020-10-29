@@ -14,7 +14,7 @@ public class BoardServiceImpl implements BoardService{
 	private BoardDAO boardDAO;
 
 	@Override
-	public List<BoardDTO> list(BSearch Bsearch) {
+	public List<BoardDTO> list(BSearch Bsearch) throws Exception{
 		// TODO Auto-generated method stub
 		return boardDAO.list(Bsearch);
 	}
@@ -93,9 +93,9 @@ public class BoardServiceImpl implements BoardService{
 	}
 	
 	@Override
-	   public int getBoardListCnt(int bselect){
+	   public int getBoardListCnt(BSearch bsearch) throws Exception{
 		   // TODO Auto-generated method stub
-		   return boardDAO.getBoardListCnt(bselect);
+		   return boardDAO.getBoardListCnt(bsearch);
 	   }
 
 
