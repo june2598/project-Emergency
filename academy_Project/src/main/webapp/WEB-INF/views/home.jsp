@@ -25,19 +25,23 @@
 		<div class="carousel-inner">
 
 			<div class="item active">
-				<img> <img src="${contextPath }/resources/imgs/home1.jpg" alt="home1" style="height:45%; width: 100%;">
+				<img> <img src="${contextPath }/resources/imgs/home1.jpg"
+					alt="home1" style="height: 45%; width: 100%;">
 			</div>
 
 			<div class="item">
-				<img src="${contextPath }/resources/imgs/home2.jpg" alt="home2" style="height:45%; width: 100%;">
+				<img src="${contextPath }/resources/imgs/home2.jpg" alt="home2"
+					style="height: 45%; width: 100%;">
 			</div>
 
 			<div class="item">
-				<img src="${contextPath }/resources/imgs/home3.jpg" alt="home3" style="height:45%; width: 100%;">
+				<img src="${contextPath }/resources/imgs/home3.jpg" alt="home3"
+					style="height: 45%; width: 100%;">
 			</div>
 
 			<div class="item">
-				<img src="${contextPath }/resources/imgs/home4.jpg" alt="home4" style="height:45%; width: 100%;">
+				<img src="${contextPath }/resources/imgs/home4.jpg" alt="home4"
+					style="height: 45%; width: 100%;">
 			</div>
 		</div>
 
@@ -62,10 +66,10 @@
 			<hr>
 			<div class="container text-center">
 				<div class="row">
-					<div class="col-sm-3" >
+					<div class="col-sm-3">
 						<a href="${contextPath}/prolist"><img
 							src="${pageContext.request.contextPath }/resources/imgs/홍준희.jpg"
-							alt="홍준희" width="200" height="200" ></a>
+							alt="홍준희" width="200" height="200"></a>
 						<p style="text-align: center;">
 							<strong>홍준희</strong>
 						</p>
@@ -107,9 +111,10 @@
 			<hr>
 			<div class="container text-center">
 				<div class="row">
-					<div class="col-sm-3"><a href="#" data-toggle="modal"
-							data-target="#bookModal">
-						<img src="${pageContext.request.contextPath }/resources/imgs/book1.jpg" alt="book1" width="200" height="200"></a>
+					<div class="col-sm-3">
+						<a href="#" data-toggle="modal" data-target="#bookModal"> <img
+							src="${pageContext.request.contextPath }/resources/imgs/book1.jpg"
+							alt="book1" width="200" height="200"></a>
 					</div>
 					<!-- Modal -->
 					<div class="modal fade" id="bookModal" tabindex="-1" role="dialog"
@@ -132,9 +137,10 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-sm-3"><a href="#" data-toggle="modal"
-							data-target="#bookModal2">
-						<img src="${pageContext.request.contextPath }/resources/imgs/book2.jpg" alt="book2" width="200" height="200"></a>
+					<div class="col-sm-3">
+						<a href="#" data-toggle="modal" data-target="#bookModal2"> <img
+							src="${pageContext.request.contextPath }/resources/imgs/book2.jpg"
+							alt="book2" width="200" height="200"></a>
 					</div>
 					<!-- Modal -->
 					<div class="modal fade" id="bookModal2" tabindex="-1" role="dialog"
@@ -157,9 +163,10 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-sm-3"><a href="#" data-toggle="modal"
-							data-target="#bookModal3">
-						<img src="${pageContext.request.contextPath }/resources/imgs/book3.jpg" alt="book2" width="200" height="200"></a>
+					<div class="col-sm-3">
+						<a href="#" data-toggle="modal" data-target="#bookModal3"> <img
+							src="${pageContext.request.contextPath }/resources/imgs/book3.jpg"
+							alt="book2" width="200" height="200"></a>
 					</div>
 					<!-- Modal -->
 					<div class="modal fade" id="bookModal3" tabindex="-1" role="dialog"
@@ -182,9 +189,10 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-sm-3"><a href="#" data-toggle="modal"
-							data-target="#bookModal4">
-						<img src="${pageContext.request.contextPath }/resources/imgs/book4.jpg" alt="book2" width="200" height="200"></a>
+					<div class="col-sm-3">
+						<a href="#" data-toggle="modal" data-target="#bookModal4"> <img
+							src="${pageContext.request.contextPath }/resources/imgs/book4.jpg"
+							alt="book2" width="200" height="200"></a>
 					</div>
 					<!-- Modal -->
 					<div class="modal fade" id="bookModal4" tabindex="-1" role="dialog"
@@ -209,7 +217,7 @@
 					</div>
 				</div>
 			</div>
-			
+
 			<hr>
 			<br>
 			<h3>Seminar&Lecture</h3>
@@ -217,9 +225,10 @@
 			<hr>
 			<div class="container text-center">
 				<div class="row">
-					<div class="col-sm-3"><a href="#" data-toggle="modal"
-							data-target="#talkModal">
-						<img src="${pageContext.request.contextPath }/resources/imgs/talk.jpg" alt="talk" width="200" height="200"></a>
+					<div class="col-sm-3">
+						<a href="#" data-toggle="modal" data-target="#talkModal"> <img
+							src="${pageContext.request.contextPath }/resources/imgs/talk.jpg"
+							alt="talk" width="200" height="200"></a>
 					</div>
 					<!-- Modal -->
 					<div class="modal fade" id="talkModal" tabindex="-1" role="dialog"
@@ -242,9 +251,10 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-sm-3"><a href="#" data-toggle="modal"
-							data-target="#talkModal2">
-						<img src="${pageContext.request.contextPath }/resources/imgs/talk2.jpg" alt="talk2" width="200" height="200"></a>
+					<div class="col-sm-3">
+						<a href="#" data-toggle="modal" data-target="#talkModal2"> <img
+							src="${pageContext.request.contextPath }/resources/imgs/talk2.jpg"
+							alt="talk2" width="200" height="200"></a>
 					</div>
 					<!-- Modal -->
 					<div class="modal fade" id="talkModal2" tabindex="-1" role="dialog"
@@ -267,9 +277,10 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-sm-3"><a href="#" data-toggle="modal"
-							data-target="#talkModal3">
-						<img src="${pageContext.request.contextPath }/resources/imgs/talk3.jpg" alt="talk3" width="200" height="200"></a>
+					<div class="col-sm-3">
+						<a href="#" data-toggle="modal" data-target="#talkModal3"> <img
+							src="${pageContext.request.contextPath }/resources/imgs/talk3.jpg"
+							alt="talk3" width="200" height="200"></a>
 					</div>
 					<!-- Modal -->
 					<div class="modal fade" id="talkModal3" tabindex="-1" role="dialog"
@@ -292,9 +303,10 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-sm-3"><a href="#" data-toggle="modal"
-							data-target="#talkModal4">
-						<img src="${pageContext.request.contextPath }/resources/imgs/talk4.jpg" alt="talk4" width="200" height="200"></a>
+					<div class="col-sm-3">
+						<a href="#" data-toggle="modal" data-target="#talkModal4"> <img
+							src="${pageContext.request.contextPath }/resources/imgs/talk4.jpg"
+							alt="talk4" width="200" height="200"></a>
 					</div>
 					<!-- Modal -->
 					<div class="modal fade" id="talkModal4" tabindex="-1" role="dialog"
@@ -319,11 +331,24 @@
 					</div>
 				</div>
 			</div>
-			
+
 		</div>
 		<div class="col-md-1"></div>
 	</div>
-
+	<!--Start of Tawk.to Script-->
+	<script type="text/javascript">
+		var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+		(function() {
+			var s1 = document.createElement("script"), s0 = document
+					.getElementsByTagName("script")[0];
+			s1.async = true;
+			s1.src = 'https://embed.tawk.to/5f9a686116ea1756a6de8187/default';
+			s1.charset = 'UTF-8';
+			s1.setAttribute('crossorigin', '*');
+			s0.parentNode.insertBefore(s1, s0);
+		})();
+	</script>
+	<!--End of Tawk.to Script-->
 
 	<%@include file="include/footer.jsp"%>
 
