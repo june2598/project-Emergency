@@ -203,7 +203,7 @@ $(document).ready(function(){
 			<button class="btn btn-primary" type="button" 
 			onclick="location.href='${contextPath}/'">메인으로</button>
 			<button class="btn btn-primary" type="button"
-			onclick="location.href='${contextPath}/board/boardlist?bs=${board.bselect}'">글목록</button>
+			onclick="location.href='${contextPath}/board/list?bs=${board.bselect}'">글목록</button>
 			<c:if test="${user.memId==board.id}">
 			<button class="btn btn-warning" type="button"
 			onclick="location.href='boarddelete?bno=${board.bno}&&bs=${board.bselect}'">글삭제</button>

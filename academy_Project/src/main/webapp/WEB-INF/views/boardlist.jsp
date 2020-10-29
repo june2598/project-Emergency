@@ -9,47 +9,50 @@
 <html>
 <head>
 <title>boardlist</title></head><body>
-<c:url var="boardlist1" value="/board/boardlist"></c:url>
 <%@include file="include/header.jsp"%>
+<c:url var="list" value="/board/list"></c:url>
 <script>
 	//이전 버튼 이벤트
-	function fn_prev(page, range, rangeSize, searchType, keyword) {
+	
+	function fn_prev(page, range, rangeSize, searchType, keyword, bs) {
 		var page = ((range - 2) * rangeSize) + 1;
 		var range = range - 1;
 	//var url = "${pageContext.request.contextPath}/manage/getBoardList";
-		var url = "${boardlist1}";  
-		
+		var url = "${list}";  
 		url = url + "?page=" + page;
 		url = url + "&range=" + range;
 		url = url + "&searchType=" + $('#searchType').val();
 		url = url + "&keyword=" + keyword;
+		url += "&bs="  + bs;
 		
 		location.href = url;
 	}
 	//페이지 번호 클릭
-	function fn_pagination(page, range, rangeSize, searchType, keyword) {
+	function fn_pagination(page, range, rangeSize, searchType, keyword, bs) {
 	
 	//var url = "${pageContext.request.contextPath}/manage/getBoardList";
-		var url = "${boardlist1}";  
+		var url = "${list}";  
 		url = url + "?page=" + page;
 		url = url + "&range=" + range;
-		url = url + "&searchType=" + $('#searchType').val();
+		url = url + "&searchType=" + searchType;
 		url = url + "&keyword=" + keyword;
+		url += "&bs="  + bs;
 		
 		location.href = url;
 	}
 	//다음 버튼 이벤트
-	function fn_next(page, range, rangeSize,searchType, keyword) {
+	function fn_next(page, range, rangeSize,searchType, keyword, bs) {
 		var page = parseInt((range * rangeSize)) + 1;
 		var range = parseInt(range) + 1;
 		
 	//var url = "${pageContext.request.contextPath}/manage/getBoardList";
-		var url = "${boardlist1}";  
+		var url = "${list}";  
 		
 		url = url + "?page=" + page;
 		url = url + "&range=" + range;
 		url = url + "&searchType=" + $('#searchType').val();
 		url = url + "&keyword=" + keyword;
+		url += "&bs="  + bs;
 		
 		
 		location.href = url;
@@ -60,10 +63,10 @@
 		e.preventDefault();
 		
 		//var url = "${pageContext.request.contextPath}/manage/getBoardList";
-		var url = "${boardlist1}";  
-		url = url + "?bs=" + ${pagination.bselect};
+		var url = "${list}";  
 		url = url + "&searchType=" + $('#searchType').val();
 		url = url + "&keyword=" + $('#keyword').val();
+		url += "&bs="  + $('#bsel').val;
 		
 		
 		location.href = encodeURI( url);
@@ -75,6 +78,14 @@
 	<div class="col-sm-2"></div>
 	<div class="col-sm-8">
 	<div class ="table-responsive">
+	<c:out value="${boardpaging.range }"></c:out>
+	<c:out value="${boardpaging.page }"></c:out>
+	<c:out value="${boardpaging.rangeSize }"></c:out>
+	<c:out value="${Bsearch.searchType }"></c:out>
+	<c:out value="${Bsearch.keyword }"></c:out>
+	<c:out value="${boardpaging.bselect}"></c:out>
+	
+	
 		<table class="table">
 		<tr>
 			<td>글번호</td>
@@ -104,21 +115,20 @@
 	<!-- 페이징 처리 -->
 		<div id="paginationBox" align="center">
 			<ul class="pagination">
-				<c:if test="${pagination.prev}">
+				<c:if test="${boardpaging.prev}">
 					<li class="page-item"><a class="page-link" href="#"
-						onClick="fn_prev('${pagination.page}', '${pagination.range}', '${pagination.rangeSize}','${Bsearch.searchType}', '${Bsearch.keyword}')">이전</a></li>
+						onClick="fn_prev('${boardpaging.page}', '${boardpaging.range}', '${boardpaging.rangeSize}','${Bsearch.searchType}', '${Bsearch.keyword}','${boardpaging.bselect }')">이전</a></li>
 				</c:if>
-				<c:forEach begin="${pagination.startPage}"
-					end="${pagination.endPage}" var="idx">
-					<li
-						class="page-item <c:out value="${pagination.page == idx ? 'active' : ''}"/> ">
-						<a class="page-link" href="#"
-						onClick="fn_pagination('${idx}', '${pagination.range}', '${pagination.rangeSize}', '${Bsearch.searchType}', '${Bsearch.keyword}'">
-							${idx} </a></li>
+				<c:forEach begin="${boardpaging.startPage}"
+						end="${boardpaging.endPage}" var="idx">
+						<li	class="page-item <c:out value="${boardpaging.page == idx ? 'active' : ''}"/> ">
+							<a class="page-link" href="#"
+							onClick="fn_pagination('${idx}', '${boardpaging.range}', '${boardpaging.rangeSize}', '${Bsearch.searchType}', '${Bsearch.keyword}','${boardpaging.bselect }')">
+								${idx} </a></li>
 				</c:forEach>
-				<c:if test="${pagination.next}">
+				<c:if test="${boardpaging.next}">
 					<li class="page-item"><a class="page-link" href="#"
-						onClick="fn_next('${pagination.range}', '${pagination.range}', '${pagination.rangeSize}', '${Bsearch.searchType}', '${Bsearch.keyword}')">다음</a></li>
+						onClick="fn_next('${boardpaging.page}', '${boardpaging.range}', '${boardpaging.rangeSize}', '${Bsearch.searchType}', '${Bsearch.keyword}','${boardpaging.bselect }')">다음</a></li>
 				</c:if>
 			</ul>
 		</div>
@@ -148,7 +158,8 @@
 								<option value="btitle">제목</option>
 								<option value="id">작성자</option>
 								<option value="bcontent">내용</option>
-						</select> <input class="txt" name="keyword" id="keyword" type="text" value="${pagination.keyword}"/>
+						</select> <input class="txt" name="keyword" id="keyword" type="text" value="${boardpaging.keyword}"/>
+						<input type="hidden" name="bsel" id="bsel" value="${boardpaging.bselect }"/>
 							<button class="btn btn-sm btn-primary" name="btnSearch"
 								id="btnSearch">검색</button>
 						</td>

@@ -1,8 +1,9 @@
 package kr.co.academy.board;
 
+
 public class Boardpaging {
 	// 초기값 목록개수 10으로 셋팅
-		private int listSize = 10;
+		private int listSize = 5;
 		// 초기값 페이지범위를 10으로 셋팅
 		private int rangeSize = 10;
 		// 현재 페이지

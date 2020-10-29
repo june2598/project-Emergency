@@ -11,6 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -24,8 +25,6 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import kr.co.academy.manage.Search;
-
 /**
  * Handles requests for the application home page.
  */
@@ -38,37 +37,41 @@ public class BoardController {
 	BoardService boardService;
 	
 	//전체 조회
-	@RequestMapping(value="board/boardlist",method=RequestMethod.GET)
-	public String list(@RequestParam("bs")int bselect,
+	@RequestMapping(value="board/list",method=RequestMethod.GET)
+	public String list(@RequestParam("bs")String bsel,
 				Model model
-			   ,@RequestParam(defaultValue = "1") int page
-			   ,@RequestParam(defaultValue = "1")int range
-				,@RequestParam(defaultValue = "btitle") String searchType
-				,@RequestParam(required = false) String keyword
-				,@ModelAttribute("Bsearch") BSearch Bsearch
+			  ,@RequestParam( defaultValue = "1") int page
+			  ,@RequestParam(required = false, defaultValue = "1")int range
+			  ,@RequestParam(required = false, defaultValue = "btitle") String searchType
+			  ,@RequestParam(required = false) String keyword
+			  ,@ModelAttribute("Bsearch") BSearch Bsearch
 				)	throws Exception {
 		
 		logger.info("==Bsearch==");
+		
+		int bselect = Integer.parseInt(bsel);
+		
 		//검색
-				model.addAttribute("Bsearch",Bsearch);
-				Bsearch.setSearchType(searchType);
-				Bsearch.setKeyword(keyword);
+		model.addAttribute("Bsearch",Bsearch);
+		Bsearch.setSearchType(searchType);
+		Bsearch.setKeyword(keyword);
 				
 				
 				
 				
 		logger.info("===List===");
+		//bselect값 입력
+		Bsearch.setBselect(bselect);
 		//전체 게시글 개수
-		int listCnt = boardService.getBoardListCnt(bselect);
+		int listCnt = boardService.getBoardListCnt(Bsearch);
 		
 		//검색
 		Bsearch.pageInfo(page, range, listCnt);
-		//
-		Bsearch.setBselect(bselect);
 		
-		List<BoardDTO> list = boardService.list(Bsearch);
-		model.addAttribute("boardlist",list);
-		model.addAttribute("pagination", Bsearch);
+		//페이징처리
+		model.addAttribute("boardpaging", Bsearch);
+		//게시물 화면출력
+		model.addAttribute("boardlist",boardService.list(Bsearch));
 		
 		
 		
@@ -124,7 +127,7 @@ public class BoardController {
             
 		}
 		
-		return "redirect:boardlist?bs=" + bs;
+		return "redirect:list?bs=" + bs;
 	}
 	
 	//글 상세 보기
@@ -142,7 +145,7 @@ public class BoardController {
 		int r= boardService.delete(bno);
 		
 		if(r > 0) {
-			return "redirect:boardlist?bs=" + bselect;
+			return "redirect:list?bs=" + bselect;
 	}
 	return "redirect:boardreadone?bno=" + bno;
 	}
@@ -158,7 +161,7 @@ public class BoardController {
 		int r =boardService.update(boardDTO);
 		//글 수정하면 목록으로 
 		if (r>0){
-			return "redirect:boardlist?bs=" + bselect;
+			return "redirect:list?bs=" + bselect;
 		}
 		return "redirect:boardupdate?bno=" + boardDTO.getBno();
 	}
