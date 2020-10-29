@@ -72,4 +72,5 @@ public class HomeController {
 		logger.info("mapinfo");
 		return "mapinfo";
 	}
+	
 }
