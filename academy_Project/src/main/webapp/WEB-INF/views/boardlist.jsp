@@ -78,13 +78,6 @@
 	<div class="col-sm-2"></div>
 	<div class="col-sm-8">
 	<div class ="table-responsive">
-	<c:out value="${boardpaging.range }"></c:out>
-	<c:out value="${boardpaging.page }"></c:out>
-	<c:out value="${boardpaging.rangeSize }"></c:out>
-	<c:out value="${Bsearch.searchType }"></c:out>
-	<c:out value="${Bsearch.keyword }"></c:out>
-	<c:out value="${boardpaging.bselect}"></c:out>
-	
 	
 		<table class="table">
 		<tr>
@@ -148,6 +141,7 @@
 			onclick="location.href='${contextPath}/board/boardregister?bs=1'" >글쓰기</button>
 			</c:if>
 			<%} %>			
+			<br><br>
 	</div>
 	<!-- 글쓰기 끝 -->
 		<div class="box-header with-border" align="right">
