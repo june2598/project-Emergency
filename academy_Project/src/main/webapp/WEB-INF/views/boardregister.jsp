@@ -39,6 +39,7 @@
          <div class="box-footer" align="right">
 			<button type="submit" class="btn btn-primary">작성</button>
 		</div>
+		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 		</form>
 		
 	

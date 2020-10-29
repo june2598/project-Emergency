@@ -45,6 +45,7 @@
 				<div class="box-footer" align="center">
 					<button type="submit" class="btn btn-primary">수정</button>
 				</div>
+				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 			</form>
 		</section>
 	</div>
