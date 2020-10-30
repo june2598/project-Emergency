@@ -86,7 +86,6 @@ public class MemberController {
 
 		memberService.register(memberDTO);
 		memberService.authregi(memberDTO);
-		memberService.usersregi(memberDTO);
 		
 		return "redirect:/";
 	}

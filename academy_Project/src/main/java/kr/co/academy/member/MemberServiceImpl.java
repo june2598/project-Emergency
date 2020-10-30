@@ -35,10 +35,4 @@ public class MemberServiceImpl implements MemberService{
 		return memberDAO.authregi(memberDTO);
 	}
 
-	@Override
-	public int usersregi(MemberDTO memberDTO) {
-		// TODO Auto-generated method stub
-		return memberDAO.usersregi(memberDTO);
-	}
-
 }

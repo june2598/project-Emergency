@@ -39,10 +39,4 @@ public class MemberDAOImpl implements MemberDAO{
 		return sqlSession.insert(nameSpace + ".authregi", memberDTO);
 	}
 
-	@Override
-	public int usersregi(MemberDTO memberDTO) {
-		// TODO Auto-generated method stub
-		return sqlSession.insert(nameSpace + ".usersregi", memberDTO);
-	}
-	
 }

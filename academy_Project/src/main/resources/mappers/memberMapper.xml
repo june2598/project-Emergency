@@ -24,9 +24,5 @@
 		insert into authorities(username, authority)
 		values(#{memId},'ROLE_MEMBER')
 	</insert>
-	<insert id="usersregi" parameterType="MemberDTO">
-		insert into users(username, password, enabled)
-		values(#{memId},#{memPw},1)
-	</insert>
 	
   </mapper>
