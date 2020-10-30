@@ -16,6 +16,15 @@
 
 </head>
 <body>
+	<div class="headertop">
+		<div class="utilArea">
+			<div class="col-sm-5-left">
+				<a
+					href="javascript:bookmarksite('알렌브라운','http://www.alenbrown.com')"
+					onclick="mf_BookMark();" class="bookmark"><span>즐겨찾기추가</span></a>
+			</div>
+		</div>
+	</div>
 	<div class="container" style="margin-left: 0px; padding-left: 0px;">
 		<div class="col-sm-8">
 			<a href="${contextPath }/"> <img
@@ -28,8 +37,6 @@
 		<div class="col-sm-2"></div>
 		<div class="col-sm-2"></div>
 	</div>
-
-
 	<br>
 	<nav class="navbar navbar-inverse">
 		<div class="container-fluid">

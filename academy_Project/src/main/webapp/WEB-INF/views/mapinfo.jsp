@@ -16,13 +16,44 @@
 		</div>
 	</header>
 	<br>
-	<div class ="container">
-	<div id="overlay" class="map">
-	<iframe id ="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d793.5384827400161!2d127.01201382923232!3d37.29148546567475!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357b5ccaffffffff%3A0x29ace24c91cee862!2z7Jew7IS47KeB7JeF7KCE66y47ZWZ6rWQ!5e0!3m2!1sko!2skr!4v1603782764928!5m2!1sko!2skr"
-	width="100%" height="600" frameborder="0" class="scrolloff">
-	</iframe>
+	<div class="container">
+		<div id="overlay" class="map">
+			<iframe id="map"
+				src="https://map.kakao.com/?urlX=502777.0&amp;urlY=1053415.0&amp;itemId=27419215&amp;q=%EC%97%B0%EC%84%B8%EC%9D%B8%EC%9E%AC%EA%B0%9C%EB%B0%9C%EC%9B%90%20%EC%97%B0%EC%84%B8%EC%A7%81%EC%97%85%EC%A0%84%EB%AC%B8%ED%95%99%EA%B5%90%20%EB%B3%B8%EA%B5%90&amp;srcid=27419215&amp;map_type=TYPE_MAP&amp;from=roughmap"
+				target="_blank" width="100%" height="600" frameborder="0"
+				class="scrolloff"> </iframe>
+			<div class="col-sm-4">
+				<h3>주소</h3>
+				<hr>
+				<p>경기 수원시 장안구 정조로 940-1</p>
+			</div>
+			<div class="col-sm-4">
+				<h3>연락처</h3>
+				<hr>
+				<p>Tel : 1533-1234</p>
+			</div>
+			<div class="col-sm-4">
+				<h3>운영시간</h3>
+				<hr>
+				<p>월~금 : 9시~19시</p>
+			</div>
+			<div style="margin-top: 20px;">
+				<div class="col-sm-4">
+					<h3>버스노선</h3>
+					<hr>
+					<p>1002번/ 82-1번 / 98번 / 2001번</p>
+				</div>
+				<div class="col-sm-4">
+					<h3>주변정류장</h3>
+					<hr>
+					<p>장안문 / 동성아울렛  / KT 수원지사</p>
+				</div>
+			</div>
+		</div>
+
+
+
 	</div>
-</div>
-<%@include file="include/footer.jsp"%>
+	<%@include file="include/footer.jsp"%>
 </body>
 </html>

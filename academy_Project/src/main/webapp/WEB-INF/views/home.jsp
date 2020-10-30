@@ -4,12 +4,55 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page session="true"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath }" />
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <html>
 <head>
 <title>Home</title>
+<style>
+.divpop {
+	position: absolute;
+	z-index: 999;
+	top: 50px;
+	left: 1300px;
+	width: 350px;
+	height: 700px;
+	border: 0px solid black;
+	background-color: white;
+}
+
+.title_area {
+	font-weight: bold;
+	text-align: center;
+	background-color: black;
+	width: 100%
+	
+}
+
+.button_area {
+	position: absolute;
+	bottom: 0;
+	left: 10px;
+}
+</style>
 </head>
 <body>
 	<%@include file="include/header.jsp"%>
+	<!-- 팝업창 -->
+	<form name="notice_form">
+
+		<div id="divpop1" class="divpop">
+			<div class="title_area">
+			<a href="${contextPath}/board/list?bs=0" style="color:white" >공지사항</a>
+			</div>
+			<a href="" style="color:black"><img src="${contextPath }/resources/imgs/pop.jpg"
+					alt="pop" width="350px" height="650px"></a>
+			<div class="button_area">
+				<input type='checkbox' name='chkbox' id='todaycloseyn' value='Y'>오늘
+				하루 이 창을 열지 않음 <a href='#' onclick="javascript:closeWin(1);"><B>[닫기]</B></a>
+			</div>
+		</div>
+	</form>
+
 	<div class="container" style="width: 100%"></div>
 	<!-- 오류해결용 -->
 	<div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -337,6 +380,7 @@
 	</div>
 	<!--Start of Tawk.to Script-->
 	<script type="text/javascript">
+		//채팅방
 		var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
 		(function() {
 			var s1 = document.createElement("script"), s0 = document
@@ -347,6 +391,71 @@
 			s1.setAttribute('crossorigin', '*');
 			s0.parentNode.insertBefore(s1, s0);
 		})();
+
+		//쿠키설정    
+
+		function setCookie(name, value, expiredays)
+
+		{
+			var todayDate = new Date();
+			todayDate.setDate(todayDate.getDate() + expiredays);
+			document.cookie = name + '=' + escape(value) + '; path=/; expires='
+					+ todayDate.toGMTString() + ';'
+		}
+
+		//쿠키 불러오기
+
+		function getCookie(name)
+
+		{
+			var obj = name + "=";
+			var x = 0;
+			while (x <= document.cookie.length)
+
+			{
+				var y = (x + obj.length);
+				if (document.cookie.substring(x, y) == obj) {
+					if ((endOfCookie = document.cookie.indexOf(";", y)) == -1)
+						endOfCookie = document.cookie.length;
+					return unescape(document.cookie.substring(y, endOfCookie));
+				}
+				x = document.cookie.indexOf(" ", x) + 1;
+				if (x == 0)
+
+					break;
+			}
+			return "";
+		}
+
+		//닫기 버튼 클릭시
+
+		function closeWin(key)
+
+		{
+			if ($("#todaycloseyn").prop("checked")) {
+				setCookie('divpop' + key, 'Y', 1);
+			}
+			$("#divpop" + key + "").hide();
+		}
+
+		$(function() {
+			if (getCookie("divpop1") != "Y") {
+				$("#divpop1").show();
+			}
+		});
+		
+		//즐겨찾기 추가
+		function bookmarksite(title,url) {
+			//internet explorer
+			if(document.all){
+				widdow.external.AddFavorite(url,title);
+			}
+			//google chrome
+			else if(window.chrome){
+				alert("Ctrl+D키를 누르시면 즐겨찾기에 추가하실 수 있습니다.");
+			}
+			
+		}
 	</script>
 	<!--End of Tawk.to Script-->
 
