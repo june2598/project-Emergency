@@ -9,29 +9,34 @@
 <head>
 <title>Home</title>
 <style>
-.divpop {
-	position: absolute;
-	z-index: 999;
-	top: 50px;
-	left: 1300px;
-	width: 350px;
-	height: 700px;
-	border: 0px solid black;
-	background-color: white;
+
+a{text-decoration:none; color:white}
+.main_popup{width:350px; height:400px; border:0;background-color: white;}
+.popup_bottom{
+    background-color: black;
+    color: white;
+    height: 25px;
+    padding: 2px 10px 3px 10px;
+    width:350px;
 }
 
-.title_area {
-	font-weight: bold;
-	text-align: center;
-	background-color: black;
-	width: 100%
-	
+a{text-decoration:none; color:white}
+.main_popup1{width:350px; height:500px; border:0;background-color: white;}
+.popup_bottom1{
+    background-color: black;
+    color: white;
+    height: 25px;
+    padding: 2px 10px 3px 10px;
+    width:350px;
 }
-
-.button_area {
-	position: absolute;
-	bottom: 0;
-	left: 10px;
+a{text-decoration:none; color:white}
+.main_popup2{width:350px; height:400px; border:0;background-color: white;}
+.popup_bottom2{
+    background-color: black;
+    color: white;
+    height: 25px;
+    padding: 2px 10px 3px 10px;
+    width:350px;
 }
 </style>
 </head>
@@ -40,15 +45,29 @@
 	<!-- 팝업창 -->
 	<form name="notice_form">
 
-		<div id="divpop1" class="divpop">
-			<div class="title_area">
-			<a href="${contextPath}/board/list?bs=0" style="color:white" >공지사항</a>
+		<div id="main_popup" class="main_popup" style="position: absolute; z-index:10000; top:750px; left:0; display: none;">
+			<img src="${contextPath }/resources/imgs/pop.jpg"
+				alt="pop" width="350px" height="400px">
+		<div class="popup_bottom">
+			<a href="javascript:closePopupNotToday()" class="white">오늘하루 그만보기</a>
+			<a class="pull-right white" href="javascript:closeMainPopup();">닫기</a>
 			</div>
-			<a href="" style="color:black"><img src="${contextPath }/resources/imgs/pop.jpg"
+		</div>
+		<div id="main_popup1" class="main_popup1" style="position: absolute; z-index:10000; top:750px; right:0; display: none;">
+				<a href="http://ncov.mohw.go.kr/" style="color:black"><img src="${contextPath }/resources/imgs/pop2.jpg"
 					alt="pop" width="350px" height="650px"></a>
-			<div class="button_area">
-				<input type='checkbox' name='chkbox' id='todaycloseyn' value='Y'>오늘
-				하루 이 창을 열지 않음 <a href='#' onclick="javascript:closeWin(1);"><B>[닫기]</B></a>
+		<div class="popup_bottom1">
+				<a href="javascript:closePopupNotToday1()" class="white1">오늘하루 그만보기</a>
+				<a class="pull-right white1" href="javascript:closeMainPopup1();">닫기</a>
+			</div>
+		</div>
+		
+		<div id="main_popup2" class="main_popup2" style="position: absolute; z-index:10000; top:1200px; left:0; display: none;">
+			<a href="https://www.work.go.kr/pkg/succ/content01/busiInfo.do" style="color:black"><img src="${contextPath }/resources/imgs/pop3.jpg"
+				alt="pop" width="350px" height="400px"></a>
+		<div class="popup_bottom2">
+			<a href="javascript:closePopupNotToday2()" class="white2">오늘하루 그만보기</a>
+			<a class="pull-right white2" href="javascript:closeMainPopup2();">닫기</a>
 			</div>
 		</div>
 	</form>
@@ -157,7 +176,7 @@
 					<div class="col-sm-3">
 						<a href="#" data-toggle="modal" data-target="#bookModal"> <img
 							src="${pageContext.request.contextPath }/resources/imgs/book1.jpg"
-							alt="book1" width="200" height="200"></a>
+							alt="book1" width="200" height="300"></a>
 					</div>
 					<!-- Modal -->
 					<div class="modal fade" id="bookModal" tabindex="-1" role="dialog"
@@ -183,7 +202,7 @@
 					<div class="col-sm-3">
 						<a href="#" data-toggle="modal" data-target="#bookModal2"> <img
 							src="${pageContext.request.contextPath }/resources/imgs/book2.jpg"
-							alt="book2" width="200" height="200"></a>
+							alt="book2" width="200" height="300"></a>
 					</div>
 					<!-- Modal -->
 					<div class="modal fade" id="bookModal2" tabindex="-1" role="dialog"
@@ -209,7 +228,7 @@
 					<div class="col-sm-3">
 						<a href="#" data-toggle="modal" data-target="#bookModal3"> <img
 							src="${pageContext.request.contextPath }/resources/imgs/book3.jpg"
-							alt="book2" width="200" height="200"></a>
+							alt="book2" width="200" height="300"></a>
 					</div>
 					<!-- Modal -->
 					<div class="modal fade" id="bookModal3" tabindex="-1" role="dialog"
@@ -235,7 +254,7 @@
 					<div class="col-sm-3">
 						<a href="#" data-toggle="modal" data-target="#bookModal4"> <img
 							src="${pageContext.request.contextPath }/resources/imgs/book4.jpg"
-							alt="book2" width="200" height="200"></a>
+							alt="book2" width="200" height="300"></a>
 					</div>
 					<!-- Modal -->
 					<div class="modal fade" id="bookModal4" tabindex="-1" role="dialog"
@@ -271,7 +290,7 @@
 					<div class="col-sm-3">
 						<a href="#" data-toggle="modal" data-target="#talkModal"> <img
 							src="${pageContext.request.contextPath }/resources/imgs/talk.jpg"
-							alt="talk" width="200" height="200"></a>
+							alt="talk" width="200" height="300"></a>
 					</div>
 					<!-- Modal -->
 					<div class="modal fade" id="talkModal" tabindex="-1" role="dialog"
@@ -297,7 +316,7 @@
 					<div class="col-sm-3">
 						<a href="#" data-toggle="modal" data-target="#talkModal2"> <img
 							src="${pageContext.request.contextPath }/resources/imgs/talk2.jpg"
-							alt="talk2" width="200" height="200"></a>
+							alt="talk2" width="200" height="300"></a>
 					</div>
 					<!-- Modal -->
 					<div class="modal fade" id="talkModal2" tabindex="-1" role="dialog"
@@ -323,7 +342,7 @@
 					<div class="col-sm-3">
 						<a href="#" data-toggle="modal" data-target="#talkModal3"> <img
 							src="${pageContext.request.contextPath }/resources/imgs/talk3.jpg"
-							alt="talk3" width="200" height="200"></a>
+							alt="talk3" width="200" height="300"></a>
 					</div>
 					<!-- Modal -->
 					<div class="modal fade" id="talkModal3" tabindex="-1" role="dialog"
@@ -349,7 +368,7 @@
 					<div class="col-sm-3">
 						<a href="#" data-toggle="modal" data-target="#talkModal4"> <img
 							src="${pageContext.request.contextPath }/resources/imgs/talk4.jpg"
-							alt="talk4" width="200" height="200"></a>
+							alt="talk4" width="200" height="300"></a>
 					</div>
 					<!-- Modal -->
 					<div class="modal fade" id="talkModal4" tabindex="-1" role="dialog"
@@ -391,58 +410,6 @@
 			s1.setAttribute('crossorigin', '*');
 			s0.parentNode.insertBefore(s1, s0);
 		})();
-
-		//쿠키설정    
-
-		function setCookie(name, value, expiredays)
-
-		{
-			var todayDate = new Date();
-			todayDate.setDate(todayDate.getDate() + expiredays);
-			document.cookie = name + '=' + escape(value) + '; path=/; expires='
-					+ todayDate.toGMTString() + ';'
-		}
-
-		//쿠키 불러오기
-
-		function getCookie(name)
-
-		{
-			var obj = name + "=";
-			var x = 0;
-			while (x <= document.cookie.length)
-
-			{
-				var y = (x + obj.length);
-				if (document.cookie.substring(x, y) == obj) {
-					if ((endOfCookie = document.cookie.indexOf(";", y)) == -1)
-						endOfCookie = document.cookie.length;
-					return unescape(document.cookie.substring(y, endOfCookie));
-				}
-				x = document.cookie.indexOf(" ", x) + 1;
-				if (x == 0)
-
-					break;
-			}
-			return "";
-		}
-
-		//닫기 버튼 클릭시
-
-		function closeWin(key)
-
-		{
-			if ($("#todaycloseyn").prop("checked")) {
-				setCookie('divpop' + key, 'Y', 1);
-			}
-			$("#divpop" + key + "").hide();
-		}
-
-		$(function() {
-			if (getCookie("divpop1") != "Y") {
-				$("#divpop1").show();
-			}
-		});
 		
 		//즐겨찾기 추가
 		function bookmarksite(title,url) {
@@ -453,9 +420,129 @@
 			//google chrome
 			else if(window.chrome){
 				alert("Ctrl+D키를 누르시면 즐겨찾기에 추가하실 수 있습니다.");
-			}
-			
+			}		
 		}
+
+	//팝업 창(main_popup)
+	if(getCookie("notToday")!="Y"){
+			$("#main_popup").show('fade');
+	}
+
+	function closePopupNotToday(){	             
+			setCookie('notToday','Y', 1);
+			$("#main_popup").hide('fade');
+	}
+	function setCookie(name, value, expiredays) {
+		var today = new Date();
+		    today.setDate(today.getDate() + expiredays);
+
+		    document.cookie = name + '=' + escape(value) + '; path=/; expires=' + today.toGMTString() + ';'
+	}
+
+	function getCookie(name) 
+	{ 
+	    var cName = name + "="; 
+	    var x = 0; 
+	    while ( x <= document.cookie.length ) 
+	    { 
+	        var y = (x+cName.length); 
+	        if ( document.cookie.substring( x, y ) == cName ) 
+	        { 
+	            if ( (endOfCookie=document.cookie.indexOf( ";", y )) == -1 ) 
+	                endOfCookie = document.cookie.length;
+	            return unescape( document.cookie.substring( y, endOfCookie ) ); 
+	        } 
+	        x = document.cookie.indexOf( " ", x ) + 1; 
+	        if ( x == 0 ) 
+	            break; 
+	    } 
+	    return ""; 
+	}
+	function closeMainPopup(){
+		$("#main_popup").hide('fade');
+	}
+	
+	
+	
+	
+	
+	//팝업창2(main_popup1)
+	if(getCookie("notToday1")!="Y"){
+			$("#main_popup1").show('fade');
+	}
+
+	function closePopupNotToday1(){	             
+			setCookie('notToday1','Y', 1);
+			$("#main_popup1").hide('fade');
+	}
+	function setCookie(name, value, expiredays) {
+		var today = new Date();
+		    today.setDate(today.getDate() + expiredays);
+
+		    document.cookie = name + '=' + escape(value) + '; path=/; expires=' + today.toGMTString() + ';'
+	}
+
+	function getCookie(name) 
+	{ 
+	    var cName = name + "="; 
+	    var x = 0; 
+	    while ( x <= document.cookie.length ) 
+	    { 
+	        var y = (x+cName.length); 
+	        if ( document.cookie.substring( x, y ) == cName ) 
+	        { 
+	            if ( (endOfCookie=document.cookie.indexOf( ";", y )) == -1 ) 
+	                endOfCookie = document.cookie.length;
+	            return unescape( document.cookie.substring( y, endOfCookie ) ); 
+	        } 
+	        x = document.cookie.indexOf( " ", x ) + 1; 
+	        if ( x == 0 ) 
+	            break; 
+	    } 
+	    return ""; 
+	}
+	function closeMainPopup1(){
+		$("#main_popup1").hide('fade');
+	}
+	
+	//팝업창3(main_popup2)
+	if(getCookie("notToday2")!="Y"){
+			$("#main_popup2").show('fade');
+	}
+
+	function closePopupNotToday2(){	             
+			setCookie('notToday2','Y', 1);
+			$("#main_popup2").hide('fade');
+	}
+	function setCookie(name, value, expiredays) {
+		var today = new Date();
+		    today.setDate(today.getDate() + expiredays);
+
+		    document.cookie = name + '=' + escape(value) + '; path=/; expires=' + today.toGMTString() + ';'
+	}
+
+	function getCookie(name) 
+	{ 
+	    var cName = name + "="; 
+	    var x = 0; 
+	    while ( x <= document.cookie.length ) 
+	    { 
+	        var y = (x+cName.length); 
+	        if ( document.cookie.substring( x, y ) == cName ) 
+	        { 
+	            if ( (endOfCookie=document.cookie.indexOf( ";", y )) == -1 ) 
+	                endOfCookie = document.cookie.length;
+	            return unescape( document.cookie.substring( y, endOfCookie ) ); 
+	        } 
+	        x = document.cookie.indexOf( " ", x ) + 1; 
+	        if ( x == 0 ) 
+	            break; 
+	    } 
+	    return ""; 
+	}
+	function closeMainPopup2(){
+		$("#main_popup2").hide('fade');
+	}
 	</script>
 	<!--End of Tawk.to Script-->
 
