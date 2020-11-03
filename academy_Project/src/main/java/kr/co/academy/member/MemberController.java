@@ -64,7 +64,8 @@ public class MemberController {
 	         return "redirect:/";
 	      }
 	   }
-
+	   
+	   
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public String register(@ModelAttribute MemberDTO memberDTO) {
 		logger.info("register form");
