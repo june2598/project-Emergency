@@ -11,19 +11,33 @@
 		
 	<security:http auto-config="true" use-expressions="true">
 	<!-- 접근 가능한 컨트롤러 맵 주소 -->
+	<security:intercept-url pattern="/cmanage/**" access="hasRole('ROLE_ADMIN')"/>
+	<security:intercept-url pattern="/manage/**" access="hasRole('ROLE_ADMIN')"/>
 	<security:intercept-url pattern="/**" access="permitAll"/>
 
 		<!-- 로그인 후 접근 권한 없는 페이지 접속 시 에러 -->
-		<!-- <security:access-denied-handler ref="customAccessDenied"/>--> 
+		<!-- <security:access-denied-handler ref="customAccessDenied"/> -->
 		<security:access-denied-handler error-page="/accessError"/>
-		<security:form-login login-page="/member/login"/>
-		<security:logout logout-url="/member/logout" logout-success-url="/" invalidate-session="true"/>
+		<security:form-login 
+			login-page="/adminLogin"
+			login-processing-url="/adminLogin"
+			username-parameter="memId"
+			password-parameter="memPw"
+			default-target-url="/"
+			
+			/>
+		<security:logout logout-url="/member/logout" invalidate-session="true"/>
 	</security:http>
 	
 	<security:authentication-manager>
 		
 		<security:authentication-provider>
-			<security:jdbc-user-service data-source-ref="dataSource"/>
+			<security:jdbc-user-service 
+				data-source-ref="dataSourceSpied"
+				users-by-username-query="select memId AS username, memPw AS password, enabled
+										from member where memId=?"
+				authorities-by-username-query="select username, authority
+												from authorities where username=?"/>
 		</security:authentication-provider>
 		
 	</security:authentication-manager>

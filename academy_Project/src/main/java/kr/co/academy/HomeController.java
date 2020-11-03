@@ -81,5 +81,15 @@ public class HomeController {
 		
 		model.addAttribute("msg", "Access Denied");
 	}
+	
+	@GetMapping("/adminLogin")
+	public void admimLogin(String error, String logout, Model model) {
+		if(error != null) {
+			model.addAttribute("error", "로그인 실패!");
+		}
+		if(logout != null) {
+			model.addAttribute("logout", "로그아웃");
+		}
+	}
 
 }
