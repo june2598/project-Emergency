@@ -77,6 +77,13 @@
 </script>
 	<div class="col-sm-2"></div>
 	<div class="col-sm-8">
+	<div class="box-header">
+			<h3 class="box-title">
+					<c:if test="${boardpaging.bselect==0}">공지사항</c:if>
+					<c:if test="${boardpaging.bselect==1}">고객상담센터</c:if>
+				</h3>
+				<br>
+			</div>
 	<div class ="table-responsive">
 	
 		<table class="table">

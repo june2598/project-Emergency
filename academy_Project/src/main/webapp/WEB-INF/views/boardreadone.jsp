@@ -6,6 +6,27 @@
 <c:set var="contextPath" value="${pageContext.request.contextPath }" />
 <html>
 <head>
+<style>
+	.d1{
+		width: 100%;
+		border-bottom: 1px solid #efefef;
+	}
+	.u1 {
+    	list-style:none;
+    	margin:0;
+    	padding:0;
+    	border-top: 1px solid #efefef;
+	}
+	.l1 {
+	    margin: 0 0 10 0;
+	    padding: 0 0 0 0;
+	    display: inline-block;
+	}
+	.l2 {
+	    margin: 0 0 10 0;
+	    padding: 0 0 0 0;
+	}
+</style>
 <title>상세보기</title>
 </head>
 <body>
@@ -178,23 +199,31 @@ $(document).ready(function(){
 <section class="content">
 		<div class="box">
 			<div class="box-header">
-				<h3 class="box-title">상세보기</h3>
+				<h3 class="box-title"></h3>
 			</div>
 			<div class="box-body">
 				<div class="form-group">
-					<label>제목</label> <input type="text" name="btitle"
-						class="form-control" value="${board.btitle}" readonly="readonly" />
+					<div class="d1">
+						<ul class="u1">
+							<li class="l1">제목  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;</li>
+							<li class="l1">${board.btitle }</li>
+						</ul>
+						<ul class="u1">
+							<li class="l1">작성자  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+							<li class="l1">${board.id }</li>
+						</ul>
+					</div>
+					<div class="d1">
+						<ul class="u1">
+							<li class="l2"> <br>
+							${board.bcontent}</li>
+						</ul>
+					</div>
 				</div>
-
-				<div class="form-group">
-					<label>내용</label>
-					<textarea name="bcontent" rows="5" readonly="readonly"
-						class="form-control">${board.bcontent}</textarea>
-				</div>
-
-				<div class="form-group">
-					<label>작성자</label> <input type="text" name="id"
-						class="form-control" value="${board.id}" readonly="readonly" />
+				<div class="form-group" style="display:none;">
+					<input type="hidden" name="btitle" class="form-control" value="${board.btitle}" readonly="readonly" />
+					<textarea name="bcontent" rows="5" readonly="readonly" class="form-control">${board.bcontent}</textarea>
+					<input type="hidden" name="id" class="form-control" value="${board.id}" readonly="readonly" />
 				</div>
 			</div>
 
@@ -236,11 +265,8 @@ $(document).ready(function(){
 	<script>
 	</script>
 	
-	
-	<hr><P></P><p></p>
-	
-	
 	<div class="col-sm-2"></div>
+	
 <%@include file="include/footer.jsp"%>
 
 </body>
