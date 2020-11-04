@@ -56,6 +56,10 @@ $(document).ready(function(){
 			url : url,
 			data : paramData,
 			dataType : 'json',
+			   beforeSend : function(xhr)
+               {   /*데이터를 전송하기 전에 헤더에 csrf값을 설정한다*/
+                   xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
+               },
 			success : function(result){
 				console.log(result);
 				replylist();
@@ -73,13 +77,17 @@ $(document).ready(function(){
 	//댓글 목록 아작스
 	function replylist(){
 	
-	var url = "${pageContext.request.contextPath}/board/replylist";
+	var url = "${contextPath}/board/replylist";
 	var paramData = {"bno" : "${board.bno}"};
 	$.ajax({
 		url : url,
 		data : paramData,
 		dataType :'json',
 		type :'POST',
+		   beforeSend : function(xhr)
+           {   /*데이터를 전송하기 전에 헤더에 csrf값을 설정한다*/
+               xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
+           },
 		success: function(result){
 			var htmls ="";
 			if(result.length<1){
@@ -95,6 +103,7 @@ $(document).ready(function(){
 	                        htmls += '<span style="padding-left: 7px; font-size: 9pt">';
 	                      	htmls += '<c:if test="${user.memId == rewriter}">';
 	                        htmls += '<a href="javascript:void(0)" onclick="fn_editReply(' + this.reno + ', \'' + this.rewriter + '\', \'' + this.rememo + '\' )" style="padding-right:5px">수정</a>';
+	                        
 	                        htmls += '<a href="javascript:void(0)" onclick="fn_deleteReply(' + this.reno + ')" >삭제</a>';
 	                        htmls += '</c:if>';
 	                        htmls += '<c:if test="${user.memId == board.id}">';
@@ -105,6 +114,7 @@ $(document).ready(function(){
 	                        htmls += this.rememo;
 	                        htmls += '</p>';
 	                        htmls += '</div>';    
+	                 
 	             
 	               }); //each end
 	          
@@ -127,8 +137,7 @@ $(document).ready(function(){
 		htmls += reno + ' - ';
 		htmls += '<strong class="text-gray-dark">' + rewriter + '</strong>';
 		htmls += '<span style="padding-left: 7px; font-size: 9pt">';
-		htmls += '<a href="javascript:void(0)" onclick="fn_updateReply(' +reno + ', \'' + rewriter + '\' )"
-		style="padding-right:5px">저장</a>';
+		htmls += '<a href="javascript:void(0)" onclick="fn_updateReply(' +reno + ', \'' + rewriter + '\' )"style="padding-right:5px">저장</a>';
 		
 		htmls += '<a href="javascript:void(0)" onclick="replyList()">취소</a>';
 		htmls += '</span>';
@@ -161,6 +170,10 @@ $(document).ready(function(){
 			url : url,
 			data : paramData,
 			dataType : 'json',
+			   beforeSend : function(xhr)
+               {   /*데이터를 전송하기 전에 헤더에 csrf값을 설정한다*/
+                   xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
+               },
 			success : function(result){
 				console.log(result);
 				replylist();
@@ -182,6 +195,10 @@ $(document).ready(function(){
 			url : url,
 			data : paramData,
 			dataType : 'json',
+			   beforeSend : function(xhr)
+               {   /*데이터를 전송하기 전에 헤더에 csrf값을 설정한다*/
+                   xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
+               },
 			success : function(result){
 				console.log(result);
 				replylist();

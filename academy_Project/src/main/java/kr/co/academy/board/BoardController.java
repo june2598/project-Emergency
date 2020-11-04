@@ -198,6 +198,7 @@ public class BoardController {
 	@ResponseBody
 	@RequestMapping(value="board/replylist",method=RequestMethod.POST)
 	public List<BoardReplyDTO> replylist(@RequestParam("bno")int bno){
+		logger.info("===List===");
 		return boardService.replyDetail(bno);
 	}
 	
