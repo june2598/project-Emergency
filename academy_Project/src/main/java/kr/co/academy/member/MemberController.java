@@ -66,6 +66,11 @@ public class MemberController {
 	      }
 	   }
 	   
+	    @RequestMapping(value="/modalregister", method=RequestMethod.GET)
+		public String modallegister() {
+			
+			return "modalregister";
+		}
 	   
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public String register(@ModelAttribute MemberDTO memberDTO) {

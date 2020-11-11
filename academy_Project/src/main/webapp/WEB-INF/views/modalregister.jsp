@@ -43,8 +43,6 @@
 
 
 
-		<form class="form-horizontal" role="form" method="post"
-			action='${contextPath}/member/register'>
 			<div class="form-group">
 				<label for="provision" class="col-lg-2 control-label">회원가입약관</label>
 				<div class="col-lg-10" id="provision">
@@ -432,10 +430,9 @@
 
 			<div class="form-group">
 				<div class="col-lg-offset-2 col-lg-10">
-					<button type="submit" class="btn btn-primary">약관동의</button>
+					<button id="chkbtn" class="btn btn-primary">약관동의</button>
 				</div>
 			</div>
-		</form>
 
 	</div>
 
@@ -446,8 +443,9 @@
 			var modal = $("#defaultModal");
 
 			//------- validation 검사
-			$("form").submit(function(event) {
-
+			$("#chkbtn").click(function() {
+				var chkbtn = true;				
+				
 				var provision = $('#provision');
 				var memberInfo = $('#memberInfo');
 
@@ -459,6 +457,7 @@
 					provision.removeClass("has-success");
 					provision.addClass("has-error");
 					$('#provisionYn').focus();
+					chkbtn = false;
 					return false;
 				} else {
 					provision.removeClass("has-error");
@@ -473,12 +472,15 @@
 					memberInfo.removeClass("has-success");
 					memberInfo.addClass("has-error");
 					$('#memberInfoYn').focus();
+					chkbtn = false;
 					return false;
 				} else {
 					memberInfo.removeClass("has-error");
 					memberInfo.addClass("has-success");
 				}
-
+				if(chkbtn == true){
+					location.href="${contextPath}/member/register"
+				}
 			});
 
 		});
