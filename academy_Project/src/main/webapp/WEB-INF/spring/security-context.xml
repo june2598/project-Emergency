@@ -27,6 +27,7 @@
 			
 			/>
 		<security:logout logout-url="/member/logout" invalidate-session="true"/>
+		<security:csrf disabled="true"/>
 	</security:http>
 	
 	<security:authentication-manager>
