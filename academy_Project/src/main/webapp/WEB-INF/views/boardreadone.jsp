@@ -56,10 +56,6 @@ $(document).ready(function(){
 			url : url,
 			data : paramData,
 			dataType : 'json',
-			   beforeSend : function(xhr)
-               {   /*데이터를 전송하기 전에 헤더에 csrf값을 설정한다*/
-                   xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
-               },
 			success : function(result){
 				console.log(result);
 				replylist();
@@ -84,10 +80,6 @@ $(document).ready(function(){
 		data : paramData,
 		dataType :'json',
 		type :'POST',
-		   beforeSend : function(xhr)
-           {   /*데이터를 전송하기 전에 헤더에 csrf값을 설정한다*/
-               xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
-           },
 		success: function(result){
 			var htmls ="";
 			if(result.length<1){
@@ -170,10 +162,6 @@ $(document).ready(function(){
 			url : url,
 			data : paramData,
 			dataType : 'json',
-			   beforeSend : function(xhr)
-               {   /*데이터를 전송하기 전에 헤더에 csrf값을 설정한다*/
-                   xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
-               },
 			success : function(result){
 				console.log(result);
 				replylist();
@@ -195,10 +183,6 @@ $(document).ready(function(){
 			url : url,
 			data : paramData,
 			dataType : 'json',
-			   beforeSend : function(xhr)
-               {   /*데이터를 전송하기 전에 헤더에 csrf값을 설정한다*/
-                   xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
-               },
 			success : function(result){
 				console.log(result);
 				replylist();
@@ -272,6 +256,9 @@ $(document).ready(function(){
 		</tr>
 	</table>
 	</c:if>
+	<div>
+		<hr>
+	</div>
 	<div id="replyList">
 	</div>
 	
